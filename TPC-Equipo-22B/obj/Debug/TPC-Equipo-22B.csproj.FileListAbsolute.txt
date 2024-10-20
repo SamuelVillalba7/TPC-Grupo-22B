@@ -116,3 +116,7 @@ C:\Users\Usuario\Desktop\C#\TPC-Grupo-22B\TPC-Equipo-22B\obj\Debug\TPC-Equipo-22
 C:\Users\Usuario\Desktop\C#\TPC-Grupo-22B\TPC-Equipo-22B\obj\Debug\TPC-Equi.39C63C45.Up2Date
 C:\Users\Usuario\Desktop\C#\TPC-Grupo-22B\TPC-Equipo-22B\obj\Debug\TPC-Equipo-22B.dll
 C:\Users\Usuario\Desktop\C#\TPC-Grupo-22B\TPC-Equipo-22B\obj\Debug\TPC-Equipo-22B.pdb
+C:\Users\Usuario\Desktop\C#\TPC-Grupo-22B\TPC-Equipo-22B\bin\dominio.dll
+C:\Users\Usuario\Desktop\C#\TPC-Grupo-22B\TPC-Equipo-22B\bin\negocio.dll
+C:\Users\Usuario\Desktop\C#\TPC-Grupo-22B\TPC-Equipo-22B\bin\dominio.pdb
+C:\Users\Usuario\Desktop\C#\TPC-Grupo-22B\TPC-Equipo-22B\bin\negocio.pdb

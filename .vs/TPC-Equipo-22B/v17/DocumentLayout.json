@@ -3,7 +3,15 @@
   "WorkspaceRootPath": "C:\\Users\\Usuario\\Desktop\\C#\\TPC-Grupo-22B\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|c:\\users\\usuario\\desktop\\c#\\tpc-grupo-22b\\tpc-equipo-22b\\site1.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "AbsoluteMoniker": "D:0:0:{3A9D61C3-ACD5-44B2-818B-6B7536775334}|negocio\\negocio.csproj|c:\\users\\usuario\\desktop\\c#\\tpc-grupo-22b\\negocio\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A9D61C3-ACD5-44B2-818B-6B7536775334}|negocio\\negocio.csproj|solutionrelative:negocio\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{31628DAE-A5E5-40B0-96C1-58696087CD5B}|dominio\\dominio.csproj|C:\\Users\\Usuario\\Desktop\\C#\\TPC-Grupo-22B\\dominio\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31628DAE-A5E5-40B0-96C1-58696087CD5B}|dominio\\dominio.csproj|solutionrelative:dominio\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|C:\\Users\\Usuario\\Desktop\\C#\\TPC-Grupo-22B\\tpc-equipo-22b\\site1.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
       "RelativeMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|solutionrelative:tpc-equipo-22b\\site1.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
     },
     {
@@ -11,15 +19,15 @@
       "RelativeMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|solutionrelative:tpc-equipo-22b\\style\\master.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|c:\\users\\usuario\\desktop\\c#\\tpc-grupo-22b\\tpc-equipo-22b\\style\\productodescripcion.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|C:\\Users\\Usuario\\Desktop\\C#\\TPC-Grupo-22B\\tpc-equipo-22b\\style\\productodescripcion.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|solutionrelative:tpc-equipo-22b\\style\\productodescripcion.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|c:\\users\\usuario\\desktop\\c#\\tpc-grupo-22b\\tpc-equipo-22b\\style\\filtros.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|C:\\Users\\Usuario\\Desktop\\C#\\TPC-Grupo-22B\\tpc-equipo-22b\\style\\filtros.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|solutionrelative:tpc-equipo-22b\\style\\filtros.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|c:\\users\\usuario\\desktop\\c#\\tpc-grupo-22b\\tpc-equipo-22b\\filtros.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|C:\\Users\\Usuario\\Desktop\\C#\\TPC-Grupo-22B\\tpc-equipo-22b\\filtros.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|solutionrelative:tpc-equipo-22b\\filtros.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
@@ -27,7 +35,7 @@
       "RelativeMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|solutionrelative:tpc-equipo-22b\\style\\home.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|c:\\users\\usuario\\desktop\\c#\\tpc-grupo-22b\\tpc-equipo-22b\\productodescripcion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|C:\\Users\\Usuario\\Desktop\\C#\\TPC-Grupo-22B\\tpc-equipo-22b\\productodescripcion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|solutionrelative:tpc-equipo-22b\\productodescripcion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
@@ -42,11 +50,36 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\C#\\TPC-Grupo-22B\\negocio\\Class1.cs",
+              "RelativeDocumentMoniker": "negocio\\Class1.cs",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\C#\\TPC-Grupo-22B\\negocio\\Class1.cs",
+              "RelativeToolTip": "negocio\\Class1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T21:15:29.581Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\C#\\TPC-Grupo-22B\\dominio\\Class1.cs",
+              "RelativeDocumentMoniker": "dominio\\Class1.cs",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\C#\\TPC-Grupo-22B\\dominio\\Class1.cs",
+              "RelativeToolTip": "dominio\\Class1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T21:15:06.469Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "filtros.css",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\C#\\TPC-Grupo-22B\\TPC-Equipo-22B\\style\\filtros.css",
               "RelativeDocumentMoniker": "TPC-Equipo-22B\\style\\filtros.css",
@@ -54,12 +87,11 @@
               "RelativeToolTip": "TPC-Equipo-22B\\style\\filtros.css",
               "ViewState": "AQIAACcAAAAAAAAAAAAAACsAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-10-20T20:36:11.275Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-20T20:36:11.275Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "filtros.aspx",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\C#\\TPC-Grupo-22B\\TPC-Equipo-22B\\filtros.aspx",
               "RelativeDocumentMoniker": "TPC-Equipo-22B\\filtros.aspx",
@@ -67,12 +99,11 @@
               "RelativeToolTip": "TPC-Equipo-22B\\filtros.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-10-20T20:35:56.726Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-20T20:35:56.726Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "productoDescripcion.css",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\C#\\TPC-Grupo-22B\\TPC-Equipo-22B\\style\\productoDescripcion.css",
               "RelativeDocumentMoniker": "TPC-Equipo-22B\\style\\productoDescripcion.css",
@@ -80,12 +111,11 @@
               "RelativeToolTip": "TPC-Equipo-22B\\style\\productoDescripcion.css",
               "ViewState": "AQIAACoAAAAAAAAAAAAAAGkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-10-20T20:30:10.853Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-20T20:30:10.853Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "productoDescripcion.aspx",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\C#\\TPC-Grupo-22B\\TPC-Equipo-22B\\productoDescripcion.aspx",
               "RelativeDocumentMoniker": "TPC-Equipo-22B\\productoDescripcion.aspx",
@@ -93,12 +123,11 @@
               "RelativeToolTip": "TPC-Equipo-22B\\productoDescripcion.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-10-20T20:29:43.533Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-20T20:29:43.533Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "home.css",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\C#\\TPC-Grupo-22B\\TPC-Equipo-22B\\style\\home.css",
               "RelativeDocumentMoniker": "TPC-Equipo-22B\\style\\home.css",
@@ -106,12 +135,11 @@
               "RelativeToolTip": "TPC-Equipo-22B\\style\\home.css",
               "ViewState": "AQIAAFYBAAAAAAAAAAAAAKEBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-10-12T14:53:49.796Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-12T14:53:49.796Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "Default.aspx",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\C#\\TPC-Grupo-22B\\TPC-Equipo-22B\\Default.aspx",
               "RelativeDocumentMoniker": "TPC-Equipo-22B\\Default.aspx",
@@ -119,12 +147,11 @@
               "RelativeToolTip": "TPC-Equipo-22B\\Default.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-10-12T14:42:58.591Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-12T14:42:58.591Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "master.css",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\C#\\TPC-Grupo-22B\\TPC-Equipo-22B\\style\\master.css",
               "RelativeDocumentMoniker": "TPC-Equipo-22B\\style\\master.css",
@@ -132,12 +159,11 @@
               "RelativeToolTip": "TPC-Equipo-22B\\style\\master.css",
               "ViewState": "AQIAADQAAAAAAAAAAAAAANIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-10-12T13:24:28.784Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-12T13:24:28.784Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Site1.Master",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\C#\\TPC-Grupo-22B\\TPC-Equipo-22B\\Site1.Master",
               "RelativeDocumentMoniker": "TPC-Equipo-22B\\Site1.Master",
@@ -145,8 +171,7 @@
               "RelativeToolTip": "TPC-Equipo-22B\\Site1.Master",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-10-12T13:22:25.787Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-12T13:22:25.787Z"
             }
           ]
         }
