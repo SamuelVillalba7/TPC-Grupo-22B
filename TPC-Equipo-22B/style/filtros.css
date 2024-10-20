@@ -1,0 +1,82 @@
+﻿.section {
+    background-color: #e0dfdf;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 10rem;
+}
+
+.section__p {
+    font-family: "Montserrat", sans-serif;
+    color: rgb(80, 78, 78);
+}
+
+.section__title {
+    font-family: "Poppins", sans-serif;
+    font-size: 2rem;
+}
+
+.filter-container {
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding: 0 9rem;
+    padding-top: 3rem;
+}
+
+.product-filter {
+    width: 75%;
+}
+
+.product-filter__title {
+    font-family: "Poppins", sans-serif;
+    font-size: 2rem;
+}
+
+.product-filter__results {
+    font-family: "Montserrat", sans-serif;
+    color: rgb(80, 78, 78);
+}
+
+.filter {
+    width: 25%;
+  
+    padding: 1rem;
+}
+
+.filter__search-container {
+    display: flex;
+    position: relative;
+}
+
+.filter__search-input {
+    width: 100%;
+    border-radius: 2rem;
+    height: 4rem;
+    background: linear-gradient(to right, #f5f5f5, #cfcfcf);
+    border: none;
+}
+
+    .filter__search-input::placeholder {
+        font-size: 1rem;
+        padding-left: 2rem;
+    }
+
+.filter__search-button {
+    border: none;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    height: 3rem;
+    border-radius: 1.5rem;
+    padding: 0px 1.5rem;
+    background-color: #f42c37;
+    color: white;
+}
+
+.filter__category-text {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
