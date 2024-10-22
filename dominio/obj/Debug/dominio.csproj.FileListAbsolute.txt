@@ -4,3 +4,9 @@ C:\Users\Usuario\Desktop\C#\TPC-Grupo-22B\dominio\obj\Debug\dominio.csproj.Assem
 C:\Users\Usuario\Desktop\C#\TPC-Grupo-22B\dominio\obj\Debug\dominio.csproj.CoreCompileInputs.cache
 C:\Users\Usuario\Desktop\C#\TPC-Grupo-22B\dominio\obj\Debug\dominio.dll
 C:\Users\Usuario\Desktop\C#\TPC-Grupo-22B\dominio\obj\Debug\dominio.pdb
+D:\TUP-UTN\Programacion 3\TPC-Grupo-22B\dominio\bin\Debug\dominio.dll
+D:\TUP-UTN\Programacion 3\TPC-Grupo-22B\dominio\bin\Debug\dominio.pdb
+D:\TUP-UTN\Programacion 3\TPC-Grupo-22B\dominio\obj\Debug\dominio.csproj.AssemblyReference.cache
+D:\TUP-UTN\Programacion 3\TPC-Grupo-22B\dominio\obj\Debug\dominio.csproj.CoreCompileInputs.cache
+D:\TUP-UTN\Programacion 3\TPC-Grupo-22B\dominio\obj\Debug\dominio.dll
+D:\TUP-UTN\Programacion 3\TPC-Grupo-22B\dominio\obj\Debug\dominio.pdb

@@ -122,7 +122,6 @@
         
         </div>
 
-
     <div class="servicios-container">
 
             <div class="servicio">
@@ -156,13 +155,7 @@
                     <p class="servicio__p">All Cards Accepted</p>
                 </div>
             </div>
-
-
-
         </div>
-
-
-
 
     <div class="oferta-container">
             <div class="oferta">
@@ -209,9 +202,4 @@
                 <img class="oferta__img oferta__img--last" src="./img/ofertas/reloj.png" alt="imagen"/>
             </div>
         </div>
-
-
-
-
-    
 </asp:Content>

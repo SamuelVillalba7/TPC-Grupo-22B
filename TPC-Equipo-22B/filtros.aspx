@@ -9,14 +9,18 @@
         <h2 class="section__title">Products</h2>
     </div>
 
-
-
     <div class="filter-container">
         <div class="filter">
             <div class="filter__search-container">
                 <input type="text" class="filter__search-input" placeholder="Search Here">
                 <button class="filter__search-button"></button>
             </div>
+
+            <div>
+                    
+
+            </div>
+
             <div class="filter__category">
                 <p class="filter__category-text">Product categories</p>
             </div>
