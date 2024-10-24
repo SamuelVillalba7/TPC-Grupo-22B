@@ -1,0 +1,53 @@
+﻿
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product {
+    width: 33%;
+    height: auto;
+    padding: 0px 1rem;
+    margin-top: 2rem;
+}
+
+.product__sale {
+    position: absolute;
+    font-size: 13px;
+    left: 4%;
+    top: 4%;
+    border-radius: 50%;
+    background-color: #f42c37;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+}
+
+.product__img-container {
+    max-width: 100%;
+    position: relative;
+}
+
+.product__img {
+    border-radius: 1rem;
+    width: 100%;
+}
+
+.product__name {
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    line-height: 24px;
+    letter-spacing: -1px;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.product__price {
+    font-weight: 700;
+    font-size: 1.3rem;
+    font-family: "Montserrat", sans-serif;
+}
