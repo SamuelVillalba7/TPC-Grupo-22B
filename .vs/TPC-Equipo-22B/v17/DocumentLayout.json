@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "C:\\Users\\Usuario\\Desktop\\TPC-Grupo-22B\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|C:\\Users\\Usuario\\Desktop\\TPC-Grupo-22B\\tpc-equipo-22b\\style\\producto.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|c:\\users\\usuario\\desktop\\tpc-grupo-22b\\tpc-equipo-22b\\style\\producto.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|solutionrelative:tpc-equipo-22b\\style\\producto.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|c:\\users\\usuario\\desktop\\tpc-grupo-22b\\tpc-equipo-22b\\filtros.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|C:\\Users\\Usuario\\Desktop\\TPC-Grupo-22B\\tpc-equipo-22b\\filtros.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|solutionrelative:tpc-equipo-22b\\filtros.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
@@ -47,8 +47,7 @@
               "RelativeToolTip": "TPC-Equipo-22B\\filtros.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-10-22T23:08:34.095Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-22T23:08:34.095Z"
             },
             {
               "$type": "Document",

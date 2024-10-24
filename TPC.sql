@@ -68,3 +68,11 @@ insert into PRODUCTOS (IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (
 
 insert into IMAGENES (IDPRODUCTO, URLIMG) values (1, 'https://row.hyperx.com/cdn/shop/products/hyperx_cloud_20flight_1_main.jpg?v=1662435222')
 insert into IMAGENES (IDPRODUCTO, URLIMG) values (1, 'https://http2.mlstatic.com/D_NQ_NP_870917-MLU78798955617_082024-O.webp')
+
+
+insert into PRODUCTOS (IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (1, 'Samsung A55 5G', 500000, 200, 'Celular gama alta')
+insert into IMAGENES (IDPRODUCTO, URLIMG) values (2, 'https://http2.mlstatic.com/D_NQ_NP_828557-MLA75148190826_032024-O.webp')
+
+
+insert into PRODUCTOS (IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (2, 'Redragon Zeus', 125000, 120, 'Auriculares inalambricos')
+insert into IMAGENES (IDPRODUCTO, URLIMG) values (3, 'https://spacegamer.com.ar/img/Public/1058-producto-1-5143.jpg')
