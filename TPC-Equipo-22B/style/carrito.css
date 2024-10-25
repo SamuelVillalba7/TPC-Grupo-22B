@@ -1,0 +1,22 @@
+﻿.table-container {
+    padding: 5rem 9rem;
+    height:50vh; 
+}
+table {
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-family: "Montserrat";
+}
+
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+}

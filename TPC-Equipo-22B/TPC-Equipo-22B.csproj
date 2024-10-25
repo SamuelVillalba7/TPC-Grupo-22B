@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="carrito.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="filtros.aspx" />
     <Content Include="Global.asax" />
@@ -97,6 +98,7 @@
     <Content Include="img\servicios\pago.svg" />
     <Content Include="img\servicios\soporte.svg" />
     <Content Include="productoDescripcion.aspx" />
+    <Content Include="style\carrito.css" />
     <Content Include="style\filtros.css" />
     <Content Include="style\home.css" />
     <Content Include="style\master.css" />
@@ -105,6 +107,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="carrito.aspx.cs">
+      <DependentUpon>carrito.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="carrito.aspx.designer.cs">
+      <DependentUpon>carrito.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

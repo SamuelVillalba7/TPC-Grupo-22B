@@ -56,10 +56,13 @@ CREATE TABLE DETALLEPEDIDOS(
     CANTIDAD SMALLINT NOT NULL,
 )
 
+GO
 create procedure storedListar as 
 SELECT P.IDPRODUCTO as ID, P.NOMBRE, P.DESCRIPCION, P.PRECIO, C.NOMBRE AS CATEGORIA, (SELECT TOP 1 URLIMG FROM IMAGENES I
 WHERE I.IDPRODUCTO = P.IDPRODUCTO) AS URLIMG, P.IDCATEGORIA FROM PRODUCTOS P 
 INNER JOIN CATEGORIAS C ON C.IDCATEGORIA = P.IDCATEGORIA
+
+GO
 
 insert into CATEGORIAS (NOMBRE) values ('Celulares')
 insert into CATEGORIAS (NOMBRE) values ('Auriculares')
@@ -73,6 +76,19 @@ insert into IMAGENES (IDPRODUCTO, URLIMG) values (1, 'https://http2.mlstatic.com
 insert into PRODUCTOS (IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (1, 'Samsung A55 5G', 500000, 200, 'Celular gama alta')
 insert into IMAGENES (IDPRODUCTO, URLIMG) values (2, 'https://http2.mlstatic.com/D_NQ_NP_828557-MLA75148190826_032024-O.webp')
 
-
 insert into PRODUCTOS (IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (2, 'Redragon Zeus', 125000, 120, 'Auriculares inalambricos')
 insert into IMAGENES (IDPRODUCTO, URLIMG) values (3, 'https://spacegamer.com.ar/img/Public/1058-producto-1-5143.jpg')
+
+insert into PRODUCTOS (IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (1, 'IPhone 15 Pro Max', 1500000, 150, 'Celular gama alta')
+insert into IMAGENES (IDPRODUCTO, URLIMG) values (4, 'https://http2.mlstatic.com/D_Q_NP_912227-MLA71782903150_092023-O.webp')
+
+insert into PRODUCTOS (IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (1, 'Motorola Moto G14', 300000, 400, 'Celular gama de entrada')
+insert into IMAGENES (IDPRODUCTO, URLIMG) values (5, 'https://tiendadiggit.com.ar/web/image/product.template/246056/image_1024?unique=199acc8')
+
+insert into PRODUCTOS (IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (2, 'Sony WH-XB810', 250000, 120, 'Auriculares inalambricos')
+insert into IMAGENES (IDPRODUCTO, URLIMG) values (6, 'https://www.sony.com.ar/image/dd18cf93606d238305a733d336c45537?fmt=pjpeg&wid=330&bgcolor=FFFFFF&bgc=FFFFFF')
+
+insert into PRODUCTOS (IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (2, 'JBL Tune 520', 200000, 820, 'Auriculares inalambricos')
+insert into IMAGENES (IDPRODUCTO, URLIMG) values (7, 'https://ar.oneclickstore.com/wp-content/uploads/2023/10/JBLT520BTBLUAM.jpg')
+
+select * from PRODUCTOS

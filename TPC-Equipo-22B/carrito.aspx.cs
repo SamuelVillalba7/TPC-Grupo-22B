@@ -7,16 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace TPC_Equipo_22B
 {
-    public partial class productoDescripcion : System.Web.UI.Page
+    public partial class carrito : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("carrito.aspx",false);
         }
     }
 }
