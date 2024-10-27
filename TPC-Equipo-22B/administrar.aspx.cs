@@ -112,8 +112,8 @@ namespace TPC_Equipo_22B
             CargarProductos();
         }
 
-        //protected void gvProductos_RowEditing(object sender, GridViewEditEventArgs e)
-        //{
+        protected void gvProductos_RowEditing(object sender, GridViewEditEventArgs e)
+        {
         //    // Lógica para editar un producto
         //    gvProductos.EditIndex = e.NewEditIndex;
         //    CargarProductos(); // Recargar productos para permitir la edición
@@ -148,7 +148,7 @@ namespace TPC_Equipo_22B
         //        // Manejar el error
         //        throw ex; // Aquí puedes manejar el error de manera más amigable
         //    }
-        //}
+        }
 
         protected void gvProductos_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {

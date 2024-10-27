@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|solutionrelative:tpc-equipo-22b\\administrar.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|d:\\tup-utn\\programacion 3\\tpc-grupo 22\\tpc-grupo-22b\\tpc-equipo-22b\\administrar.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|D:\\TUP-UTN\\Programacion 3\\TPC-Grupo 22\\TPC-Grupo-22B\\tpc-equipo-22b\\administrar.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|solutionrelative:tpc-equipo-22b\\administrar.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -44,7 +44,7 @@
               "RelativeDocumentMoniker": "TPC-Equipo-22B\\administrar.aspx.cs",
               "ToolTip": "D:\\TUP-UTN\\Programacion 3\\TPC-Grupo 22\\TPC-Grupo-22B\\TPC-Equipo-22B\\administrar.aspx.cs",
               "RelativeToolTip": "TPC-Equipo-22B\\administrar.aspx.cs",
-              "ViewState": "AgIAAGsAAAAAAAAAAAAqwJYAAAALAAAAAAAAAA==",
+              "ViewState": "AgIAAHkAAAAAAAAAAAAwwIkAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-27T15:03:22.735Z",
               "EditorCaption": ""
@@ -72,8 +72,7 @@
               "RelativeToolTip": "dominio\\Marca.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-25T00:49:14.438Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-25T00:49:14.438Z"
             },
             {
               "$type": "Document",
@@ -85,8 +84,7 @@
               "RelativeToolTip": "dominio\\Articulo.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAQwBUAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-25T00:49:16.438Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-25T00:49:16.438Z"
             },
             {
               "$type": "Document",
@@ -98,8 +96,7 @@
               "RelativeToolTip": "TPC-Equipo-22B\\style\\producto.css",
               "ViewState": "AgIAAEUAAAAAAAAAAAAAADQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-10-24T11:56:12.35Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-24T11:56:12.35Z"
             }
           ]
         }

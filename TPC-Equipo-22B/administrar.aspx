@@ -15,8 +15,7 @@
         <!-- Tabla de productos -->
         <div class="row">
             <div class="col-md-12">
-                <asp:GridView ID="gvProductos" runat="server" CssClass="table table-striped table-bordered" AutoGenerateColumns="False" OnRowEditing="gvProductos_RowEditing" OnRowDeleting="gvProductos_RowDeleting" OnRowCancelingEdit="gvProductos_RowCancelingEdit" OnRowUpdating="gvProductos_RowUpdating" DataKeyNames="IDPRODUCTO">
-                    
+                <asp:GridView ID="gvProductos" runat="server" CssClass="table table-striped table-bordered" AutoGenerateColumns="False" OnRowEditing="gvProductos_RowEditing" OnRowDeleting="gvProductos_RowDeleting" DataKeyNames="IDPRODUCTO">
                     <Columns>
                         <asp:BoundField DataField="IDPRODUCTO" HeaderText="ID" ReadOnly="True" />
                         <asp:BoundField DataField="NOMBRE" HeaderText="Nombre" />
