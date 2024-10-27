@@ -25,6 +25,8 @@ namespace dominio
 
         public bool Estado { get; set; }
 
+        public float Stock {  get; set; } 
+
         public Articulo()
         {
             posVec = 0;

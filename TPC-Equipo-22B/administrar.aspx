@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="administrar.aspx.cs" Inherits="TPC_Equipo_22B.administrar" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 
@@ -16,7 +15,8 @@
         <!-- Tabla de productos -->
         <div class="row">
             <div class="col-md-12">
-                <asp:GridView ID="gvProductos" runat="server" CssClass="table table-striped table-bordered" AutoGenerateColumns="False" OnRowEditing="gvProductos_RowEditing" OnRowDeleting="gvProductos_RowDeleting" DataKeyNames="IDPRODUCTO">
+                <asp:GridView ID="gvProductos" runat="server" CssClass="table table-striped table-bordered" AutoGenerateColumns="False" OnRowEditing="gvProductos_RowEditing" OnRowDeleting="gvProductos_RowDeleting" OnRowCancelingEdit="gvProductos_RowCancelingEdit" OnRowUpdating="gvProductos_RowUpdating" DataKeyNames="IDPRODUCTO">
+                    
                     <Columns>
                         <asp:BoundField DataField="IDPRODUCTO" HeaderText="ID" ReadOnly="True" />
                         <asp:BoundField DataField="NOMBRE" HeaderText="Nombre" />
@@ -38,6 +38,7 @@
                 <asp:TextBox ID="txtPrecio" runat="server" CssClass="form-control mb-3" placeholder="Precio" />
                 <asp:TextBox ID="txtStock" runat="server" CssClass="form-control mb-3" placeholder="Stock" />
                 <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="form-control mb-3">
+                  
                 </asp:DropDownList>
                 <asp:Button ID="btnAgregar" runat="server" Text="Agregar Producto" CssClass="btn btn-primary btn-block" OnClick="btnAgregar_Click" />
             </div>
