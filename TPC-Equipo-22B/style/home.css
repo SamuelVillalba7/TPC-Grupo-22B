@@ -1,423 +1,162 @@
-﻿.categorias-container {
-    padding: 0 9rem;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 90vh 25rem 25rem;
-    grid-gap: 2.1875rem;
-    grid-template-areas: "headphone headphone headphone headphone" "earphone gadgets laptop laptop" "console console oculus speaker";
+﻿.cont {
+    padding: 0 9rem !important;
+}
+
+.fila {
+    margin-top: 2rem;
 }
 
 .categoria {
-    border-radius: 1.875rem;
+    height: 25rem;
+}
+
+.categoria-principal {
+    height: 90vh;
+}
+
+.categoria-uno {
     position: relative;
 }
 
-.categoria__caja--earphone {
-    margin-bottom: 1.25rem;
+.categoria-dos {
+    position: relative;
 }
 
-.categoria__caja--gadgets {
-    margin-bottom: 1.25rem;
-}
-
-.categoria__caja-bottom {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1.7rem;
-}
-
-.categoria__img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-}
-
-.categoria__img--headphone {
-    max-width: 90%;
-    max-height: 90vh;
-    left: 5%;
-}
-
-.categoria__img--earphone {
-    bottom: 0;
-    top: unset;
-}
-
-.categoria__img--gadgets {
-    left: 20%;
-    top: 5%;
-}
-
-.categoria__img--console {
-    top: unset;
-    left: unset;
-    bottom: -12%;
-    right: 0;
-}
-
-.categoria__img--laptop {
-    left: 25%;
-    top: 5%;
-}
-
-.categoria__img--oculus {
-    top: unset;
-    left: 0;
-    bottom: 0;
-    border-radius: 1.875rem;
-    height: 80%;
-    object-fit: cover;
-}
-
-.categoria__img--speaker {
-    bottom: -10%;
-    left: 15%;
-    top: unset;
-    height: 70%;
-    object-fit: cover;
-}
-
-.categoria__h2 {
-    color: white;
-    font-size: 1rem;
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    line-height: 25px;
-    letter-spacing: -0.4px;
-}
-
-.categoria__h2--headphone {
-    font-size: 1.875rem;
-    color: #000;
-    font-weight: 500;
-    letter-spacing: -1.3px;
-    margin: 0 0 -11px;
-}
-
-.categoria__h2--console {
-    color: #000;
-}
-
-.categoria__span {
-    color: white;
-    font-size: 1.875rem;
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    line-height: 2.875rem;
-    letter-spacing: -1px;
-    margin: 0 0 -5px;
-}
-
-.categoria__span--headphone {
-    font-size: 5rem;
-    font-weight: 700;
-    line-height: 7.5rem;
-    letter-spacing: -2px;
-    margin: 0;
-    color: #000;
-}
-
-.categoria__span--console {
-    color: #000;
-}
-
-.categoria__p {
-    font-size: 3.125rem;
-    color: white;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 900;
-    text-transform: uppercase;
-    line-height: 60px;
-    letter-spacing: -2.9px;
-    opacity: 0.2;
-    margin-bottom: 20px;
-}
-
-.categoria__p--headphone {
-    font-size: 10.5vw;
-    line-height: 9.375rem;
-    letter-spacing: -2.9px;
-    opacity: unset;
-    margin-bottom: 0px;
-}
-
-.categoria__p--console {
-    opacity: unset;
-    font-size: 4rem;
-}
-
-.categoria__p--laptop {
-    font-size: 4rem;
+.categoria-tres {
+    position: relative;
 }
 
 .categoria__boton {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat";
     color: white;
     position: relative;
     background-color: #f42c37;
     border-radius: 2rem;
     text-align: center;
-    padding: 0.625rem 1.875rem;
+    padding: .625rem 1.875rem;
     text-decoration: none;
     z-index: 999;
 }
 
-.categoria__boton--headphone {
-    height: 2.5rem;
-}
-
-.categoria__boton--gadgets {
-    background-color: white;
-    color: #fec62e;
-}
-
-.categoria__boton--laptop {
-    background-color: white;
-    color: #f42c37;
-}
-
-.categoria__boton--oculus {
-    background-color: white;
-    color: #2dd06e;
-}
-
-.categoria__boton--speaker {
-    background-color: white;
-    color: #147aff;
-}
-
-.categoria__descripcion {
-    text-align: right;
-    margin-right: 6rem;
-    font-family: "Montserrat", sans-serif;
-}
-
-.categoria__descripcion-titulo {
-    font-weight: 700;
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-}
-
-.categoria__descripcion-texto {
-    color: gray;
-    font-size: 1rem;
-    line-height: 1.5rem;
-}
-
-.categoria--headphone {
-    background: linear-gradient(to right, #cfcfcf, #f5f5f5);
-    grid-area: headphone;
-    padding: 16% 0 7% 9%;
-}
-
-.categoria--earphone {
-    background-color: #222222;
-    grid-area: earphone;
-    display: flex;
-    align-items: end;
-    padding-left: 10%;
-    padding-bottom: 12%;
-}
-
-.categoria--gadgets {
-    background-color: #fec62e;
-    grid-area: gadgets;
-    display: flex;
-    align-items: end;
-    padding-left: 10%;
-    padding-bottom: 12%;
-}
-
-.categoria--laptop {
-    background-color: #f42c37;
-    grid-area: laptop;
-    padding: 19% 7% 4% 12%;
-}
-
-.categoria--console {
-    background: linear-gradient(to right, #cfcfcf, #f5f5f5);
-    grid-area: console;
-    padding: 11% 7% 12% 14%;
-}
-
-.categoria--oculus {
-    background-color: #2dd06e;
-    grid-area: oculus;
-    display: flex;
-    align-items: start;
-    padding-top: 12%;
-    padding-left: 10%;
-}
-
-.categoria--speaker {
-    background-color: #147aff;
-    grid-area: speaker;
-    display: flex;
-    align-items: start;
-    padding-left: 10%;
-    padding-top: 12%;
-}
-
-
-
-.servicios-container {
-    height: auto;
-    width: 100%;
-    padding: 0 9rem;
-    padding-top: 5%;
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 13rem;
-    margin-top: 3rem;
-}
-
-.servicio {
-    width: 20%;
-    height: 3.125rem;
-    display: flex;
-}
-
-    .servicio:first-of-type .servicio__img {
-        width: 20%;
-    }
-
-.servicio__img {
-    width: 15%;
-}
-
-.servicio__texto {
+.categoria__caja {
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: start;
-    margin-left: 1rem;
-}
-
-.servicio__h3 {
-    font-family: "Poppins", sans-serif;
-    font-size: 1rem;
-}
-
-.servicio__p {
-    font-family: "Montserrat", sans-serif;
-    font-size: 1rem;
-    color: #AAAAAA;
-}
-
-
-
-.oferta-container {
-    padding: 0 9rem;
-}
-
-.oferta {
-    display: flex;
-    height: auto;
-    width: 100%;
-    position: relative;
+    justify-content: end;
+    margin: 0.3rem;
+    padding: 2rem;
     border-radius: 1.875rem;
+}
+
+.categoria__caja--principal {
+    background: linear-gradient(to right, #cfcfcf, #f5f5f5);
+    padding: 2.5%;
+    padding-bottom: 13rem;
+}
+
+.categoria__caja--uno {
+    background-color: #222222;
+}
+
+.categoria__boton--uno {
     background-color: #f42c37;
     color: white;
 }
 
-.oferta--last {
+.categoria__caja--dos {
+    background-color: #fec62e;
+}
+
+.categoria__boton--dos {
+    background-color: white;
+    color: #fec62e;
+}
+
+.categoria__caja--tres {
+    background-color: #f42c37;
+}
+
+.categoria__boton--tres {
+    background-color: white;
+    color: #f42c37;
+}
+
+.categoria__caja--cuatro {
+    background: linear-gradient(to right, #cfcfcf, #f5f5f5);
+}
+
+.categoria__boton--cuatro {
+    background-color: #f42c37;
+    color: white;
+}
+
+.categoria__caja--cinco {
     background-color: #2dd06e;
-    margin-top: 12rem;
 }
 
-.oferta__caja--primera {
-    width: 65%;
-    font-family: "Montserrat", sans-serif;
+.categoria__boton--cinco {
+    background-color: white;
+    color: #2dd06e;
 }
 
-.oferta__caja--segunda {
-    width: 35%;
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    flex-direction: column;
+.categoria__caja--seis {
+    background-color: #147aff;
 }
 
-.oferta__texto {
-    padding: 9% 4% 5% 21%;
+.categoria__boton--seis {
+    background-color: white;
+    color: #147aff;
 }
 
-.oferta__img {
-    position: absolute;
-    left: 5%;
-    bottom: -35%;
-}
 
-.oferta__img--last {
-    left: 16%;
-}
 
-.oferta__h2 {
-    font-size: 1rem;
-    font-weight: 300;
-    line-height: 19px;
-    margin: 0 0 3px;
-}
 
-.oferta__h2--segundo {
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    line-height: 25px;
-}
 
-.oferta__span {
-    max-height: 412px;
-    font-size: 109px;
+
+.categoria__p {
+    font-size: 3rem;
+    color: white;
+    font-family: "Montserrat";
     font-weight: 900;
     text-transform: uppercase;
-    line-height: 90px;
-    letter-spacing: -3.5px;
+    line-height: 60px;
+    letter-spacing: -2.9px;
+    opacity: 0.4;
+    margin-bottom: 20px;
+    z-index: 999;
 }
 
-.oferta__span--segundo {
-    font-family: "Poppins", sans-serif;
-    font-size: 45px;
-    font-weight: 700;
-    text-transform: capitalize;
-    line-height: 63px;
-    letter-spacing: -2px;
+.categoria__p--cuatro {
+    opacity: 1;
 }
 
-.oferta__p {
-    font-size: 1rem;
-    font-weight: 300;
-    line-height: 30px;
+.categoria__p--principal {
+    font-size: 10.5vw;
+    line-height: 9.375rem;
+    letter-spacing: -2.9px;
+    opacity: unset;
+    margin-bottom: 5rem;
 }
 
-.oferta__p--segundo {
-    line-height: 23px;
-    font-family: "Montserrat", sans-serif;
-    margin-bottom: 25px;
+.categoria__img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    max-width: 60%;
+    max-height: 60%;
+    object-fit: contain;
 }
 
-
-.title-container {
-    padding: 0 9rem;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin: 100px 0px;
+.categoria__img--col-6 {
+    max-width: 80%;
+    max-height: 100%;
 }
 
-.title {
-    font-family: "Poppins", sans-serif;
-    font-weight: 700;
-    font-size: 3rem;
-    letter-spacing: -1.7px;
-}
-
-.title__text {
-    font-family: "Montserrat", sans-serif;
-    font-size: 1rem;
-    color: #838383;
+.categoria__img--principal {
+    max-width: 70%;
+    max-height: 100%;
+    z-index: 999;
 }

@@ -72,6 +72,7 @@
     <Content Include="Default.aspx" />
     <Content Include="filtros.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="home.aspx" />
     <Content Include="img\categorias\console.png" />
     <Content Include="img\categorias\earphone.png" />
     <Content Include="img\categorias\gadgets.png" />
@@ -138,6 +139,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="home.aspx.cs">
+      <DependentUpon>home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="home.aspx.designer.cs">
+      <DependentUpon>home.aspx</DependentUpon>
     </Compile>
     <Compile Include="productoDescripcion.aspx.cs">
       <DependentUpon>productoDescripcion.aspx</DependentUpon>

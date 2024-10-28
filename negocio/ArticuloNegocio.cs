@@ -36,7 +36,7 @@ namespace negocio
                         aux.Imagen = (string)datos.Lector["URLIMG"];
                     aux.Categoria = new Categoria();
                     if (!(datos.Lector["IDCATEGORIA"] is DBNull))
-                        aux.Categoria.Codigo = (int)datos.Lector["IDCATEGORIA"];
+                        aux.Categoria.Id= (int)datos.Lector["IDCATEGORIA"];
                     if (!(datos.Lector["CATEGORIA"] is DBNull))
                         aux.Categoria.Nombre = (string)datos.Lector["CATEGORIA"];
 

@@ -5,7 +5,8 @@ go
 
 CREATE TABLE CATEGORIAS(
     IDCATEGORIA INT NOT NULL PRIMARY KEY IDENTITY(1,1),
-    NOMBRE VARCHAR(50)
+    NOMBRE VARCHAR(50),
+    URLIMAGEN VARCHAR(100)
 )
 GO
 CREATE TABLE PRODUCTOS (
@@ -64,8 +65,18 @@ INNER JOIN CATEGORIAS C ON C.IDCATEGORIA = P.IDCATEGORIA
 
 GO
 
-insert into CATEGORIAS (NOMBRE) values ('Celulares')
-insert into CATEGORIAS (NOMBRE) values ('Auriculares')
+DELETE from CATEGORIAS 
+
+--select top 7 C.IDCATEGORIA, C.NOMBRE from CATEGORIAS as C
+insert into CATEGORIAS (NOMBRE,URLIMAGEN) values ('Auriculares','https://drive.google.com/file/d/1D9PEM5T59PDE_tVPTSnXEu1wbI6GS4LR/view?usp=sharing')
+insert into CATEGORIAS (NOMBRE,URLIMAGEN) values ('Celulares','https://drive.google.com/file/d/1zPMpV6XWvsj2MN07TkPrr3gMbXk78YJl/view?usp=sharing')
+insert into CATEGORIAS (NOMBRE,URLIMAGEN) values ('Monitores','https://drive.google.com/file/d/1tCXLvAhXriROuYOQFz6vk0FJUVmuwGUn/view?usp=sharing')
+insert into CATEGORIAS (NOMBRE,URLIMAGEN) values ('Parlantes','https://drive.google.com/file/d/1yVxDNDG3T1ZAJe8WZJPGqjZtAfQDrEbg/view?usp=sharing')
+insert into CATEGORIAS (NOMBRE,URLIMAGEN) values ('Consolas','https://drive.google.com/file/d/1eM0i60rFds_fhmCgIhn7Bhs78myXZgnK/view?usp=sharing')
+insert into CATEGORIAS (NOMBRE,URLIMAGEN) values ('Relojes','https://drive.google.com/file/d/1ZbQf9FUzGy5TwMEwDEIz874bbMjDm0cj/view?usp=sharing')
+insert into CATEGORIAS (NOMBRE,URLIMAGEN) values ('Mouses','https://drive.google.com/file/d/1qux-mAmr0JYuu5dOnuOqf80_9ejw5Fc9/view?usp=sharing')
+
+SELECT * from CATEGORIAS
 
 insert into PRODUCTOS (IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (2, 'Hyperx Cloud Flight', 250000, 500, 'Auris gamer copados')
 
@@ -91,4 +102,4 @@ insert into IMAGENES (IDPRODUCTO, URLIMG) values (6, 'https://www.sony.com.ar/im
 insert into PRODUCTOS (IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (2, 'JBL Tune 520', 200000, 820, 'Auriculares inalambricos')
 insert into IMAGENES (IDPRODUCTO, URLIMG) values (7, 'https://ar.oneclickstore.com/wp-content/uploads/2023/10/JBLT520BTBLUAM.jpg')
 
-select * from PRODUCTOS
+--select * from PRODUCTOS
