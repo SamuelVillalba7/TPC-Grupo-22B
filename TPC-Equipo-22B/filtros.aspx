@@ -23,6 +23,18 @@
 
             <div class="filter__category">
                 <p class="filter__category-text">Product categories</p>
+                <%foreach (dominio.Categoria cat in ListaCategoria)
+                    { %>
+                <div class="form-check">
+                    <asp:CheckBox ID="CheckBox1" runat="server" class="form-check-input" OnCheckedChanged="chkCategorias_ChekedChanged" />
+                    <label class="form-check-label" for="flexCheckDefault">
+                        <%: cat.Nombre %>
+                    </label>
+                </div>
+
+                <% cat.filtro = CheckBox1.Checked;
+                        categoria = cat;
+                    } %>
             </div>
         </div>
         <div class="product-filter">
@@ -30,29 +42,28 @@
                 <h2 class="product-filter__title">Shop</h2>
                 <p class="product-filter__results">Showing 1-9 of 10 results</p>
             </div>
-            
-            <div class="product-container">
-         
-            <% foreach (dominio.Articulo art in ListaArticulo)
-             { %>
-               
-                    <div class="product-box" onclick="window.location.href='productoDescripcion.aspx?productoId=<%: art.Id %>'">   
-                        <div class="product">
-                            <div class="product__img-container">
-                                <img class="product__img" src="<%: art.Imagen %>" alt=""/>
-                            </div>
-                            <div class="product__text">
-                                <h2 class="product__name"><%: art.Nombre %></h2>
-                                <span class="product__price"> $<%: art.Precio %></span>
-                            </div>
-                       </div>
-                    </div>
-              
-             
-              <% } %>
 
+            <div class="product-container">
+
+                <% foreach (dominio.Articulo art in ListaArticulo)
+                    { %>
+
+                <div class="product-box" onclick="window.location.href='productoDescripcion.aspx?productoId=<%: art.Id %>'">
+                    <div class="product">
+                        <div class="product__img-container">
+                            <img class="product__img" src="<%: art.Imagen %>" alt="" />
+                        </div>
+                        <div class="product__text">
+                            <h2 class="product__name"><%: art.Nombre %></h2>
+                            <span class="product__price">$<%: art.Precio %></span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <% } %>
             </div>
-          
+
         </div>
     </div>
 

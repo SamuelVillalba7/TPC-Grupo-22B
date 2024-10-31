@@ -12,11 +12,17 @@ namespace TPC_Equipo_22B
     public partial class filtros : System.Web.UI.Page
     {
         public List<Articulo> ListaArticulo { get; set; }
+        public List<Categoria> ListaCategoria { get; set; }
+        public Categoria categoria { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
             ListaArticulo = negocio.listarConSP();
             Session.Add("listaArticulos", ListaArticulo);
+            CategoriaNegocio cnegocio = new CategoriaNegocio();
+            ListaCategoria = cnegocio.listarConSP();
+            Session.Add("listaCategoria", ListaCategoria);
+
         }
 
         protected void filtroRapido_TextChanged(object sender, EventArgs e)
@@ -26,6 +32,16 @@ namespace TPC_Equipo_22B
             ListaArticulo = listaFiltrada;
         }
 
-        
+        protected void chkCategorias_ChekedChanged(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            CategoriaNegocio cnegocio = new CategoriaNegocio();
+            cnegocio.modificarFiltro(categoria);
+            ListaArticulo = negocio.listaFiltrandoCategoria();
+
+        }
+
+
+
     }
 }
