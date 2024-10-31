@@ -16,6 +16,16 @@ namespace TPC_Equipo_22B
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
             ListaArticulo = negocio.listarConSP();
+            Session.Add("listaArticulos", ListaArticulo);
         }
+
+        protected void filtroRapido_TextChanged(object sender, EventArgs e)
+        {
+            List<Articulo> lista = (List <Articulo>) Session["listaArticulos"];
+            List<Articulo> listaFiltrada = lista.FindAll(x => x.Nombre.ToUpper().Contains(filtroRapido.Text.ToUpper()));
+            ListaArticulo = listaFiltrada;
+        }
+
+        
     }
 }

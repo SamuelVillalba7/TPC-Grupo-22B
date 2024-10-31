@@ -14,7 +14,7 @@
     <div class="filter-container">
         <div class="filter">
             <div class="filter__search-container">
-                <input type="text" class="filter__search-input" placeholder="Search Here">
+                <asp:TextBox ID="filtroRapido" runat="server" AutoPostBack="true" OnTextChanged="filtroRapido_TextChanged" class="filter__search-input" placeholder="Search Here"></asp:TextBox>
                 <button class="filter__search-button"></button>
             </div>
 
