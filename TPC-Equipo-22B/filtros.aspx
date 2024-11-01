@@ -23,18 +23,28 @@
 
             <div class="filter__category">
                 <p class="filter__category-text">Product categories</p>
-                <%foreach (dominio.Categoria cat in ListaCategoria)
+
+                <asp:CheckBoxList ID="CblCategorias" runat="server" AutoPostBack="true"></asp:CheckBoxList>
+
+                <asp:Button ID="btnFiltrar" CssClass="btn-primary" runat="server" Text="Filtrar" OnClick="btnFiltrar_Click" />
+
+<%--                <%foreach (dominio.Categoria cat in ListaCategoria)
                     { %>
                 <div class="form-check">
-                    <asp:CheckBox ID="CheckBox1" runat="server" class="form-check-input" OnCheckedChanged="chkCategorias_ChekedChanged" />
+                    <asp:CheckBox ID="CheckBox1" runat="server" class="form-check-input" OnCheckedChanged="chkCategorias_ChekedChanged" AutoPostBack="true" />
                     <label class="form-check-label" for="flexCheckDefault">
                         <%: cat.Nombre %>
                     </label>
+                    
                 </div>
+                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 
                 <% cat.filtro = CheckBox1.Checked;
                         categoria = cat;
-                    } %>
+                    } %>--%>
+
+                
+
             </div>
         </div>
         <div class="product-filter">

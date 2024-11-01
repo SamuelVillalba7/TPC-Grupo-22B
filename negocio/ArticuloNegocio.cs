@@ -140,5 +140,21 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void limpiarFiltro()
+        {
+            List<Articulo> lista = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("update CATEGORIAS set FILTRO = 0");
+                datos.ejecutarLectura();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
