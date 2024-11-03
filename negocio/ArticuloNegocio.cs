@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,58 @@ namespace negocio
 {
     public class ArticuloNegocio
     {
+
+        public Articulo listarId(string id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("SELECT P.IDPRODUCTO as ID, P.NOMBRE, P.DESCRIPCION, P.PRECIO, C.NOMBRE AS CATEGORIA, (SELECT TOP 1 URLIMG FROM IMAGENES I WHERE I.IDPRODUCTO = P.IDPRODUCTO) AS URLIMG, P.IDCATEGORIA FROM PRODUCTOS P INNER JOIN CATEGORIAS C ON C.IDCATEGORIA = P.IDCATEGORIA WHERE P.IDPRODUCTO=@ID");
+                datos.setearParametro("@Id", id);
+                datos.ejecutarLectura();
+
+                Articulo aux = new Articulo();
+                while (datos.Lector.Read())
+                {
+
+                    aux.Id = (int)datos.Lector["ID"];
+
+                    if (!(datos.Lector["NOMBRE"] is DBNull))
+                        aux.Nombre = (string)datos.Lector["NOMBRE"];
+                    if (!(datos.Lector["DESCRIPCION"] is DBNull))
+                        aux.Descripcion = (string)datos.Lector["DESCRIPCION"];
+                    if (!(datos.Lector["PRECIO"] is DBNull))
+                        aux.Precio = (decimal)datos.Lector["PRECIO"];
+
+                    if (!(datos.Lector["URLIMG"] is DBNull))
+                        aux.Imagen = (string)datos.Lector["URLIMG"];
+                    aux.Categoria = new Categoria();
+                    if (!(datos.Lector["IDCATEGORIA"] is DBNull))
+                        aux.Categoria.Id = (int)datos.Lector["IDCATEGORIA"];
+                    if (!(datos.Lector["CATEGORIA"] is DBNull))
+                        aux.Categoria.Nombre = (string)datos.Lector["CATEGORIA"];
+
+
+                    aux.Imagenes = cargarVecImagenes(aux.Id);
+
+
+                }
+
+                    return aux;
+               
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+      
+           
         public List<Articulo> listarConSP()
         {
             List<Articulo> lista = new List<Articulo>();

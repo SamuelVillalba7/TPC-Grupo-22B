@@ -65,7 +65,7 @@
                         </div>
                         <div class="product__text">
                             <h2 class="product__name"><%: art.Nombre %></h2>
-                            <span class="product__price">$<%: art.Precio %></span>
+                            <span class="product__price">$<%: art.PrecioFormateado %></span>
                         </div>
                     </div>
                 </div>

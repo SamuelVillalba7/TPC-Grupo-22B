@@ -21,8 +21,8 @@ namespace dominio
         public Categoria Categoria { get; set; }
         public string Imagen { get; set; }
 
-        public decimal Precio { get; set; }
-
+        public decimal Precio;
+        public string PrecioFormateado => Precio.ToString("F2");
         public bool Estado { get; set; }
 
         public float Stock {  get; set; } 

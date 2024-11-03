@@ -103,3 +103,10 @@
     font-size: 1rem;
     color: #838383;
 }
+
+.product-box {
+    width: 25%;
+    height: 25rem;
+    padding: 1rem;
+    margin-top: 1rem;
+}
