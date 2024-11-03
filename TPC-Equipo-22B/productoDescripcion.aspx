@@ -27,16 +27,26 @@
 
     <div class="title-container">
         <h2 class="title">Related products</h2>
-
-
-
-
-
-
-
-
-
     </div>
+    <div class="product-container">
+ <% foreach (dominio.Articulo art in articulosRelacionados)
+         { %>
+
+     <div class="product-box" onclick="window.location.href='productoDescripcion.aspx?productoId=<%: art.Id %>'">
+         <div class="product">
+             <div class="product__img-container">
+                 <img class="product__img" src="<%: art.Imagen %>" alt="" />
+             </div>
+             <div class="product__text">
+                 <h2 class="product__name"><%: art.Nombre %></h2>
+                 <span class="product__price">$<%: art.PrecioFormateado %></span>
+             </div>
+         </div>
+     </div>
+
+
+     <% } %>    
+ </div>
 
 
 

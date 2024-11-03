@@ -12,6 +12,7 @@ namespace TPC_Equipo_22B
     public partial class productoDescripcion : System.Web.UI.Page
     {
         public static Articulo articulo;
+        public static List<Articulo> articulosRelacionados; 
         protected void Page_Load(object sender, EventArgs e)
         {
             string id = Request.QueryString["productoId"];
@@ -19,7 +20,8 @@ namespace TPC_Equipo_22B
             {
                 ArticuloNegocio articuloNegocio = new ArticuloNegocio();
                 articulo = articuloNegocio.listarId(id);
-            }
+                articulosRelacionados = articuloNegocio.listarArticulosRelacionados(articulo.Id, articulo.Categoria.Id);
+            }   
 
         }
 

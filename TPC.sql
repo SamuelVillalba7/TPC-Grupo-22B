@@ -74,6 +74,13 @@ and C.FILTRO = 1
 
 GO
 
+SELECT DISTINCT TOP 4 P.IDPRODUCTO as ID, P.NOMBRE, P.DESCRIPCION, P.PRECIO, C.NOMBRE AS CATEGORIA, (SELECT TOP 1 URLIMG FROM IMAGENES I
+WHERE I.IDPRODUCTO = P.IDPRODUCTO) AS URLIMG, P.IDCATEGORIA FROM PRODUCTOS P 
+INNER JOIN CATEGORIAS C ON C.IDCATEGORIA = P.IDCATEGORIA
+WHERE C.IDCATEGORIA = @Categoria and P.IDPRODUCTO <> @Id and P.STOCK > 0
+
+
+
 DELETE from CATEGORIAS 
 
 --select top 7 C.IDCATEGORIA, C.NOMBRE from CATEGORIAS as C
@@ -110,5 +117,9 @@ insert into IMAGENES (IDPRODUCTO, URLIMG) values (6, 'https://www.sony.com.ar/im
 
 insert into PRODUCTOS (IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (1, 'JBL Tune 520', 200000, 820, 'Auriculares inalambricos')
 insert into IMAGENES (IDPRODUCTO, URLIMG) values (7, 'https://ar.oneclickstore.com/wp-content/uploads/2023/10/JBLT520BTBLUAM.jpg')
+
+insert into PRODUCTOS (IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (1, 'Audio-technica Ath-m40x', 350000, 80, 'Auriculares de estudio')
+insert into IMAGENES (IDPRODUCTO, URLIMG) values (8, 'https://www.avisistemas.com.ar/795-thickbox_default/audio-technica-ath-m40x-auricular-profesional-estudio.jpg')
+
 
 --select * from PRODUCTOS

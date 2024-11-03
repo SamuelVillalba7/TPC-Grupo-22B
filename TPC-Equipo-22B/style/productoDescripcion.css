@@ -5,7 +5,6 @@
 }
 
 .detalle-producto__container-img {
-   
     width: 55%;
     border-radius: 2rem;
     height: 70vh;
@@ -15,6 +14,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
+
 }
 
 .detalle-producto__img {
@@ -88,7 +88,8 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 100px 0px;
+    margin-top:100px;
+    margin-bottom:20px;
 }
 
 .title {
@@ -109,4 +110,10 @@
     height: 25rem;
     padding: 1rem;
     margin-top: 1rem;
+}
+.product-container {
+    padding: 1rem 9rem;
+    display: flex;
+    flex-wrap: wrap;
+   
 }
