@@ -20,8 +20,8 @@ namespace negocio
         public AccesoDatos()
         {
             //conexion = new SqlConnection("server=.\\SQLEXPRESS; database=TPC1; integrated security=true");
-            //conexion = new SqlConnection("server=.\\SQLEXPRESS01; database=TPC1; integrated security=true");
-            conexion = new SqlConnection("server=DESKTOP-758I0CH\\ZOOLOGIC; database=TPC1; integrated security=true");
+            conexion = new SqlConnection("server=.\\SQLEXPRESS01; database=TPC1; integrated security=true");
+            //conexion = new SqlConnection("server=DESKTOP-758I0CH\\ZOOLOGIC; database=TPC1; integrated security=true");
             comando = new SqlCommand();
         }
 

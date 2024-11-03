@@ -3,24 +3,20 @@
   "WorkspaceRootPath": "D:\\TUP-UTN\\Programacion 3\\TPC-Grupo 22\\TPC-Grupo-22B\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|d:\\tup-utn\\programacion 3\\tpc-grupo 22\\tpc-grupo-22b\\tpc-equipo-22b\\administrar.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|solutionrelative:tpc-equipo-22b\\administrar.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|d:\\tup-utn\\programacion 3\\tpc-grupo 22\\tpc-grupo-22b\\tpc-equipo-22b\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|solutionrelative:tpc-equipo-22b\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|d:\\tup-utn\\programacion 3\\tpc-grupo 22\\tpc-grupo-22b\\tpc-equipo-22b\\site1.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|solutionrelative:tpc-equipo-22b\\site1.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|D:\\TUP-UTN\\Programacion 3\\TPC-Grupo 22\\TPC-Grupo-22B\\tpc-equipo-22b\\home.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|solutionrelative:tpc-equipo-22b\\home.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|D:\\TUP-UTN\\Programacion 3\\TPC-Grupo 22\\TPC-Grupo-22B\\tpc-equipo-22b\\administrar.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|solutionrelative:tpc-equipo-22b\\administrar.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{31628DAE-A5E5-40B0-96C1-58696087CD5B}|dominio\\dominio.csproj|D:\\TUP-UTN\\Programacion 3\\TPC-Grupo 22\\TPC-Grupo-22B\\dominio\\marca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{31628DAE-A5E5-40B0-96C1-58696087CD5B}|dominio\\dominio.csproj|solutionrelative:dominio\\marca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{31628DAE-A5E5-40B0-96C1-58696087CD5B}|dominio\\dominio.csproj|D:\\TUP-UTN\\Programacion 3\\TPC-Grupo 22\\TPC-Grupo-22B\\dominio\\articulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{31628DAE-A5E5-40B0-96C1-58696087CD5B}|dominio\\dominio.csproj|solutionrelative:dominio\\articulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|D:\\TUP-UTN\\Programacion 3\\TPC-Grupo 22\\TPC-Grupo-22B\\tpc-equipo-22b\\style\\producto.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{DFF4E8C0-695D-4CDD-85D2-AD95EF78C461}|TPC-Equipo-22B\\TPC-Equipo-22B.csproj|solutionrelative:tpc-equipo-22b\\style\\producto.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -39,64 +35,52 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "administrar.aspx.cs",
-              "DocumentMoniker": "D:\\TUP-UTN\\Programacion 3\\TPC-Grupo 22\\TPC-Grupo-22B\\TPC-Equipo-22B\\administrar.aspx.cs",
-              "RelativeDocumentMoniker": "TPC-Equipo-22B\\administrar.aspx.cs",
-              "ToolTip": "D:\\TUP-UTN\\Programacion 3\\TPC-Grupo 22\\TPC-Grupo-22B\\TPC-Equipo-22B\\administrar.aspx.cs",
-              "RelativeToolTip": "TPC-Equipo-22B\\administrar.aspx.cs",
-              "ViewState": "AgIAAHkAAAAAAAAAAAAwwIkAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-27T15:03:22.735Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "administrar.aspx",
-              "DocumentMoniker": "D:\\TUP-UTN\\Programacion 3\\TPC-Grupo 22\\TPC-Grupo-22B\\TPC-Equipo-22B\\administrar.aspx",
-              "RelativeDocumentMoniker": "TPC-Equipo-22B\\administrar.aspx",
-              "ToolTip": "D:\\TUP-UTN\\Programacion 3\\TPC-Grupo 22\\TPC-Grupo-22B\\TPC-Equipo-22B\\administrar.aspx",
-              "RelativeToolTip": "TPC-Equipo-22B\\administrar.aspx",
+              "Title": "Site1.Master",
+              "DocumentMoniker": "D:\\TUP-UTN\\Programacion 3\\TPC-Grupo 22\\TPC-Grupo-22B\\TPC-Equipo-22B\\Site1.Master",
+              "RelativeDocumentMoniker": "TPC-Equipo-22B\\Site1.Master",
+              "ToolTip": "D:\\TUP-UTN\\Programacion 3\\TPC-Grupo 22\\TPC-Grupo-22B\\TPC-Equipo-22B\\Site1.Master",
+              "RelativeToolTip": "TPC-Equipo-22B\\Site1.Master",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-10-27T14:56:12.739Z",
+              "WhenOpened": "2024-10-28T00:23:54.854Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Marca.cs",
-              "DocumentMoniker": "D:\\TUP-UTN\\Programacion 3\\TPC-Grupo 22\\TPC-Grupo-22B\\dominio\\Marca.cs",
-              "RelativeDocumentMoniker": "dominio\\Marca.cs",
-              "ToolTip": "D:\\TUP-UTN\\Programacion 3\\TPC-Grupo 22\\TPC-Grupo-22B\\dominio\\Marca.cs",
-              "RelativeToolTip": "dominio\\Marca.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "home.aspx.cs",
+              "DocumentMoniker": "D:\\TUP-UTN\\Programacion 3\\TPC-Grupo 22\\TPC-Grupo-22B\\TPC-Equipo-22B\\home.aspx.cs",
+              "RelativeDocumentMoniker": "TPC-Equipo-22B\\home.aspx.cs",
+              "ToolTip": "D:\\TUP-UTN\\Programacion 3\\TPC-Grupo 22\\TPC-Grupo-22B\\TPC-Equipo-22B\\home.aspx.cs",
+              "RelativeToolTip": "TPC-Equipo-22B\\home.aspx.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-25T00:49:14.438Z"
+              "WhenOpened": "2024-10-28T00:19:57.524Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Articulo.cs",
-              "DocumentMoniker": "D:\\TUP-UTN\\Programacion 3\\TPC-Grupo 22\\TPC-Grupo-22B\\dominio\\Articulo.cs",
-              "RelativeDocumentMoniker": "dominio\\Articulo.cs",
-              "ToolTip": "D:\\TUP-UTN\\Programacion 3\\TPC-Grupo 22\\TPC-Grupo-22B\\dominio\\Articulo.cs",
-              "RelativeToolTip": "dominio\\Articulo.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAQwBUAAAAqAAAAAAAAAA==",
+              "Title": "administrar.aspx.cs",
+              "DocumentMoniker": "D:\\TUP-UTN\\Programacion 3\\TPC-Grupo 22\\TPC-Grupo-22B\\TPC-Equipo-22B\\administrar.aspx.cs",
+              "RelativeDocumentMoniker": "TPC-Equipo-22B\\administrar.aspx.cs",
+              "ToolTip": "D:\\TUP-UTN\\Programacion 3\\TPC-Grupo 22\\TPC-Grupo-22B\\TPC-Equipo-22B\\administrar.aspx.cs",
+              "RelativeToolTip": "TPC-Equipo-22B\\administrar.aspx.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-25T00:49:16.438Z"
+              "WhenOpened": "2024-10-28T00:19:16.429Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "producto.css",
-              "DocumentMoniker": "D:\\TUP-UTN\\Programacion 3\\TPC-Grupo 22\\TPC-Grupo-22B\\TPC-Equipo-22B\\style\\producto.css",
-              "RelativeDocumentMoniker": "TPC-Equipo-22B\\style\\producto.css",
-              "ToolTip": "D:\\TUP-UTN\\Programacion 3\\TPC-Grupo 22\\TPC-Grupo-22B\\TPC-Equipo-22B\\style\\producto.css",
-              "RelativeToolTip": "TPC-Equipo-22B\\style\\producto.css",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAAADQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-10-24T11:56:12.35Z"
+              "DocumentIndex": 0,
+              "Title": "Default.aspx",
+              "DocumentMoniker": "D:\\TUP-UTN\\Programacion 3\\TPC-Grupo 22\\TPC-Grupo-22B\\TPC-Equipo-22B\\Default.aspx",
+              "RelativeDocumentMoniker": "TPC-Equipo-22B\\Default.aspx",
+              "ToolTip": "D:\\TUP-UTN\\Programacion 3\\TPC-Grupo 22\\TPC-Grupo-22B\\TPC-Equipo-22B\\Default.aspx",
+              "RelativeToolTip": "TPC-Equipo-22B\\Default.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-10-28T00:17:35.244Z",
+              "EditorCaption": ""
             }
           ]
         }

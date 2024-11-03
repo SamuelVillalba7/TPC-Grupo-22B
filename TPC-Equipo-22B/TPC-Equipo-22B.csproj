@@ -69,10 +69,9 @@
   <ItemGroup>
     <Content Include="administrar.aspx" />
     <Content Include="carrito.aspx" />
-    <Content Include="Default.aspx" />
     <Content Include="filtros.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="home.aspx" />
+    <Content Include="Default.aspx" />
     <Content Include="img\categorias\console.png" />
     <Content Include="img\categorias\earphone.png" />
     <Content Include="img\categorias\gadgets.png" />
@@ -123,13 +122,6 @@
     <Compile Include="carrito.aspx.designer.cs">
       <DependentUpon>carrito.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
     <Compile Include="filtros.aspx.cs">
       <DependentUpon>filtros.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -140,12 +132,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="home.aspx.cs">
-      <DependentUpon>home.aspx</DependentUpon>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="home.aspx.designer.cs">
-      <DependentUpon>home.aspx</DependentUpon>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="productoDescripcion.aspx.cs">
       <DependentUpon>productoDescripcion.aspx</DependentUpon>

@@ -1,46 +1,93 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="administrar.aspx.cs" Inherits="TPC_Equipo_22B.administrar" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TPC_Equipo_22B.home" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="style/home.css" rel="stylesheet" />
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container mt-5">
-        <!-- Título de la página -->
+
+    <div class="container-fluid cont">
         <div class="row">
-            <div class="col-md-12 text-center">
-                <h1 class="display-4">Administrar Productos</h1>
-                <hr />
+            <div class="col-12 categoria categoria-principal">
+                <div class="categoria__caja categoria__caja--principal">
+                    <p class="categoria__p categoria__p--principal"><%:ListaCategoria[0].Nombre %></p>
+                    <a class="categoria__boton categoria__boton--principal" href="#">ver categorias</a>
+                    <img class="categoria__img categoria__img--principal" src="<%:ListaCategoria[0].UrlImagen %>" alt="imagen de auriculares"/>
+                </div>
             </div>
+        </div>
+        <div class="row fila">
+            <div class="col-3 categoria categoria-uno">
+                <div class="categoria__caja categoria__caja--uno">
+                    <p class="categoria__p "><%:ListaCategoria[1].Nombre %></p>
+                    <a class="categoria__boton categoria__boton--uno" href="#">browse</a>
+                    <img class="categoria__img " src="<%:ListaCategoria[1].UrlImagen %>" alt="imagen de auriculares"/>
+
+                </div>
+
+               
+
+            </div>
+            <div class="col-3 categoria categoria-dos">
+                <div class="categoria__caja categoria__caja--dos">
+                    <p class="categoria__p "><%:ListaCategoria[2].Nombre %></p>
+                    <a class="categoria__boton categoria__boton--dos" href="#">browse</a>
+                    <img class="categoria__img " src="<%:ListaCategoria[2].UrlImagen %>" alt="imagen de auriculares"/>
+                </div>
+
+
+
+            </div>
+            <div class="col-6 categoria categoria-tres">
+                <div class="categoria__caja categoria__caja--tres">
+                    <p class="categoria__p "><%:ListaCategoria[3].Nombre %></p>
+                    <a class="categoria__boton categoria__boton--tres" href="#">browse</a>
+                    <img class="categoria__img categoria__img--col-6" src="<%:ListaCategoria[3].UrlImagen %>" alt="imagen de auriculares"/>
+                </div>
+
+
+            </div>
+
         </div>
 
-        <!-- Tabla de productos -->
-        <div class="row">
-            <div class="col-md-12">
-                <asp:GridView ID="gvProductos" runat="server" CssClass="table table-striped table-bordered" AutoGenerateColumns="False" OnRowEditing="gvProductos_RowEditing" OnRowDeleting="gvProductos_RowDeleting" DataKeyNames="IDPRODUCTO">
-                    <Columns>
-                        <asp:BoundField DataField="IDPRODUCTO" HeaderText="ID" ReadOnly="True" />
-                        <asp:BoundField DataField="NOMBRE" HeaderText="Nombre" />
-                        <asp:BoundField DataField="PRECIO" HeaderText="Precio" />
-                        <asp:BoundField DataField="STOCK" HeaderText="Stock" />
-                        <asp:BoundField DataField="CATEGORIA" HeaderText="Categoría" />
-                        <asp:CommandField ShowEditButton="True" />
-                        <asp:CommandField ShowDeleteButton="True" />
-                    </Columns>
-                </asp:GridView>
+        <div class="row fila">
+            <div class="col-6 categoria categoria-tres">
+                <div class="categoria__caja categoria__caja--cuatro">
+                    <p class="categoria__p categoria__p--cuatro"><%:ListaCategoria[4].Nombre %></p>
+                    <a class="categoria__boton categoria__boton--cuatro" href="#">browse</a>
+                    <img class="categoria__img categoria__img--col-6" src="<%:ListaCategoria[4].UrlImagen %>" alt="imagen de auriculares"/>
+                </div>
             </div>
+
+            <div class="col-3 categoria categoria-uno">
+                <div class="categoria__caja categoria__caja--cinco">
+                    <p class="categoria__p "><%:ListaCategoria[5].Nombre %></p>
+                    <a class="categoria__boton categoria__boton--cinco" href="#">browse</a>
+                    <img class="categoria__img" src="<%:ListaCategoria[5].UrlImagen %>" alt="imagen de auriculares"/>
+
+                </div>
+
+               
+
+            </div>
+            <div class="col-3 categoria categoria-dos">
+                <div class="categoria__caja categoria__caja--seis">
+                    <p class="categoria__p "><%:ListaCategoria[6].Nombre %></p>
+                    <a class="categoria__boton categoria__boton--seis" href="#">browse</a>
+                    <img class="categoria__img" src="<%:ListaCategoria[6].UrlImagen %>" alt="imagen de auriculares"/>
+                </div>
+            </div>
+
         </div>
 
-        <!-- Formulario de agregación de producto -->
-        <div class="row mt-5">
-            <div class="col-md-4 offset-md-4">
-                <h3>Agregar Producto</h3>
-                <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control mb-3" placeholder="Nombre del producto" />
-                <asp:TextBox ID="txtPrecio" runat="server" CssClass="form-control mb-3" placeholder="Precio" />
-                <asp:TextBox ID="txtStock" runat="server" CssClass="form-control mb-3" placeholder="Stock" />
-                <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="form-control mb-3">
-                </asp:DropDownList>
-                <asp:Button ID="btnAgregar" runat="server" Text="Agregar Producto" CssClass="btn btn-primary btn-block" OnClick="btnAgregar_Click" />
-            </div>
-        </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
 </asp:Content>

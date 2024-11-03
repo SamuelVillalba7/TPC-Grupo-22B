@@ -11,7 +11,7 @@ namespace TPC_Equipo_22B
 {
 
 
-    public partial class Default
+    public partial class home
     {
     }
 }
