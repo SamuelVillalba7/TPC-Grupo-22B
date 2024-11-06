@@ -52,32 +52,31 @@ namespace TPC_Equipo_22B
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
             //Revisar por qué no me está tildando las categorias de la colección que están tildadas
-
+            
             foreach (ListItem lista in CblCategorias.Items)
             {
-                if (lista.Selected)
-                {
-                    Categoria cat = new Categoria();
-                    cat.Id = int.Parse(lista.Value);
-                    cat.Nombre = lista.Text;
-                    cat.filtro = true;
+                //if (lista.Selected)
+                //{
+                    //Categoria cat = new Categoria();
+                    //cat.Id = int.Parse(lista.Value);
+                    //cat.Nombre = lista.Text;
+                    //cat.filtro = true;
 
-                    CategoriaNegocio negocio = new CategoriaNegocio();
-                    negocio.modificarFiltro(cat);
+                    //CategoriaNegocio negocio = new CategoriaNegocio();
+                    //negocio.modificarFiltro(cat);
 
-                }
-                else
-                {
-                    Categoria cat = new Categoria();
-                    cat.Id = int.Parse(lista.Value);
-                    cat.Nombre = lista.Text;
-                    cat.filtro = false;
+                //}
+                //else
+                //{
+                Categoria cat = new Categoria();
+                cat.Id = int.Parse(lista.Value);
+                cat.Nombre = lista.Text;
+                cat.filtro = false;
 
-                    CategoriaNegocio negocio = new CategoriaNegocio();
-                    negocio.modificarFiltro(cat);
-                }
+                CategoriaNegocio negocio = new CategoriaNegocio();
+                negocio.modificarFiltro(cat);
+                //}
             }
-
         }
 
         protected void CblCategorias_SelectedIndexChanged(object sender, EventArgs e)
@@ -93,8 +92,5 @@ namespace TPC_Equipo_22B
         //    ListaArticulo = negocio.listaFiltrandoCategoria();
 
         //}
-
-
-
     }
 }

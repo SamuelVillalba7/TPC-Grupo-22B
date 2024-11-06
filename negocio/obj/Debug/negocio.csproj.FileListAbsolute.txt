@@ -43,3 +43,12 @@ D:\TUP-UTN\Programacion 3\TPC-Grupo 22\TPC-Grupo-22B\negocio\obj\Debug\negocio.c
 D:\TUP-UTN\Programacion 3\TPC-Grupo 22\TPC-Grupo-22B\negocio\obj\Debug\negocio.csproj.Up2Date
 D:\TUP-UTN\Programacion 3\TPC-Grupo 22\TPC-Grupo-22B\negocio\obj\Debug\negocio.dll
 D:\TUP-UTN\Programacion 3\TPC-Grupo 22\TPC-Grupo-22B\negocio\obj\Debug\negocio.pdb
+D:\TUP-UTN\Programacion 3\TP-Grupo-22b\TPC-Grupo-22B\negocio\bin\Debug\negocio.dll
+D:\TUP-UTN\Programacion 3\TP-Grupo-22b\TPC-Grupo-22B\negocio\bin\Debug\negocio.pdb
+D:\TUP-UTN\Programacion 3\TP-Grupo-22b\TPC-Grupo-22B\negocio\bin\Debug\dominio.dll
+D:\TUP-UTN\Programacion 3\TP-Grupo-22b\TPC-Grupo-22B\negocio\bin\Debug\dominio.pdb
+D:\TUP-UTN\Programacion 3\TP-Grupo-22b\TPC-Grupo-22B\negocio\obj\Debug\negocio.csproj.AssemblyReference.cache
+D:\TUP-UTN\Programacion 3\TP-Grupo-22b\TPC-Grupo-22B\negocio\obj\Debug\negocio.csproj.CoreCompileInputs.cache
+D:\TUP-UTN\Programacion 3\TP-Grupo-22b\TPC-Grupo-22B\negocio\obj\Debug\negocio.csproj.Up2Date
+D:\TUP-UTN\Programacion 3\TP-Grupo-22b\TPC-Grupo-22B\negocio\obj\Debug\negocio.dll
+D:\TUP-UTN\Programacion 3\TP-Grupo-22b\TPC-Grupo-22B\negocio\obj\Debug\negocio.pdb

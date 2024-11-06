@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Web.UI.WebControls;
 using negocio;
+using System.Web.UI;
 
 namespace TPC_Equipo_22B
 {
@@ -21,17 +22,13 @@ namespace TPC_Equipo_22B
         private void CargarCategorias()
         {
             AccesoDatos datos = new AccesoDatos();
-            //// Simulación de carga de categorías desde la base de datos
-            //ddlCategoria.Items.Add(new ListItem("Tecnología", "1"));
-            //ddlCategoria.Items.Add(new ListItem("Accesorios", "2"));
-            //ddlCategoria.Items.Add(new ListItem("Consolas", "3"));
 
             try
             {
-                datos.setearConsulta("select IDCATEGORIA, NOMBRE from CATEGORIAS");  // Cambia 'Id' por el nombre correcto de la columna
+                datos.setearConsulta("select IDCATEGORIA, NOMBRE from CATEGORIAS");
                 datos.ejecutarLectura();
 
-                ddlCategoria.Items.Clear(); // Limpiar cualquier ítem existente en el DropDownList
+                ddlCategoria.Items.Clear();
 
                 while (datos.Lector.Read())
                 {
@@ -59,30 +56,26 @@ namespace TPC_Equipo_22B
             dtProductos.Columns.Add("NOMBRE");
             dtProductos.Columns.Add("PRECIO");
             dtProductos.Columns.Add("STOCK");
-            dtProductos.Columns.Add("CATEGORIA");
-
-            //// Simulación de datos (en tu caso, debes reemplazar con datos de la base de datos)
-            //dtProductos.Rows.Add("1", "Auriculares", "1500", "10", "Tecnología");
-            //dtProductos.Rows.Add("2", "Teclado", "1200", "5", "Accesorios");
-
-            //gvProductos.DataSource = dtProductos;
-            //gvProductos.DataBind();
+            dtProductos.Columns.Add("IDCATEGORIA");  // ID de la categoría
+            dtProductos.Columns.Add("CATEGORIA");    // Nombre de la categoría
 
             try
             {
-                datos.setearConsulta("select P.IDPRODUCTO, P.NOMBRE, P.PRECIO, P.STOCK, C.NOMBRE AS Categoria from PRODUCTOS P INNER JOIN CATEGORIAS C ON P.IDCATEGORIA = C.IDCATEGORIA");
+                datos.setearConsulta("SELECT P.IDPRODUCTO, P.NOMBRE, P.PRECIO, P.STOCK, C.IDCATEGORIA, C.NOMBRE AS Categoria FROM PRODUCTOS P INNER JOIN CATEGORIAS C ON P.IDCATEGORIA = C.IDCATEGORIA");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
                     dtProductos.Rows.Add(
-                    datos.Lector["IDPRODUCTO"].ToString(), // IDPRODUCTO
-                    datos.Lector["NOMBRE"].ToString(),     // NOMBRE
-                    datos.Lector["PRECIO"].ToString(),     // PRECIO
-                    datos.Lector["STOCK"].ToString(),      // STOCK
-                    datos.Lector["Categoria"].ToString()   // CATEGORIA
-                                        );
+                        datos.Lector["IDPRODUCTO"].ToString(),
+                        datos.Lector["NOMBRE"].ToString(),
+                        datos.Lector["PRECIO"].ToString(),
+                        datos.Lector["STOCK"].ToString(),
+                        datos.Lector["IDCATEGORIA"].ToString(),   // IDCATEGORIA
+                        datos.Lector["Categoria"].ToString()      // CATEGORIA (Nombre)
+                    );
                 }
+
                 gvProductos.DataSource = dtProductos;
                 gvProductos.DataBind();
             }
@@ -104,62 +97,139 @@ namespace TPC_Equipo_22B
             decimal precio = Convert.ToDecimal(txtPrecio.Text);
             int stock = Convert.ToInt32(txtStock.Text);
             string categoria = ddlCategoria.SelectedItem.Text;
-
-            // Lógica de inserción en la base de datos (simulación aquí)
-            // SqlCommand cmd = new SqlCommand("INSERT INTO Productos ...");
-
-            // Luego de agregar el producto, recargas la lista de productos
             CargarProductos();
         }
 
+        protected void gvProductos_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            try
+            {
+                int idProducto = Convert.ToInt32(gvProductos.DataKeys[e.RowIndex].Value);
+                string nombre = (gvProductos.Rows[e.RowIndex].FindControl("txtNombre") as TextBox).Text;
+                decimal precio = Convert.ToDecimal((gvProductos.Rows[e.RowIndex].FindControl("txtPrecio") as TextBox).Text);
+                int stock = Convert.ToInt32((gvProductos.Rows[e.RowIndex].FindControl("txtStock") as TextBox).Text);
+
+                // Obtener la categoría seleccionada del DropDownList
+                DropDownList ddlCategoria = (gvProductos.Rows[e.RowIndex].FindControl("ddlCategoria") as DropDownList);
+                int idCategoria = Convert.ToInt32(ddlCategoria.SelectedValue);
+
+                // Actualizar en la base de datos
+                AccesoDatos datos = new AccesoDatos();
+                datos.setearConsulta("UPDATE PRODUCTOS SET NOMBRE = @nombre, PRECIO = @precio, STOCK = @stock, IDCATEGORIA = @idCategoria WHERE IDPRODUCTO = @id");
+                datos.setearParametro("@nombre", nombre);
+                datos.setearParametro("@precio", precio);
+                datos.setearParametro("@stock", stock);
+                datos.setearParametro("@idCategoria", idCategoria);
+                datos.setearParametro("@id", idProducto);
+                datos.ejecutarAccion();
+
+                gvProductos.EditIndex = -1;
+                CargarProductos();
+            }
+            catch (Exception ex)
+            {
+                // Manejar el error
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+
         protected void gvProductos_RowEditing(object sender, GridViewEditEventArgs e)
         {
-        //    // Lógica para editar un producto
-        //    gvProductos.EditIndex = e.NewEditIndex;
-        //    CargarProductos(); // Recargar productos para permitir la edición
+            // Establece el índice de la fila en modo de edición
+            gvProductos.EditIndex = e.NewEditIndex;
 
-        //    // Obtener el ID del producto que se está editando
-        //    int idProducto = Convert.ToInt32(gvProductos.DataKeys[e.RowIndex].Value);
+            // Recarga los productos para que la fila seleccionada entre en modo de edición
+            CargarProductos();
+  
+        }
 
-        //    // Obtener los nuevos valores de las celdas editadas
-        //    string nombre = (gvProductos.Rows[e.RowIndex].FindControl("txtNombre") as TextBox).Text;
-        //    decimal precio = Convert.ToDecimal((gvProductos.Rows[e.RowIndex].FindControl("txtPrecio") as TextBox).Text);
-        //    float stock = Convert.ToSingle((gvProductos.Rows[e.RowIndex].FindControl("txtStock") as TextBox).Text);
-
-        //    // Aquí puedes implementar la lógica para actualizar el producto en la base de datos
-        //    // Por ejemplo, llamando a un método en tu clase de acceso a datos (AccesoDatos)
-
-        //    try
-        //    {
-        //        AccesoDatos datos = new AccesoDatos();
-        //        datos.setearConsulta("UPDATE PRODUCTOS SET NOMBRE = @nombre, PRECIO = @precio, STOCK = @stock WHERE IDPRODUCTO = @id");
-        //        datos.setearParametro("@nombre", nombre);
-        //        datos.setearParametro("@precio", precio);
-        //        datos.setearParametro("@stock", stock);
-        //        datos.setearParametro("@id", idProducto);
-        //        datos.ejecutarAccion();
-
-        //        // Volver al modo normal y recargar productos
-        //        gvProductos.EditIndex = -1;
-        //        CargarProductos();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Manejar el error
-        //        throw ex; // Aquí puedes manejar el error de manera más amigable
-        //    }
+        protected void gvProductos_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            gvProductos.EditIndex = -1; // Cancelar la edición y volver al modo de solo lectura
+            CargarProductos(); // Recargar productos para quitar el modo de edición
         }
 
         protected void gvProductos_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            // Lógica para eliminar un producto
+            // Obtener el ID del producto que se va a "eliminar"
             string idProducto = gvProductos.DataKeys[e.RowIndex].Value.ToString();
 
-            // Simulación de eliminación (deberías realizar una consulta DELETE en la base de datos)
-            // SqlCommand cmd = new SqlCommand("DELETE FROM Productos WHERE IDPRODUCTO=@id", ...);
+            // Llamar a un método que cambie el estado del producto a 0
+            EliminarProducto(idProducto);
 
-            // Luego de eliminar el producto, recargar la lista
+            // Luego de "eliminar" el producto, recargar la lista de productos
             CargarProductos();
         }
+
+        private void EliminarProducto(string idProducto)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("UPDATE Productos SET ESTADO = 0 WHERE IDPRODUCTO = @idProducto");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+            //datos.setearConsulta("UPDATE Productos SET ESTADO = 0 WHERE IDPRODUCTO = @idProducto");
+            //// Consulta para actualizar el estado del producto a 0 (eliminado)
+            //string query = "UPDATE Productos SET ESTADO = 0 WHERE IDPRODUCTO = @idProducto";
+
+            //// Usar la clase AccesoDatos para ejecutar la consulta
+            ////using (SqlConnection conn = new SqlConnection(cadenaConexion))  // cadenaConexion es la cadena de conexión a la base de datos
+            //AccesoDatos datos = new AccesoDatos();
+
+            //{
+            //    SqlCommand cmd = new SqlCommand(query, conn);
+            //    cmd.Parameters.AddWithValue("@idProducto", idProducto);
+
+            //    try
+            //    {
+            //        conn.Open();
+            //        cmd.ExecuteNonQuery();  // Ejecutar la consulta de actualización
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        // Manejar cualquier error que ocurra durante la operación
+            //        // Puedes mostrar un mensaje de error, registrar en un log, etc.
+            //        Response.Write("Error al eliminar el producto: " + ex.Message);
+            //    }
+            //}
+        }
+
+        protected void gvProductos_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowState.HasFlag(DataControlRowState.Edit))
+            {
+                // Encontrar el DropDownList en la fila en modo edición
+                DropDownList ddlCategoria = (DropDownList)e.Row.FindControl("ddlCategoria");
+
+                // Cargar categorías en el DropDownList desde la base de datos
+                AccesoDatos datos = new AccesoDatos();
+                datos.setearConsulta("SELECT IDCATEGORIA, NOMBRE FROM CATEGORIAS");
+                datos.ejecutarLectura();
+
+                ddlCategoria.DataSource = datos.Lector;
+                ddlCategoria.DataTextField = "NOMBRE";
+                ddlCategoria.DataValueField = "IDCATEGORIA";
+                ddlCategoria.DataBind();
+
+                // Establecer la categoría actual del producto como seleccionada
+                string idCategoriaActual = DataBinder.Eval(e.Row.DataItem, "IDCATEGORIA").ToString();
+                ddlCategoria.SelectedValue = idCategoriaActual;
+
+                datos.cerrarConexion();
+            }
+        }
+
+
     }
+
 }

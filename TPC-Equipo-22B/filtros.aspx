@@ -24,7 +24,7 @@
             <div class="filter__category">
                 <p class="filter__category-text">Product categories</p>
 
-                <asp:CheckBoxList ID="CblCategorias" runat="server" AutoPostBack="true"></asp:CheckBoxList>
+                <asp:CheckBoxList ID="CblCategorias" runat="server" AutoPostBack="false"></asp:CheckBoxList>
 
                 <asp:Button ID="btnFiltrar" CssClass="btn-primary" runat="server" Text="Filtrar" OnClick="btnFiltrar_Click" />
 
@@ -41,10 +41,7 @@
 
                 <% cat.filtro = CheckBox1.Checked;
                         categoria = cat;
-                    } %>--%>
-
-                
-
+                    } %>--%>         
             </div>
         </div>
         <div class="product-filter">
@@ -69,14 +66,10 @@
                         </div>
                     </div>
                 </div>
-
-
                 <% } %>
             </div>
 
         </div>
     </div>
-
-
 
 </asp:Content>
