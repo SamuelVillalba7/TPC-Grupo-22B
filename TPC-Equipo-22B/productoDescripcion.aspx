@@ -17,7 +17,7 @@
             </p>
             <div class="detalle-producto__container-buttons">
                 <p>numeros</p>
-                <asp:Button ID="Button1" Onclick="Button1_Click" CssClass="detalle-producto__button" runat="server" Text="Add to cart" />
+                <asp:Button ID="btnAgregarAlCarrito" Onclick="Button1_Click" CssClass="detalle-producto__button" runat="server" Text="Add to cart" />
                
             </div>
             <p class="detalle-producto__categoria">Category:<%:articulo.Categoria.Nombre%></p>

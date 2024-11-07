@@ -10,7 +10,11 @@
         <h2 class="section__title">Carrito</h2>
     </div>
     <div class="table-container">
-        <table>
+
+        <asp:GridView ID="dgv_carrito" runat="server" class="table-bordered"></asp:GridView>
+        <a href="filtros.aspx" class="btn btn-primary">Seguir comprando</a>
+
+       <%-- <table>
            <tr>
                 <th></th>
                 <th>Producto</th>
@@ -29,7 +33,7 @@
                 <td></td>
          
             </tr>
-        </table>
+        </table>--%>
     </div>
 
 

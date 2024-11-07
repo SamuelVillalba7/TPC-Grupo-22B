@@ -26,7 +26,7 @@
 
                 <asp:CheckBoxList ID="CblCategorias" runat="server" AutoPostBack="false"></asp:CheckBoxList>
 
-                <asp:Button ID="btnFiltrar" CssClass="btn-primary" runat="server" Text="Filtrar" OnClick="btnFiltrar_Click" />
+                <asp:Button ID="btnFiltrar" class="btn btn-primary" runat="server" Text="Filtrar" OnClick="btnFiltrar_Click" />
 
 <%--                <%foreach (dominio.Categoria cat in ListaCategoria)
                     { %>
@@ -63,6 +63,7 @@
                         <div class="product__text">
                             <h2 class="product__name"><%: art.Nombre %></h2>
                             <span class="product__price">$<%: art.PrecioFormateado %></span>
+                            <a href="productoDescripcion.aspx?productoId=<%: art.Id %>" class="btn btn-primary">Ver detalle</a>
                         </div>
                     </div>
                 </div>

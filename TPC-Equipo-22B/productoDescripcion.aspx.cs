@@ -12,10 +12,11 @@ namespace TPC_Equipo_22B
     public partial class productoDescripcion : System.Web.UI.Page
     {
         public static Articulo articulo;
-        public static List<Articulo> articulosRelacionados; 
+        public static List<Articulo> articulosRelacionados;
+        string id;
         protected void Page_Load(object sender, EventArgs e)
         {
-            string id = Request.QueryString["productoId"];
+            id = Request.QueryString["productoId"];
             if (id != null)
             {
                 ArticuloNegocio articuloNegocio = new ArticuloNegocio();
@@ -27,6 +28,8 @@ namespace TPC_Equipo_22B
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+           
+            Session.Add("idp", id);
             Response.Redirect("carrito.aspx",false);
         }
     }
