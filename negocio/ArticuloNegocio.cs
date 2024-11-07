@@ -261,5 +261,23 @@ namespace negocio
                 throw ex;
             }
         }
+
+        //mover y crear la clase de negocio ItemCarritoNegocio
+        public int encontrarArticulo(List<ItemCarrito> lista, int id)
+        {
+            int contador = 0;
+
+            foreach(ItemCarrito item in lista)
+            {
+                if(item.art.Id == id)
+                {
+                    return contador;
+                }
+
+                contador++;
+            }
+
+            return -1;
+        }
     }
 }

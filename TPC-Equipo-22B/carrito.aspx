@@ -11,7 +11,15 @@
     </div>
     <div class="table-container">
 
-        <asp:GridView ID="dgv_carrito" runat="server" class="table-bordered"></asp:GridView>
+        <asp:GridView ID="dgv_carrito" runat="server" class="table-bordered" AutoGenerateColumns ="false">
+            <Columns>
+                <asp:BoundField HeaderText="Articulo" DataField="nombreProducto" />
+                <asp:BoundField HeaderText="Cantidad" DataField="cantidad" />
+                <asp:BoundField HeaderText="Subtotal" DataField="Subtotal" />
+            </Columns>
+        </asp:GridView>
+
+        <br />
         <a href="filtros.aspx" class="btn btn-primary">Seguir comprando</a>
 
        <%-- <table>

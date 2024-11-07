@@ -11,23 +11,34 @@ namespace TPC_Equipo_22B
 {
     public partial class carrito : System.Web.UI.Page
     {
-        List<Articulo> prodcarrito = new List<Articulo>();
+        List<ItemCarrito> prodcarrito;
         Articulo agregar = new Articulo();
         protected void Page_Load(object sender, EventArgs e)
         {
-            prodcarrito = Session["carrito"] as List<Articulo>;
+            prodcarrito = Session["carrito"] as List<ItemCarrito>;
 
             if (prodcarrito == null)
             {
-                prodcarrito = new List<Articulo>();
+                prodcarrito = new List<ItemCarrito>();
             }
-   
 
+
+            ItemCarrito itemCarrito = new ItemCarrito();
 
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
             string id = Session["idp"].ToString();
-            agregar = articuloNegocio.listarId(id);
-            prodcarrito.Add(agregar);
+            itemCarrito.art = articuloNegocio.listarId(id);
+
+            if(articuloNegocio.encontrarArticulo(prodcarrito, int.Parse(id)) == -1)
+            {
+                itemCarrito.cantidad = 1;
+                prodcarrito.Add(itemCarrito);
+            }
+            else
+            {
+                prodcarrito[articuloNegocio.encontrarArticulo(prodcarrito, int.Parse(id))].cantidad += 1;
+            }
+
             Session.Add("carrito", prodcarrito);
 
             dgv_carrito.DataSource = prodcarrito;
