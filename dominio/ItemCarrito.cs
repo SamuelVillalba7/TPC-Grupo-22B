@@ -15,6 +15,12 @@ namespace dominio
         {
             get { return art.Nombre; }
         }
+
+        public int IdProducto
+        {
+            get { return art.Id; }
+        }
+
         public decimal Subtotal
         {
             get { return art.Precio * cantidad; }
