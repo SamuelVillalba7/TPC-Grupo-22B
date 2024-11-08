@@ -12,9 +12,9 @@
     </div>
     <div class="table-container">
 
-        <asp:GridView ID="dgv_carrito" runat="server" class="table-bordered" AutoGenerateColumns="false"
-            DataKeyNames="IdProducto" OnRowEditing="dgvcarrito_RowEditing"
-            OnRowUpdating="dgvcarrito_RowUpdating" OnRowCancelingEdit="dgvcarrito_RowCancelingEdit">
+        <asp:GridView ID="dgv_carrito" runat="server" class="table-bordered" AutoGenerateColumns="false">
+         <%--   DataKeyNames="IdProducto" OnRowEditing="dgvcarrito_RowEditing"
+            OnRowUpdating="dgvcarrito_RowUpdating" OnRowCancelingEdit="dgvcarrito_RowCancelingEdit">--%>
 
             <Columns>
                 <asp:BoundField HeaderText="Articulo" DataField="nombreProducto" />

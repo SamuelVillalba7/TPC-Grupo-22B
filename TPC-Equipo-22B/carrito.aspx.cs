@@ -45,11 +45,11 @@ namespace TPC_Equipo_22B
             dgv_carrito.DataBind();
         }
 
-        protected void dgvcarrito_RowEditing(object sender, EventArgs e)
-        {
-            dgv_carrito.EditIndex = e.NewEditIndex;  
-            BindGridView();
-        }
+        //protected void dgvcarrito_RowEditing(object sender, EventArgs e)
+        //{
+        //    dgv_carrito.EditIndex = e.NewEditIndex;  
+        //    BindGridView();
+        //}
         
     }
 }
