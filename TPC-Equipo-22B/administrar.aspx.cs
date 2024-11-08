@@ -152,14 +152,39 @@ namespace TPC_Equipo_22B
 
         protected void gvProductos_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            // Obtener el ID del producto que se va a "eliminar"
+            // Obtener el ID del producto y su estado actual
             string idProducto = gvProductos.DataKeys[e.RowIndex].Value.ToString();
+            int estadoActual = Convert.ToInt32(gvProductos.DataKeys[e.RowIndex].Values["ESTADO"]);
 
-            // Llamar a un método que cambie el estado del producto a 0
-            EliminarProducto(idProducto);
+            // Si el estado es 1 (activo), se "elimina" (cambia a 0), si es 0 (inactivo), se "agrega" (cambia a 1)
+            int nuevoEstado = estadoActual == 1 ? 0 : 1;
 
-            // Luego de "eliminar" el producto, recargar la lista de productos
+            // Llamar al método que cambia el estado del producto
+            CambiarEstadoProducto(idProducto, nuevoEstado);
+
+            // Luego de cambiar el estado, recargar la lista de productos
             CargarProductos();
+        }
+
+        private void CambiarEstadoProducto(string idProducto, int nuevoEstado)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                // Actualizar el estado del producto en la base de datos
+                datos.setearConsulta("UPDATE Productos SET ESTADO = @nuevoEstado WHERE IDPRODUCTO = @idProducto");
+                datos.setearParametro("@nuevoEstado", nuevoEstado);
+                datos.setearParametro("@idProducto", idProducto);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al cambiar el estado del producto: " + ex.Message);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
 
         private void EliminarProducto(string idProducto)
@@ -168,6 +193,8 @@ namespace TPC_Equipo_22B
             try
             {
                 datos.setearConsulta("UPDATE Productos SET ESTADO = 0 WHERE IDPRODUCTO = @idProducto");
+                datos.setearParametro("@idProducto", idProducto);
+                datos.ejecutarAccion();
             }
             catch (Exception)
             {
