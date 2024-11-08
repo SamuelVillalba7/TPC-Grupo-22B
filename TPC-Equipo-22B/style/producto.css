@@ -12,6 +12,9 @@
     box-shadow: 1px 0px 9px 0px rgba(0,0,0,0.66);
     -webkit-box-shadow: 1px 0px 9px 0px rgba(0,0,0,0.66);
     -moz-box-shadow: 1px 0px 9px 0px rgba(0,0,0,0.66);
+    transition: 0.3s;
+    position: relative;
+    cursor: pointer;
 }
 
 .product__sale {
@@ -70,8 +73,45 @@
     font-weight: 700;
     font-size: 1.3rem;
     font-family: "Montserrat", sans-serif;
+    transition: opacity 0.3s;
 }
 
 a{
     text-decoration:none;
 }
+
+
+.product:hover .product__price {
+    opacity: 0;
+}
+
+.product:hover .product__name {
+    color: #f42c37;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.product:hover .btn2 {
+    opacity: 1;
+}
+
+
+.btn2 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.8rem;
+    color: white;
+    background-color: #f42c37;
+    border-radius: 2rem;
+    text-align: center;
+    padding: 0.5rem 1.3rem;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+    .btn2:hover {
+        color: white;
+        background-color: #f42c37;
+    }

@@ -30,14 +30,14 @@
                             <a class="header__a" href="Default.aspx">Home</a>
                             <a class="header__a" href="filtros.aspx">Shop</a>
                             <a class="header__a" href="administrar.aspx">Administrar</a>
-                            <a class="header__a" href="productoDescripcion.aspx">Contact Us</a>
+                        
                     </nav>
                 </div>      
                 <div class="header__container">
                     <ul class="header__ul">
                         <li class="header__li"><a class="header__a">login</a></li>
                         <li class="header__li"><img src="./img/header/search.svg" alt=""/></li>
-                        <li class="header__li"><img src="./img/header/bag.svg" alt=""/></li>
+                        <li class="header__li"><a href="carrito.aspx"><img src="./img/header/bag.svg" alt=""/></a></li>
                 
                     </ul>
                 </div>

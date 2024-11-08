@@ -16,7 +16,7 @@
             <p class="detalle-producto__description"><%:articulo.Descripcion %>
             </p>
             <div class="detalle-producto__container-buttons">
-                <p>numeros</p>
+                   <input type="number" class="detalle-producto__cantidad" name="quantity" value="1" title="Qty" size="4" min="1" max="" step="1" placeholder="" inputmode="numeric" autocomplete="off">
                 <asp:Button ID="btnAgregarAlCarrito" Onclick="Button1_Click" CssClass="detalle-producto__button" runat="server" Text="Add to cart" />
                
             </div>
@@ -26,7 +26,7 @@
     </div>
 
     <div class="title-container">
-        <h2 class="title">Related products</h2>
+        <h2 class="title">Productos relacionados</h2>
     </div>
     <div class="product-container">
  <% foreach (dominio.Articulo art in articulosRelacionados)

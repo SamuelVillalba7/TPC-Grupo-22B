@@ -14,7 +14,7 @@
     <div class="filter-container">
         <div class="filter">
             <div class="filter__search-container">
-                <asp:TextBox ID="filtroRapido" runat="server" AutoPostBack="true" OnTextChanged="filtroRapido_TextChanged" class="filter__search-input" placeholder="Search Here"></asp:TextBox>
+                <asp:TextBox ID="filtroRapido" runat="server" AutoPostBack="true" OnTextChanged="filtroRapido_TextChanged" class="filter__search-input" placeholder="Busca aqui"></asp:TextBox>
                 <button class="filter__search-button"></button>
             </div>
 
@@ -22,7 +22,7 @@
             </div>
 
             <div class="filter__category">
-                <p class="filter__category-text">Product categories</p>
+                <p class="filter__category-text">Categorias de productos</p>
 
                 <asp:CheckBoxList ID="CblCategorias" runat="server" AutoPostBack="false"></asp:CheckBoxList>
 
@@ -47,7 +47,7 @@
         <div class="product-filter">
             <div class="product-filter__info">
                 <h2 class="product-filter__title">Shop</h2>
-                <p class="product-filter__results">Showing 1-9 of 10 results</p>
+                <p class="product-filter__results"></p>
             </div>
 
             <div class="product-container">
@@ -63,7 +63,7 @@
                         <div class="product__text">
                             <h2 class="product__name"><%: art.Nombre %></h2>
                             <span class="product__price">$<%: art.PrecioFormateado %></span>
-                            <a href="productoDescripcion.aspx?productoId=<%: art.Id %>" class="btn btn-primary">Ver detalle</a>
+                            <a href="productoDescripcion.aspx?productoId=<%: art.Id %>" class="btn2">Ver detalle</a>
                         </div>
                     </div>
                 </div>
