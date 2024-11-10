@@ -29,7 +29,9 @@
                     <nav class="header__nav">
                             <a class="header__a" href="Default.aspx">Home</a>
                             <a class="header__a" href="filtros.aspx">Shop</a>
-                            <a class="header__a" href="administrar.aspx">Administrar</a>
+                            <%if (Session["usuario"] != null && ((dominio.Usuario)Session["usuario"]).Administrador == true){ %>
+                                <a class="header__a" href="administrar.aspx">Administrar</a>
+                            <%} %>
                         
                     </nav>
                 </div>      

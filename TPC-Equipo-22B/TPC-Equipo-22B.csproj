@@ -98,10 +98,13 @@
     <Content Include="img\servicios\garantia.svg" />
     <Content Include="img\servicios\pago.svg" />
     <Content Include="img\servicios\soporte.svg" />
+    <Content Include="login.aspx" />
     <Content Include="productoDescripcion.aspx" />
+    <Content Include="registrar.aspx" />
     <Content Include="style\carrito.css" />
     <Content Include="style\filtros.css" />
     <Content Include="style\home.css" />
+    <Content Include="style\login.css" />
     <Content Include="style\master.css" />
     <Content Include="style\producto.css" />
     <Content Include="style\productoDescripcion.css" />
@@ -139,6 +142,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="productoDescripcion.aspx.cs">
       <DependentUpon>productoDescripcion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -147,6 +157,13 @@
       <DependentUpon>productoDescripcion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="registrar.aspx.cs">
+      <DependentUpon>registrar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="registrar.aspx.designer.cs">
+      <DependentUpon>registrar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
