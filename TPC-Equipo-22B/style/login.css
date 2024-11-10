@@ -1,6 +1,6 @@
 ﻿.login-container {
     width: 100%;
-    height: 50vh;
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,4 +55,9 @@
 
 .cajita {
     height: 30rem;
+}
+
+.lbl{
+    color:red;
+    font-size:1rem;
 }

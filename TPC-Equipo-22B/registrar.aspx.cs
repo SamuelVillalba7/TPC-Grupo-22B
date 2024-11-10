@@ -17,8 +17,15 @@ namespace TPC_Equipo_22B
 
         protected void btnRegistrarse_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtApellido.Text) || string.IsNullOrWhiteSpace(txtEmail.Text) || string.IsNullOrWhiteSpace(txtContraseña.Text) || string.IsNullOrWhiteSpace(txtTelefono.Text))
+            {
+                lblRegistrar.Text = "Existen campos vacios.";
+                return;
+            }
             UsuarioNegocio negocio = new UsuarioNegocio();
             Usuario usuario = new Usuario();
+
+
 
             usuario.Nombre= txtNombre.Text;
             usuario.Apellido= txtApellido.Text;

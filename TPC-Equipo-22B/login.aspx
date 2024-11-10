@@ -16,8 +16,8 @@
                 <asp:TextBox ID="txtContraseña" CssClass="login__input" type="password" runat="server"></asp:TextBox>
         
 
+                <asp:Label ID="lblLogin" CssClass="lbl" runat="server" Text=""></asp:Label>
                 <asp:Button ID="btnLogin" CssClass="login__button" OnClick="btnLogin_Click" runat="server" Text="Button" />
-                
             </div>
             
         </div>

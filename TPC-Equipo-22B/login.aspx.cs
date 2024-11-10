@@ -19,6 +19,15 @@ namespace TPC_Equipo_22B
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
+
+            if (string.IsNullOrWhiteSpace(txtContraseña.Text) || string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                lblLogin.Text = "Existen campos vacios.";
+                return;
+            }
+
+
+
             UsuarioNegocio negocio = new UsuarioNegocio();
             int id = negocio.buscarId(txtEmail.Text);
             Usuario usuario = negocio.buscarPorId(id);
@@ -26,7 +35,7 @@ namespace TPC_Equipo_22B
             {   
                 if(usuario.Contraseña == txtContraseña.Text)
                 {
-                    //mandar al home y guardar al  usuario en la session
+                
                     Session.Add("usuario", usuario);
                     Response.Redirect("Default.aspx");
                 }

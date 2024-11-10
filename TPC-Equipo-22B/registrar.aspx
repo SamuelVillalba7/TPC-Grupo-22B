@@ -11,7 +11,7 @@
                 <p class="login__p">introduce los datos de tu cuenta</p>
                 <div class="login__form">
                     <label for="txtNombre">Nombre</label>
-                    <asp:TextBox ID="txtNombre" CssClass="login__input" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtNombre" CssClass="login__input" runat="server" ></asp:TextBox>
                     
                     <label for="txtApellido">Apellido</label>
                     <asp:TextBox ID="txtApellido" CssClass="login__input" runat="server"></asp:TextBox>
@@ -24,6 +24,8 @@
                     
                     <label for="txtContraseña">Contraseña</label>
                     <asp:TextBox ID="txtContraseña" CssClass="login__input" type="password" runat="server"></asp:TextBox>
+
+                    <asp:Label ID="lblRegistrar" CssClass="lbl" runat="server" Text=""></asp:Label>
                 
                     <asp:Button ID="btnRegistrarse" OnClick="btnRegistrarse_Click" CssClass="login__button" runat="server" Text="Button" />
                     
