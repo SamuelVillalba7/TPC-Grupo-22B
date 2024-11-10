@@ -95,13 +95,71 @@ namespace TPC_Equipo_22B
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
-            // Aquí debes agregar la lógica para insertar el nuevo producto en la base de datos
+            // Validar los campos antes de insertar
+            if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtPrecio.Text) ||
+                string.IsNullOrEmpty(txtStock.Text) || string.IsNullOrEmpty(txtUrlImagen.Text) ||
+                ddlCategoria.SelectedItem == null)
+            {
+                // Opcional: mostrar un mensaje de error al usuario si algún campo está vacío
+                // Ejemplo: lblErrorMessage.Text = "Por favor, complete todos los campos.";
+                return;
+            }
+
+            // Obtener los valores del formulario
             string nombre = txtNombre.Text;
-            decimal precio = Convert.ToDecimal(txtPrecio.Text);
-            int stock = Convert.ToInt32(txtStock.Text);
-            string categoria = ddlCategoria.SelectedItem.Text;
-            CargarProductos();
+            decimal precio;
+            int stock;
+            int idCategoria = Convert.ToInt32(ddlCategoria.SelectedValue);
+            string urlImagen = txtUrlImagen.Text;
+            int estado = chkEstado.Checked ? 1 : 0;
+
+            // Validar que precio y stock tengan valores correctos
+            if (!decimal.TryParse(txtPrecio.Text, out precio) || !int.TryParse(txtStock.Text, out stock))
+            {
+                // Mostrar mensaje de error de validación (opcional)
+                // Ejemplo: lblErrorMessage.Text = "Precio y Stock deben ser valores numéricos.";
+                return;
+            }
+
+            // Insertar el producto en la base de datos
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                // Insertar en la tabla PRODUCTOS
+                datos.setearConsulta("INSERT INTO PRODUCTOS (IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION, ESTADO) " +
+                                     "VALUES (@idCategoria, @nombre, @precio, @stock, @descripcion, @estado)");
+                datos.setearParametro("@idCategoria", idCategoria);
+                datos.setearParametro("@nombre", nombre);
+                datos.setearParametro("@precio", precio);
+                datos.setearParametro("@stock", stock);
+                datos.setearParametro("@descripcion", ""); // Si tienes campo de descripción, reemplaza o ajusta
+                datos.setearParametro("@estado", estado);
+                datos.ejecutarAccion();
+
+                // Obtener el último ID de producto insertado
+                datos.setearConsulta("SELECT SCOPE_IDENTITY()");
+                int idProducto = Convert.ToInt32(datos.ejecutarEscalar());
+
+                // Insertar en la tabla IMAGENES
+                datos.setearConsulta("INSERT INTO IMAGENES (IDPRODUCTO, URLIMG) VALUES (@idProducto, @urlImagen)");
+                datos.setearParametro("@idProducto", idProducto);
+                datos.setearParametro("@urlImagen", urlImagen);
+                datos.ejecutarAccion();
+
+                // Recargar los productos para reflejar el nuevo producto en la grilla
+                CargarProductos();
+            }
+            catch (Exception ex)
+            {
+                // Manejar el error
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
+
 
         protected void gvProductos_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
@@ -278,6 +336,7 @@ namespace TPC_Equipo_22B
                     // Recorrer los controles en la celda y buscar el LinkButton
                     foreach (Control control in e.Row.Cells[5].Controls)
                     {
+
                         if (control is LinkButton btnEliminar)
                         {
                             btnEliminar.Text = estado == 0 ? "Agregar" : "Eliminar";
