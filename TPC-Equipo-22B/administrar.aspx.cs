@@ -52,27 +52,31 @@ namespace TPC_Equipo_22B
             AccesoDatos datos = new AccesoDatos();
             DataTable dtProductos = new DataTable();
 
+
             dtProductos.Columns.Add("IDPRODUCTO");
             dtProductos.Columns.Add("NOMBRE");
             dtProductos.Columns.Add("PRECIO");
             dtProductos.Columns.Add("STOCK");
-            dtProductos.Columns.Add("IDCATEGORIA");  // ID de la categoría
-            dtProductos.Columns.Add("CATEGORIA");    // Nombre de la categoría
+            dtProductos.Columns.Add("IDCATEGORIA");
+            dtProductos.Columns.Add("CATEGORIA");
+            dtProductos.Columns.Add("ESTADO");
 
             try
             {
-                datos.setearConsulta("SELECT P.IDPRODUCTO, P.NOMBRE, P.PRECIO, P.STOCK, C.IDCATEGORIA, C.NOMBRE AS Categoria FROM PRODUCTOS P INNER JOIN CATEGORIAS C ON P.IDCATEGORIA = C.IDCATEGORIA");
+                datos.setearConsulta("SELECT P.IDPRODUCTO, P.NOMBRE, P.PRECIO, P.STOCK, C.IDCATEGORIA, C.NOMBRE AS Categoria, P.ESTADO FROM PRODUCTOS P INNER JOIN CATEGORIAS C ON P.IDCATEGORIA = C.IDCATEGORIA");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
+                    string estado = datos.Lector["ESTADO"].ToString().ToLower() == "true" ? "1" : "0";
                     dtProductos.Rows.Add(
                         datos.Lector["IDPRODUCTO"].ToString(),
                         datos.Lector["NOMBRE"].ToString(),
                         datos.Lector["PRECIO"].ToString(),
                         datos.Lector["STOCK"].ToString(),
-                        datos.Lector["IDCATEGORIA"].ToString(),   // IDCATEGORIA
-                        datos.Lector["Categoria"].ToString()      // CATEGORIA (Nombre)
+                        datos.Lector["IDCATEGORIA"].ToString(),
+                        datos.Lector["Categoria"].ToString(),
+                        estado
                     );
                 }
 
@@ -81,7 +85,6 @@ namespace TPC_Equipo_22B
             }
             catch (Exception ex)
             {
-                // Manejar el error
                 throw ex;
             }
             finally
@@ -133,7 +136,6 @@ namespace TPC_Equipo_22B
             }
         }
 
-
         protected void gvProductos_RowEditing(object sender, GridViewEditEventArgs e)
         {
             // Establece el índice de la fila en modo de edición
@@ -152,18 +154,28 @@ namespace TPC_Equipo_22B
 
         protected void gvProductos_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            // Obtener el ID del producto y su estado actual
-            string idProducto = gvProductos.DataKeys[e.RowIndex].Value.ToString();
-            int estadoActual = Convert.ToInt32(gvProductos.DataKeys[e.RowIndex].Values["ESTADO"]);
+            // Obtener el ID del producto
+            string idProducto = gvProductos.DataKeys[e.RowIndex].Values["IDPRODUCTO"].ToString();
 
-            // Si el estado es 1 (activo), se "elimina" (cambia a 0), si es 0 (inactivo), se "agrega" (cambia a 1)
-            int nuevoEstado = estadoActual == 1 ? 0 : 1;
+            // Obtener el estado actual de forma segura
+            int estadoActual = 0; // Valor predeterminado en caso de error
+            if (gvProductos.DataKeys[e.RowIndex].Values["ESTADO"] != null &&
+                int.TryParse(gvProductos.DataKeys[e.RowIndex].Values["ESTADO"].ToString(), out estadoActual))
+            {
+                // Cambiar el estado: si es 1 (activo), lo desactiva a 0; si es 0, lo activa a 1
+                int nuevoEstado = estadoActual == 1 ? 0 : 1;
 
-            // Llamar al método que cambia el estado del producto
-            CambiarEstadoProducto(idProducto, nuevoEstado);
+                // Llamar al método que cambia el estado del producto
+                CambiarEstadoProducto(idProducto, nuevoEstado);
 
-            // Luego de cambiar el estado, recargar la lista de productos
-            CargarProductos();
+                // Recargar la lista de productos
+                CargarProductos();
+            }
+            else
+            {
+                // Manejar el caso en que el valor de ESTADO no sea válido
+                Console.WriteLine("Error: El estado actual no es un número válido.");
+            }
         }
 
         private void CambiarEstadoProducto(string idProducto, int nuevoEstado)
@@ -171,10 +183,12 @@ namespace TPC_Equipo_22B
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                // Actualizar el estado del producto en la base de datos
+                // Configurar la consulta para actualizar el estado del producto
                 datos.setearConsulta("UPDATE Productos SET ESTADO = @nuevoEstado WHERE IDPRODUCTO = @idProducto");
                 datos.setearParametro("@nuevoEstado", nuevoEstado);
                 datos.setearParametro("@idProducto", idProducto);
+
+                // Ejecutar la acción
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -184,6 +198,8 @@ namespace TPC_Equipo_22B
             finally
             {
                 datos.cerrarConexion();
+                Console.WriteLine($"ID: {idProducto}, Nuevo Estado: {nuevoEstado}");
+
             }
         }
 
@@ -233,30 +249,92 @@ namespace TPC_Equipo_22B
 
         protected void gvProductos_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowState.HasFlag(DataControlRowState.Edit))
+            if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                // Encontrar el DropDownList en la fila en modo edición
-                DropDownList ddlCategoria = (DropDownList)e.Row.FindControl("ddlCategoria");
+                // Verificar si la fila está en modo edición para cargar el DropDownList
+                if (e.Row.RowState.HasFlag(DataControlRowState.Edit))
+                {
+                    DropDownList ddlCategoria = (DropDownList)e.Row.FindControl("ddlCategoria");
 
-                // Cargar categorías en el DropDownList desde la base de datos
+                    AccesoDatos datos = new AccesoDatos();
+                    datos.setearConsulta("SELECT IDCATEGORIA, NOMBRE FROM CATEGORIAS");
+                    datos.ejecutarLectura();
+
+                    ddlCategoria.DataSource = datos.Lector;
+                    ddlCategoria.DataTextField = "NOMBRE";
+                    ddlCategoria.DataValueField = "IDCATEGORIA";
+                    ddlCategoria.DataBind();
+
+                    string idCategoriaActual = DataBinder.Eval(e.Row.DataItem, "IDCATEGORIA").ToString();
+                    ddlCategoria.SelectedValue = idCategoriaActual;
+
+                    datos.cerrarConexion();
+                }
+
+                // Verificar y convertir el estado de forma segura
+                int estado = 0;
+                if (int.TryParse(DataBinder.Eval(e.Row.DataItem, "ESTADO").ToString(), out estado))
+                {
+                    // Recorrer los controles en la celda y buscar el LinkButton
+                    foreach (Control control in e.Row.Cells[5].Controls)
+                    {
+                        if (control is LinkButton btnEliminar)
+                        {
+                            btnEliminar.Text = estado == 0 ? "Agregar" : "Eliminar";
+                            btnEliminar.OnClientClick = estado == 0
+                                ? "return confirm('¿Está seguro de que desea agregar este producto nuevamente a la venta?');"
+                                : "return confirm('¿Está seguro de que desea eliminar este producto?');";
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        protected void gvProductos_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "ToggleState")
+            {
+                int idProducto = Convert.ToInt32(e.CommandArgument);
                 AccesoDatos datos = new AccesoDatos();
-                datos.setearConsulta("SELECT IDCATEGORIA, NOMBRE FROM CATEGORIAS");
-                datos.ejecutarLectura();
 
-                ddlCategoria.DataSource = datos.Lector;
-                ddlCategoria.DataTextField = "NOMBRE";
-                ddlCategoria.DataValueField = "IDCATEGORIA";
-                ddlCategoria.DataBind();
+                try
+                {
+                    // Obtiene el estado actual del producto y lo invierte (1 a 0, o 0 a 1)
+                    datos.setearConsulta("SELECT ESTADO FROM PRODUCTOS WHERE IDPRODUCTO = @idProducto");
+                    datos.setearParametro("@idProducto", idProducto);
+                    datos.ejecutarLectura();
 
-                // Establecer la categoría actual del producto como seleccionada
-                string idCategoriaActual = DataBinder.Eval(e.Row.DataItem, "IDCATEGORIA").ToString();
-                ddlCategoria.SelectedValue = idCategoriaActual;
+                    int estadoActual = 0;
+                    if (datos.Lector.Read())
+                        estadoActual = Convert.ToInt32(datos.Lector["ESTADO"]);
 
-                datos.cerrarConexion();
+                    int nuevoEstado = estadoActual == 1 ? 0 : 1;
+
+                    // Cambia el estado en la base de datos
+                    datos.cerrarConexion();
+                    datos.setearConsulta("UPDATE PRODUCTOS SET ESTADO = @nuevoEstado WHERE IDPRODUCTO = @idProducto");
+                    datos.setearParametro("@nuevoEstado", nuevoEstado);
+                    datos.setearParametro("@idProducto", idProducto);
+                    datos.ejecutarAccion();
+
+                    // Recargar los productos después de cambiar el estado
+                    CargarProductos();
+                }
+                catch (Exception ex)
+                {
+                    // Manejar el error
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    datos.cerrarConexion();
+                }
             }
         }
 
 
     }
+
 
 }
