@@ -22,7 +22,11 @@ namespace TPC_Equipo_22B
                 ArticuloNegocio articuloNegocio = new ArticuloNegocio();
                 articulo = articuloNegocio.listarId(id);
                 articulosRelacionados = articuloNegocio.listarArticulosRelacionados(articulo.Id, articulo.Categoria.Id);
-            }   
+            }
+            else
+            {
+                Response.Redirect("filtros.aspx");
+            }
 
         }
 

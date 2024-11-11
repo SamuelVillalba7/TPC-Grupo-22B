@@ -16,7 +16,7 @@ namespace negocio
             {
 
                 //datos.setearConsulta("select top 7 C.IDCATEGORIA, C.NOMBRE , C.URLIMAGEN from CATEGORIAS as C");
-                datos.setearConsulta("select C.IDCATEGORIA, C.NOMBRE , C.URLIMAGEN, C.FILTRO from CATEGORIAS as C");
+                datos.setearConsulta("select top 7 C.IDCATEGORIA, C.NOMBRE , C.URLIMAGEN, C.FILTRO from CATEGORIAS as C");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())

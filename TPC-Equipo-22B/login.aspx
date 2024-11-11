@@ -17,7 +17,12 @@
         
 
                 <asp:Label ID="lblLogin" CssClass="lbl" runat="server" Text=""></asp:Label>
-                <asp:Button ID="btnLogin" CssClass="login__button" OnClick="btnLogin_Click" runat="server" Text="Button" />
+                <asp:Button ID="btnLogin" CssClass="login__button" OnClick="btnLogin_Click" runat="server" Text="Ingresar" />
+                
+                <p>¿No tienes una cuenta? <a href="registrar.aspx">Regístrate</a></p>
+                
+                
+
             </div>
             
         </div>

@@ -26,9 +26,9 @@ namespace TPC_Equipo_22B
                 return;
             }
 
-
-
             UsuarioNegocio negocio = new UsuarioNegocio();
+
+            
             int id = negocio.buscarId(txtEmail.Text);
             Usuario usuario = negocio.buscarPorId(id);
             if (usuario.Id != 0)
@@ -37,14 +37,18 @@ namespace TPC_Equipo_22B
                 {
                 
                     Session.Add("usuario", usuario);
-                    Response.Redirect("Default.aspx");
+                    Response.Redirect("Default.aspx",false);
                 }
                 else
                 {
 
-                    txtEmail.Text = "CONTRASENIA INCORRECTA!!!";
+                    lblLogin.Text = "Contraseña incorrecta.";
                 }
-                
+
+            }
+            else
+            {
+                lblLogin.Text = "No se a encontrado al usuario.";
             }
         }
     }

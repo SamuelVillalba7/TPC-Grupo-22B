@@ -22,8 +22,19 @@ namespace TPC_Equipo_22B
                 lblRegistrar.Text = "Existen campos vacios.";
                 return;
             }
-            UsuarioNegocio negocio = new UsuarioNegocio();
+            UsuarioNegocio negocio = new UsuarioNegocio();  
+
+    
             Usuario usuario = new Usuario();
+
+            int id = negocio.buscarId(txtEmail.Text);
+
+            if (id != 0)
+            {
+                lblRegistrar.Text = "El email ya esta utilizado.";
+                return;
+            }
+
 
 
 
@@ -35,6 +46,7 @@ namespace TPC_Equipo_22B
             usuario.Administrador = false;
 
             negocio.agregarUsuario(usuario);
+            Response.Redirect("login.aspx", false);
         }
     }
 }

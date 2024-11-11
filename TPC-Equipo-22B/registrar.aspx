@@ -27,7 +27,7 @@
 
                     <asp:Label ID="lblRegistrar" CssClass="lbl" runat="server" Text=""></asp:Label>
                 
-                    <asp:Button ID="btnRegistrarse" OnClick="btnRegistrarse_Click" CssClass="login__button" runat="server" Text="Button" />
+                    <asp:Button ID="btnRegistrarse" OnClick="btnRegistrarse_Click" CssClass="login__button" runat="server" Text="Registrar" />
                     
                 </div>
                 
