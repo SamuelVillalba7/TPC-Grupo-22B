@@ -30,7 +30,7 @@
                             <a class="header__a" href="Default.aspx">Home</a>
                             <a class="header__a" href="filtros.aspx">Shop</a>
                             <%if (Session["usuario"] != null && ((dominio.Usuario)Session["usuario"]).Administrador == true){ %>
-                                <a class="header__a" href="administrar.aspx">Administrar</a>
+                            <a class="header__a" href="administrar.aspx">Administrar</a>
                             <%} %>
                         
                     </nav>
@@ -46,8 +46,6 @@
             </header> 
 
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-
-
 
             </asp:ContentPlaceHolder>
 

@@ -20,13 +20,7 @@
                 <asp:Button ID="btnLogin" CssClass="login__button" OnClick="btnLogin_Click" runat="server" Text="Ingresar" />
                 
                 <p>¿No tienes una cuenta? <a href="registrar.aspx">Regístrate</a></p>
-                
-                
-
-            </div>
-            
+            </div>  
         </div>
     </div>
-
-
 </asp:Content>
