@@ -13,6 +13,12 @@ namespace TPC_Equipo_22B
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if ((Session["usuario"] == null || ((dominio.Usuario)Session["usuario"]).Administrador == false))
+            {
+                Response.Redirect("Default.aspx");
+            }
+
             if (!IsPostBack)
             {
                 CargarCategorias();
