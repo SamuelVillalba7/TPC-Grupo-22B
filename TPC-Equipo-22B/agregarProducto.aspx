@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Agregar Producto" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="agregarProducto.aspx.cs" Inherits="TPC_Equipo_22B.agregarProducto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <!-- Opcional: Agrega aquí CSS o JS específicos de la página -->
+   
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

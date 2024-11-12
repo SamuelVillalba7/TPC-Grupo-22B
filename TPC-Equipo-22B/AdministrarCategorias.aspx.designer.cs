@@ -11,43 +11,34 @@ namespace TPC_Equipo_22B
 {
 
 
-    public partial class administrar
+    public partial class AdministrarCategorias
     {
 
         /// <summary>
-        /// Control btnAgregarProducto.
+        /// Control gvCategorias.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregarProducto;
+        protected global::System.Web.UI.WebControls.GridView gvCategorias;
 
         /// <summary>
-        /// Control btnEliminarProducto.
+        /// Control txtNombreCategoria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEliminarProducto;
+        protected global::System.Web.UI.WebControls.TextBox txtNombreCategoria;
 
         /// <summary>
-        /// Control gvProductos.
+        /// Control btnAgregarCategoria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvProductos;
-
-        /// <summary>
-        /// Control btnAdministrarCategorias.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAdministrarCategorias;
+        protected global::System.Web.UI.WebControls.Button btnAgregarCategoria;
     }
 }

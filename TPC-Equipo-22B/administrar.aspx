@@ -92,5 +92,8 @@
                 </asp:GridView>
             </div>
         </div>
+        <asp:Button ID="btnAdministrarCategorias" runat="server" Text="Administrar Categorías" CssClass="btn btn-secondary btn-block" 
+            PostBackUrl="~/AdministrarCategorias.aspx" />
+
     </div>
 </asp:Content>

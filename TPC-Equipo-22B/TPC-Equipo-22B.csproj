@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="administrar.aspx" />
+    <Content Include="AdministrarCategorias.aspx" />
     <Content Include="agregarProducto.aspx" />
     <Content Include="carrito.aspx" />
     <Content Include="EliminarProducto.aspx" />
@@ -119,6 +120,13 @@
     </Compile>
     <Compile Include="administrar.aspx.designer.cs">
       <DependentUpon>administrar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdministrarCategorias.aspx.cs">
+      <DependentUpon>AdministrarCategorias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministrarCategorias.aspx.designer.cs">
+      <DependentUpon>AdministrarCategorias.aspx</DependentUpon>
     </Compile>
     <Compile Include="agregarProducto.aspx.cs">
       <DependentUpon>agregarProducto.aspx</DependentUpon>
