@@ -93,8 +93,6 @@
             </div>
         </div>
 
-
-
         <!-- Formulario de agregación de producto -->
         <div class="row mt-5">
             <div class="col-md-4 offset-md-4">
