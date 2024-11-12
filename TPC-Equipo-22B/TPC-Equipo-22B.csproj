@@ -90,7 +90,14 @@
     <Content Include="img\news\new3.jpg" />
     <Content Include="img\ofertas\auriculares.png" />
     <Content Include="img\ofertas\reloj.png" />
+    <Content Include="img\productos\auricular.png" />
     <Content Include="img\productos\beats.jpg" />
+    <Content Include="img\productos\celular.png" />
+    <Content Include="img\productos\consola.png" />
+    <Content Include="img\productos\monitor.png" />
+    <Content Include="img\productos\mouse.png" />
+    <Content Include="img\productos\parlante.png" />
+    <Content Include="img\productos\reloj.png" />
     <Content Include="img\publicidad\fastlane.png" />
     <Content Include="img\publicidad\golden.png" />
     <Content Include="img\publicidad\Group-956.png" />

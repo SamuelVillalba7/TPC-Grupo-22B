@@ -41,6 +41,19 @@ CREATE TABLE USUARIOS(
     TELEFONO VARCHAR(15),
     ADMINISTRADOR BIT DEFAULT 0
 )
+
+
+go
+INSERT into USUARIOS (NOMBRE,APELLIDO,EMAIL,CONTRASEÑA,TELEFONO,ADMINISTRADOR) VALUES ('SAMUEL','VILLALBA','VILLALBASAMUEL2@GMAIL.COM','1111','1151017737',1)
+
+
+
+--SELECT * FROM USUARIOS
+
+
+
+
+
 GO
 
 CREATE TABLE PEDIDOS(
@@ -80,19 +93,20 @@ INNER JOIN CATEGORIAS C ON C.IDCATEGORIA = P.IDCATEGORIA
 WHERE C.IDCATEGORIA = @Categoria and P.IDPRODUCTO <> @Id and P.STOCK > 0
 
 
-
-DELETE from CATEGORIAS 
+go
 
 --select top 7 C.IDCATEGORIA, C.NOMBRE from CATEGORIAS as C
-insert into CATEGORIAS (NOMBRE,URLIMAGEN) values ('Auriculares','https://drive.google.com/file/d/1D9PEM5T59PDE_tVPTSnXEu1wbI6GS4LR/view?usp=sharing')
-insert into CATEGORIAS (NOMBRE,URLIMAGEN) values ('Celulares','https://drive.google.com/file/d/1zPMpV6XWvsj2MN07TkPrr3gMbXk78YJl/view?usp=sharing')
-insert into CATEGORIAS (NOMBRE,URLIMAGEN) values ('Monitores','https://drive.google.com/file/d/1tCXLvAhXriROuYOQFz6vk0FJUVmuwGUn/view?usp=sharing')
-insert into CATEGORIAS (NOMBRE,URLIMAGEN) values ('Parlantes','https://drive.google.com/file/d/1yVxDNDG3T1ZAJe8WZJPGqjZtAfQDrEbg/view?usp=sharing')
-insert into CATEGORIAS (NOMBRE,URLIMAGEN) values ('Consolas','https://drive.google.com/file/d/1eM0i60rFds_fhmCgIhn7Bhs78myXZgnK/view?usp=sharing')
-insert into CATEGORIAS (NOMBRE,URLIMAGEN) values ('Relojes','https://drive.google.com/file/d/1ZbQf9FUzGy5TwMEwDEIz874bbMjDm0cj/view?usp=sharing')
-insert into CATEGORIAS (NOMBRE,URLIMAGEN) values ('Mouses','https://drive.google.com/file/d/1qux-mAmr0JYuu5dOnuOqf80_9ejw5Fc9/view?usp=sharing')
+insert into CATEGORIAS (NOMBRE,URLIMAGEN) values ('Auriculares','https://localhost:44317/img/productos/auricular.png')
+insert into CATEGORIAS (NOMBRE,URLIMAGEN) values ('Celulares','https://localhost:44317/img/productos/celular.png')
+insert into CATEGORIAS (NOMBRE,URLIMAGEN) values ('Monitores','https://localhost:44317/img/productos/monitor.png')
+insert into CATEGORIAS (NOMBRE,URLIMAGEN) values ('Parlantes','https://localhost:44317/img/productos/parlante.png')
+insert into CATEGORIAS (NOMBRE,URLIMAGEN) values ('Consolas','https://localhost:44317/img/productos/consola.png')
+insert into CATEGORIAS (NOMBRE,URLIMAGEN) values ('Relojes','https://localhost:44317/img/productos/reloj.png')
+insert into CATEGORIAS (NOMBRE,URLIMAGEN) values ('Mouses','https://localhost:44317/img/productos/mouse.png')
 
-SELECT * from CATEGORIAS
+--SELECT * from CATEGORIAS
+
+
 
 insert into PRODUCTOS (IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (1, 'Hyperx Cloud Flight', 250000, 500, 'Auris gamer copados')
 
