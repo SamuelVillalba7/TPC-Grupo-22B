@@ -70,6 +70,7 @@
     <Content Include="administrar.aspx" />
     <Content Include="agregarProducto.aspx" />
     <Content Include="carrito.aspx" />
+    <Content Include="EliminarProducto.aspx" />
     <Content Include="filtros.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Default.aspx" />
@@ -132,6 +133,13 @@
     </Compile>
     <Compile Include="carrito.aspx.designer.cs">
       <DependentUpon>carrito.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EliminarProducto.aspx.cs">
+      <DependentUpon>EliminarProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EliminarProducto.aspx.designer.cs">
+      <DependentUpon>EliminarProducto.aspx</DependentUpon>
     </Compile>
     <Compile Include="filtros.aspx.cs">
       <DependentUpon>filtros.aspx</DependentUpon>
