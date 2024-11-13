@@ -7,12 +7,23 @@ CREATE TABLE CATEGORIAS(
     IDCATEGORIA INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     NOMBRE VARCHAR(50),
     URLIMAGEN VARCHAR(100),
-	FILTRO bit DEFAULT 0
+	FILTRO bit DEFAULT 0,
+    ESTADO BIT DEFAULT 1
 )
+GO
+
+CREATE TABLE MARCAS(
+    IDMARCA INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+    NOMBRE VARCHAR(50),
+    ESTADO BIT DEFAULT 1
+)
+
+
 GO
 CREATE TABLE PRODUCTOS (
     IDPRODUCTO INT NOT NULL PRIMARY KEY IDENTITY (1,1),
     IDCATEGORIA INT NULL FOREIGN KEY REFERENCES CATEGORIAS(IDCATEGORIA), 
+    IDMARCA INT NULL FOREIGN KEY REFERENCES MARCAS(IDMARCA),
     NOMBRE VARCHAR(50) NOT NULL,
     PRECIO MONEY NOT NULL, 
     STOCK INT NOT NULL, 
@@ -30,7 +41,6 @@ CREATE TABLE IMAGENES(
 ) 
 GO
 
-GO
 
 CREATE TABLE USUARIOS(
     IDUSUARIO BIGINT NOT NULL PRIMARY KEY IDENTITY(1,1),
@@ -55,12 +65,84 @@ INSERT into USUARIOS (NOMBRE,APELLIDO,EMAIL,CONTRASEÑA,TELEFONO,ADMINISTRADOR) 
 
 
 GO
+CREATE TABLE ESTADOS(
+
+    IDESTADO INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+    NOMBRE VARCHAR(50) NOT NULL 
+
+) 
+GO
+INSERT INTO ESTADOS (NOMBRE) VALUES
+('Pendiente'),         -- El pedido ha sido realizado, pero el pago aún no ha sido confirmado.
+('Pago confirmado'),   -- El pago ha sido recibido y verificado, listo para ser procesado.
+('En procesamiento'),  -- El pedido está siendo preparado (verificación de inventario, empaquetado, etc.).
+('Enviado'),           -- El pedido ha sido despachado y está en camino.
+('Entregado'),         -- El cliente ha recibido el pedido, proceso de entrega completo.
+('Cancelado'),         -- El pedido fue cancelado por el cliente o la tienda.
+('Devuelto'),          -- El cliente ha devuelto el pedido, en proceso de devolución o reembolso.
+('Reembolsado'),       -- El reembolso ha sido procesado y el dinero devuelto al cliente.
+('En espera'),         -- El pedido está pausado temporalmente por algún motivo.
+('Fallido');           -- El pago no fue procesado correctamente, el pedido no se completó.
+
+GO
+CREATE TABLE PROVINCIAS(
+
+    IDPROVINCIA INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+    NOMBRE VARCHAR(50) NOT NULL   
+
+) 
+GO
+INSERT INTO PROVINCIAS (NOMBRE) VALUES
+('Buenos Aires'),
+('Catamarca'),
+('Chaco'),
+('Chubut'),
+('Córdoba'),
+('Corrientes'),
+('Entre Ríos'),
+('Formosa'),
+('Jujuy'),
+('La Pampa'),
+('La Rioja'),
+('Mendoza'),
+('Misiones'),
+('Neuquén'),
+('Río Negro'),
+('Salta'),
+('San Juan'),
+('San Luis'),
+('Santa Cruz'),
+('Santa Fe'),
+('Santiago del Estero'),
+('Tierra del Fuego'),
+('Tucumán');
+
+GO
+CREATE TABLE METODODEPAGO(
+
+    IDMETODO INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+    NOMBRE VARCHAR(50) NOT NULL 
+
+) 
+GO
+INSERT INTO METODODEPAGO (NOMBRE) VALUES
+('Transferencia'),
+('Tarjeta de Débito'),
+('Tarjeta de Crédito');
+GO
 
 CREATE TABLE PEDIDOS(
     IDPEDIDO BIGINT NOT NULL PRIMARY KEY IDENTITY(1,1),
     IDUSUARIO BIGINT NOT NULL FOREIGN KEY REFERENCES USUARIOS(IDUSUARIO),
+    IDPROVINCIA INT NOT NULL FOREIGN KEY REFERENCES PROVINCIAS(IDPROVINCIA),
+    IDMETODO INT NOT NULL FOREIGN KEY REFERENCES METODODEPAGO(IDMETODO),
+    CIUDAD VARCHAR(60) NOT NULL , 
+    CODIGOPOSTAL VARCHAR(10) NOT NULL,
+    DIRECCION VARCHAR(100) NOT NULL,
+    IDESTADO INT NOT NULL FOREIGN KEY REFERENCES ESTADOS(IDESTADO),
     FECHAPEDIDO DATE DEFAULT GETDATE(),
     MONTOTOTAL MONEY NOT NULL
+
 )
 GO
 
@@ -68,7 +150,7 @@ CREATE TABLE DETALLEPEDIDOS(
     IDDETALLE BIGINT NOT NULL PRIMARY KEY IDENTITY(1,1),
     IDPEDIDO BIGINT NOT NULL FOREIGN KEY REFERENCES PEDIDOS(IDPEDIDO),
     IDPRODUCTO INT NOT NULL FOREIGN KEY REFERENCES PRODUCTOS(IDPRODUCTO),
-    CANTIDAD SMALLINT NOT NULL,
+    CANTIDAD SMALLINT NOT NULL
 )
 
 GO
@@ -84,14 +166,6 @@ SELECT P.IDPRODUCTO as ID, P.NOMBRE, P.DESCRIPCION, P.PRECIO, C.NOMBRE AS CATEGO
 WHERE I.IDPRODUCTO = P.IDPRODUCTO) AS URLIMG, P.IDCATEGORIA FROM PRODUCTOS P 
 INNER JOIN CATEGORIAS C ON C.IDCATEGORIA = P.IDCATEGORIA
 and C.FILTRO = 1
-
-GO
-
-SELECT DISTINCT TOP 4 P.IDPRODUCTO as ID, P.NOMBRE, P.DESCRIPCION, P.PRECIO, C.NOMBRE AS CATEGORIA, (SELECT TOP 1 URLIMG FROM IMAGENES I
-WHERE I.IDPRODUCTO = P.IDPRODUCTO) AS URLIMG, P.IDCATEGORIA FROM PRODUCTOS P 
-INNER JOIN CATEGORIAS C ON C.IDCATEGORIA = P.IDCATEGORIA
-WHERE C.IDCATEGORIA = @Categoria and P.IDPRODUCTO <> @Id and P.STOCK > 0
-
 
 go
 
