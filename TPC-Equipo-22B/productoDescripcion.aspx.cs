@@ -34,6 +34,7 @@ namespace TPC_Equipo_22B
         {
            
             Session.Add("idp", id);
+            Session.Add("Cantidad", txtCantidad.Text);
             Response.Redirect("carrito.aspx",false);
         }
     }

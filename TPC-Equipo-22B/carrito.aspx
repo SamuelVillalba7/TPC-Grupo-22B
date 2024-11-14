@@ -29,32 +29,14 @@
                 </asp:TemplateField>
                 <%--<asp:BoundField HeaderText="Cantidad" DataField="cantidad" />--%>
                 <asp:BoundField HeaderText="Subtotal" DataField="Subtotal" />
+                <%-- <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("IdProducto") %>' />--%>
             </Columns>
         </asp:GridView>
 
         <br />
         <a href="filtros.aspx" class="btn btn-primary">Seguir comprando</a>
 
-        <%-- <table>
-           <tr>
-                <th></th>
-                <th>Producto</th>
-                <th>Precio</th>
-                <th>Cantidad</th>
-                <th>Subtotal</th>
-               <th></th>
-                
-            </tr>
-            <tr>
-                <td></td>
-                <td>Beats</td>
-                <td>$995</td>
-                <td>1</td>
-                <td>$995</td>
-                <td></td>
-         
-            </tr>
-        </table>--%>
+
     </div>
 
 

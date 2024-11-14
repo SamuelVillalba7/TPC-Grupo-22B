@@ -16,7 +16,8 @@
             <p class="detalle-producto__description"><%:articulo.Descripcion %>
             </p>
             <div class="detalle-producto__container-buttons">
-                   <input type="number" class="detalle-producto__cantidad" name="quantity" value="1" title="Qty" size="4" min="1" max="" step="1" placeholder="" inputmode="numeric" autocomplete="off">
+                   <%--<input type="number" class="detalle-producto__cantidad" name="quantity" value="1" title="Qty" size="4" min="1" max="" step="1" placeholder="" inputmode="numeric" autocomplete="off">--%>
+                <asp:TextBox ID="txtCantidad" runat="server" type="number" min="1" max="<%:articulo.Stock %>"></asp:TextBox>
                 <asp:Button ID="btnAgregarAlCarrito" Onclick="Button1_Click" CssClass="detalle-producto__button" runat="server" Text="Add to cart" />
                
             </div>

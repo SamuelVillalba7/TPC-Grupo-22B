@@ -25,7 +25,7 @@ namespace dominio
         public string PrecioFormateado => Precio.ToString("F2");
         public bool Estado { get; set; }
 
-        public float Stock {  get; set; } 
+        public int Stock {  get; set; } 
 
         public Articulo()
         {

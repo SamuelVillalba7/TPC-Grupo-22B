@@ -31,12 +31,12 @@ namespace TPC_Equipo_22B
 
             if(articuloNegocio.encontrarArticulo(prodcarrito, int.Parse(id)) == -1)
             {
-                itemCarrito.cantidad = 1;
+                itemCarrito.cantidad = int.Parse(Session["Cantidad"].ToString());
                 prodcarrito.Add(itemCarrito);
             }
             else
             {
-                prodcarrito[articuloNegocio.encontrarArticulo(prodcarrito, int.Parse(id))].cantidad += 1;
+                prodcarrito[articuloNegocio.encontrarArticulo(prodcarrito, int.Parse(id))].cantidad += int.Parse(Session["Cantidad"].ToString());
             }
 
             Session.Add("carrito", prodcarrito);
@@ -45,11 +45,18 @@ namespace TPC_Equipo_22B
             dgv_carrito.DataBind();
         }
 
-        //protected void dgvcarrito_RowEditing(object sender, EventArgs e)
-        //{
-        //    dgv_carrito.EditIndex = e.NewEditIndex;  
-        //    BindGridView();
-        //}
-        
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int idProductoAEliminar = int.Parse(btn.CommandArgument);
+
+            ItemCarrito productoAEliminar = prodcarrito.FirstOrDefault(p => p.IdProducto == idProductoAEliminar);
+
+            prodcarrito.Remove(productoAEliminar);
+
+            Session["Carrito"] = prodcarrito;
+            dgv_carrito.DataSource = prodcarrito;
+            dgv_carrito.DataBind();
+        }
     }
 }
