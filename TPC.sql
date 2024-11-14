@@ -206,7 +206,7 @@ insert into IMAGENES (IDPRODUCTO, URLIMG) values (6, 'https://www.sony.com.ar/im
 insert into PRODUCTOS (IDMARCA, IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (7,1, 'JBL Tune 520', 200000, 820, 'Auriculares inalambricos')
 insert into IMAGENES (IDPRODUCTO, URLIMG) values (7, 'https://ar.oneclickstore.com/wp-content/uploads/2023/10/JBLT520BTBLUAM.jpg')
 
-insert into PRODUCTOS (IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (1, 'Audio-technica Ath-m40x', 350000, 80, 'Auriculares de estudio')
+insert into PRODUCTOS (IDMARCA, IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (1,1, 'Audio-technica Ath-m40x', 350000, 80, 'Auriculares de estudio')
 insert into IMAGENES (IDPRODUCTO, URLIMG) values (8, 'https://www.avisistemas.com.ar/795-thickbox_default/audio-technica-ath-m40x-auricular-profesional-estudio.jpg')
 
 INSERT INTO MARCAS (NOMBRE, ESTADO) values ('Hyperx',1)
