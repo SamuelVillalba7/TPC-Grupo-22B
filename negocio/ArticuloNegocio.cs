@@ -110,6 +110,78 @@ namespace negocio
             }
         }
 
+        public List<Articulo> listarConSP(int idMarca, int idCategoria)
+        {
+            List<Articulo> lista = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                if(idMarca == -1)
+                {
+                    datos.setearConsulta("SELECT P.IDPRODUCTO as ID, P.NOMBRE, P.DESCRIPCION, P.PRECIO, C.NOMBRE AS CATEGORIA, M.NOMBRE AS MARCA, (SELECT TOP 1 URLIMG FROM IMAGENES I WHERE I.IDPRODUCTO = P.IDPRODUCTO) AS URLIMG, P.IDCATEGORIA, P.IDMARCA FROM PRODUCTOS P INNER JOIN CATEGORIAS C ON C.IDCATEGORIA = P.IDCATEGORIA INNER JOIN MARCAS M ON M.IDMARCA = P.IDMARCA where C.IDCATEGORIA = @Categoria");
+                    datos.setearParametro("Categoria", idCategoria);
+                    datos.ejecutarLectura();
+                }
+                else
+                {
+                    if (idCategoria == -1)
+                    {
+                        datos.setearConsulta("SELECT P.IDPRODUCTO as ID, P.NOMBRE, P.DESCRIPCION, P.PRECIO, C.NOMBRE AS CATEGORIA, M.NOMBRE AS MARCA, (SELECT TOP 1 URLIMG FROM IMAGENES I WHERE I.IDPRODUCTO = P.IDPRODUCTO) AS URLIMG, P.IDCATEGORIA, P.IDMARCA FROM PRODUCTOS P INNER JOIN CATEGORIAS C ON C.IDCATEGORIA = P.IDCATEGORIA INNER JOIN MARCAS M ON M.IDMARCA = P.IDMARCA where M.IDMARCA = @Marca");
+                        datos.setearParametro("Marca", idMarca);
+                        datos.ejecutarLectura();
+                    }
+                    else
+                    {
+                        datos.setearConsulta("SELECT P.IDPRODUCTO as ID, P.NOMBRE, P.DESCRIPCION, P.PRECIO, C.NOMBRE AS CATEGORIA, M.NOMBRE AS MARCA, (SELECT TOP 1 URLIMG FROM IMAGENES I WHERE I.IDPRODUCTO = P.IDPRODUCTO) AS URLIMG, P.IDCATEGORIA, P.IDMARCA FROM PRODUCTOS P INNER JOIN CATEGORIAS C ON C.IDCATEGORIA = P.IDCATEGORIA INNER JOIN MARCAS M ON M.IDMARCA = P.IDMARCA where C.IDCATEGORIA = @Categoria and M.IDMARCA = @Marca");
+                        datos.setearParametro("Marca", idMarca);
+                        datos.setearParametro("Categoria", idCategoria);
+                        datos.ejecutarLectura();
+                    }
+                }
+
+                while (datos.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+
+                    aux.Id = (int)datos.Lector["ID"];
+
+                    if (!(datos.Lector["NOMBRE"] is DBNull))
+                        aux.Nombre = (string)datos.Lector["NOMBRE"];
+                    if (!(datos.Lector["DESCRIPCION"] is DBNull))
+                        aux.Descripcion = (string)datos.Lector["DESCRIPCION"];
+                    if (!(datos.Lector["PRECIO"] is DBNull))
+                        aux.Precio = (decimal)datos.Lector["PRECIO"];
+
+                    if (!(datos.Lector["URLIMG"] is DBNull))
+                        aux.Imagen = (string)datos.Lector["URLIMG"];
+                    aux.Categoria = new Categoria();
+                    aux.Marca = new Marca();
+                    if (!(datos.Lector["IDCATEGORIA"] is DBNull))
+                        aux.Categoria.Id = (int)datos.Lector["IDCATEGORIA"];
+                    if (!(datos.Lector["CATEGORIA"] is DBNull))
+                        aux.Categoria.Nombre = (string)datos.Lector["CATEGORIA"];
+                    if (!(datos.Lector["IDMARCA"] is DBNull))
+                        aux.Marca.Codigo = (int)datos.Lector["IDMARCA"];
+                    if (!(datos.Lector["MARCA"] is DBNull))
+                        aux.Marca.Nombre = (string)datos.Lector["MARCA"];
+
+                    aux.Imagenes = cargarVecImagenes(aux.Id);
+                    lista.Add(aux);
+
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
 
 
         public List<Articulo> listarArticulosRelacionados(int Id, int Categoria)

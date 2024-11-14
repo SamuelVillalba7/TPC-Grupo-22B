@@ -4,34 +4,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using dominio;
+
 namespace negocio
 {
-    public class CategoriaNegocio
+    public class MarcaNegocio
     {
-        public List<Categoria> listarConSP()
+
+        public List<Marca> listar()
         {
-            List<Categoria> lista = new List<Categoria>();
+            List<Marca> lista = new List<Marca>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
 
-                //datos.setearConsulta("select top 7 C.IDCATEGORIA, C.NOMBRE , C.URLIMAGEN from CATEGORIAS as C");
-                datos.setearConsulta("select top 7 C.IDCATEGORIA, C.NOMBRE , C.URLIMAGEN, C.FILTRO from CATEGORIAS as C");
+                datos.setearConsulta("select M.IDMARCA, M.NOMBRE , M.ESTADO from MARCAS as M");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
-                    Categoria aux = new Categoria();
+                    Marca aux = new Marca();
 
-                    aux.Id = (int)datos.Lector["IDCATEGORIA"];
+                    aux.Codigo = (int)datos.Lector["IDMARCA"];
 
                     if (!(datos.Lector["NOMBRE"] is DBNull))
                         aux.Nombre = (string)datos.Lector["NOMBRE"];
 
-                    if (!(datos.Lector["URLIMAGEN"] is DBNull))
-                        aux.UrlImagen = (string)datos.Lector["URLIMAGEN"];
-
-                    aux.filtro = (bool)datos.Lector["FILTRO"];
+                    if (!(datos.Lector["ESTADO"] is DBNull))
+                        aux.Estado = (bool)datos.Lector["ESTADO"];
 
 
                     lista.Add(aux);

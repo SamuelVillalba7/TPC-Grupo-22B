@@ -10,6 +10,8 @@ namespace dominio
     {
         public int Codigo { get; set; }
         public string Nombre { get; set; }
+
+        public bool Estado { get; set; }
         public override string ToString()
         {
             return Nombre;

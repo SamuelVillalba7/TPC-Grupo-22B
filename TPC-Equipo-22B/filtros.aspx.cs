@@ -13,32 +13,43 @@ namespace TPC_Equipo_22B
     {
         public List<Articulo> ListaArticulo { get; set; }
         public List<Categoria> ListaCategoria { get; set; }
-        public Categoria categoria { get; set; }
+        public List<Marca> ListaMarca { get; set; }
+        public Categoria categoria { get; set; } 
+
+        ArticuloNegocio negocio = new ArticuloNegocio();
+        CategoriaNegocio cnegocio = new CategoriaNegocio();
+        MarcaNegocio mnegocio = new MarcaNegocio();
         protected void Page_Load(object sender, EventArgs e)
         {
-            ArticuloNegocio negocio = new ArticuloNegocio();
-            CategoriaNegocio cnegocio = new CategoriaNegocio();
-
-            if (!IsPostBack)
-            {
-                ListaArticulo = negocio.listarConSP();
-            }
-            else
-            {
-                ListaArticulo = negocio.listaFiltrandoCategoria();
-            }
-
+      
+           
+            ListaArticulo = negocio.listarConSP();
             
             Session.Add("listaArticulos", ListaArticulo);
             ListaCategoria = cnegocio.listarConSP();
+            ListaMarca = mnegocio.listar();
             Session.Add("listaCategoria", ListaCategoria);
 
-            CblCategorias.DataSource = ListaCategoria;
-            CblCategorias.DataTextField = "Nombre";
-            CblCategorias.DataValueField = "Id";
+            if (!IsPostBack)
+            {
+                ddlCategoria.DataSource = ListaCategoria;
+                ddlCategoria.DataTextField = "Nombre";
+                ddlCategoria.DataValueField = "Id";
+                ddlCategoria.DataBind();
+                ddlCategoria.Items.Insert(0, new ListItem("--Todas--", ""));
+                ddlCategoria.SelectedIndex = 0;
 
-            CblCategorias.DataBind();
-           
+
+                ddlMarca.DataSource = ListaMarca;
+                ddlMarca.DataTextField = "Nombre";
+                ddlMarca.DataValueField = "Codigo";
+                ddlMarca.DataBind();
+                ddlMarca.Items.Insert(0, new ListItem("--Todas--", ""));
+                ddlMarca.SelectedIndex = 0;
+
+
+
+            }
 
         }
 
@@ -49,48 +60,43 @@ namespace TPC_Equipo_22B
             ListaArticulo = listaFiltrada;
         }
 
-        protected void btnFiltrar_Click(object sender, EventArgs e)
+        protected void FiltrarProductos(object sender, EventArgs e)
         {
-            //Revisar por qué no me está tildando las categorias de la colección que están tildadas
-            
-            foreach (ListItem lista in CblCategorias.Items)
+            int marcaSeleccionada;
+            int categoriaSeleccionada;
+
+            if (ddlMarca.SelectedIndex == 0)
             {
-                //if (lista.Selected)
-                //{
-                    //Categoria cat = new Categoria();
-                    //cat.Id = int.Parse(lista.Value);
-                    //cat.Nombre = lista.Text;
-                    //cat.filtro = true;
+                marcaSeleccionada = -1;
+            }
+            else
+            {
+                marcaSeleccionada = ddlMarca.SelectedIndex;
+            }
 
-                    //CategoriaNegocio negocio = new CategoriaNegocio();
-                    //negocio.modificarFiltro(cat);
+            if (ddlCategoria.SelectedIndex == 0)
+            {
+                categoriaSeleccionada = -1;
+            }
+            else
+            {
+                categoriaSeleccionada = ddlCategoria.SelectedIndex;
+            }
 
-                //}
-                //else
-                //{
-                Categoria cat = new Categoria();
-                cat.Id = int.Parse(lista.Value);
-                cat.Nombre = lista.Text;
-                cat.filtro = false;
-
-                CategoriaNegocio negocio = new CategoriaNegocio();
-                negocio.modificarFiltro(cat);
-                //}
+            if (marcaSeleccionada == -1 && categoriaSeleccionada == -1)
+            {
+                ListaArticulo = negocio.listarConSP();
+            }
+            else
+            {
+                ListaArticulo = negocio.listarConSP(marcaSeleccionada, categoriaSeleccionada);
             }
         }
 
-        protected void CblCategorias_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        //protected void chkCategorias_ChekedChanged(object sender, EventArgs e)
-        //{
-        //    ArticuloNegocio negocio = new ArticuloNegocio();
-        //    CategoriaNegocio cnegocio = new CategoriaNegocio();
-        //    cnegocio.modificarFiltro(categoria);
-        //    ListaArticulo = negocio.listaFiltrandoCategoria();
-
-        //}
     }
+
+        
+
+        
+    
 }

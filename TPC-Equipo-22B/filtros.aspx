@@ -22,26 +22,22 @@
             </div>
 
             <div class="filter__category">
-                <p class="filter__category-text">Categorias de productos</p>
+                <p class="filter__category-text">Filtrar productos</p>
 
-                <asp:CheckBoxList ID="CblCategorias" runat="server" AutoPostBack="false"></asp:CheckBoxList>
+                
+                <!-- Filtro por Categoría -->
+                <label for="ddlCategoria">Categoría:</label>
+                <asp:DropDownList ID="ddlCategoria" runat="server" AutoPostBack="true" OnSelectedIndexChanged="FiltrarProductos">
+                </asp:DropDownList>
 
-                <asp:Button ID="btnFiltrar" class="btn btn-primary" runat="server" Text="Filtrar" OnClick="btnFiltrar_Click" />
+                <hr />
 
-<%--                <%foreach (dominio.Categoria cat in ListaCategoria)
-                    { %>
-                <div class="form-check">
-                    <asp:CheckBox ID="CheckBox1" runat="server" class="form-check-input" OnCheckedChanged="chkCategorias_ChekedChanged" AutoPostBack="true" />
-                    <label class="form-check-label" for="flexCheckDefault">
-                        <%: cat.Nombre %>
-                    </label>
-                    
-                </div>
-                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                <!-- Filtro por Marca -->
+                <label for="ddlMarca">Marca:</label>
+                <asp:DropDownList ID="ddlMarca" runat="server" AutoPostBack="true" OnSelectedIndexChanged="FiltrarProductos">
+                </asp:DropDownList>
 
-                <% cat.filtro = CheckBox1.Checked;
-                        categoria = cat;
-                    } %>--%>         
+                
             </div>
         </div>
         <div class="product-filter">

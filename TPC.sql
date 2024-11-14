@@ -182,32 +182,38 @@ insert into CATEGORIAS (NOMBRE,URLIMAGEN) values ('Mouses','https://localhost:44
 
 
 
-insert into PRODUCTOS (IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (1, 'Hyperx Cloud Flight', 250000, 500, 'Auris gamer copados')
+insert into PRODUCTOS (IDMARCA,IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (1, 'Hyperx Cloud Flight', 250000, 500, 'Auris gamer copados')
 
 insert into IMAGENES (IDPRODUCTO, URLIMG) values (1, 'https://row.hyperx.com/cdn/shop/products/hyperx_cloud_20flight_1_main.jpg?v=1662435222')
 insert into IMAGENES (IDPRODUCTO, URLIMG) values (1, 'https://http2.mlstatic.com/D_NQ_NP_870917-MLU78798955617_082024-O.webp')
 
 
-insert into PRODUCTOS (IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (2, 'Samsung A55 5G', 500000, 200, 'Celular gama alta')
+insert into PRODUCTOS (IDMARCA, IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (2,2, 'Samsung A55 5G', 500000, 200, 'Celular gama alta')
 insert into IMAGENES (IDPRODUCTO, URLIMG) values (2, 'https://http2.mlstatic.com/D_NQ_NP_828557-MLA75148190826_032024-O.webp')
 
-insert into PRODUCTOS (IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (1, 'Redragon Zeus', 125000, 120, 'Auriculares inalambricos')
+insert into PRODUCTOS (IDMARCA, IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (3,1, 'Redragon Zeus', 125000, 120, 'Auriculares inalambricos')
 insert into IMAGENES (IDPRODUCTO, URLIMG) values (3, 'https://spacegamer.com.ar/img/Public/1058-producto-1-5143.jpg')
 
-insert into PRODUCTOS (IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (2, 'IPhone 15 Pro Max', 1500000, 150, 'Celular gama alta')
+insert into PRODUCTOS (IDMARCA, IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (4,2, 'IPhone 15 Pro Max', 1500000, 150, 'Celular gama alta')
 insert into IMAGENES (IDPRODUCTO, URLIMG) values (4, 'https://http2.mlstatic.com/D_Q_NP_912227-MLA71782903150_092023-O.webp')
 
-insert into PRODUCTOS (IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (2, 'Motorola Moto G14', 300000, 400, 'Celular gama de entrada')
+insert into PRODUCTOS (IDMARCA, IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (5,2, 'Motorola Moto G14', 300000, 400, 'Celular gama de entrada')
 insert into IMAGENES (IDPRODUCTO, URLIMG) values (5, 'https://tiendadiggit.com.ar/web/image/product.template/246056/image_1024?unique=199acc8')
 
-insert into PRODUCTOS (IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (1, 'Sony WH-XB810', 250000, 120, 'Auriculares inalambricos')
+insert into PRODUCTOS (IDMARCA, IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (6,1, 'Sony WH-XB810', 250000, 120, 'Auriculares inalambricos')
 insert into IMAGENES (IDPRODUCTO, URLIMG) values (6, 'https://www.sony.com.ar/image/dd18cf93606d238305a733d336c45537?fmt=pjpeg&wid=330&bgcolor=FFFFFF&bgc=FFFFFF')
 
-insert into PRODUCTOS (IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (1, 'JBL Tune 520', 200000, 820, 'Auriculares inalambricos')
+insert into PRODUCTOS (IDMARCA, IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (7,1, 'JBL Tune 520', 200000, 820, 'Auriculares inalambricos')
 insert into IMAGENES (IDPRODUCTO, URLIMG) values (7, 'https://ar.oneclickstore.com/wp-content/uploads/2023/10/JBLT520BTBLUAM.jpg')
 
 insert into PRODUCTOS (IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (1, 'Audio-technica Ath-m40x', 350000, 80, 'Auriculares de estudio')
 insert into IMAGENES (IDPRODUCTO, URLIMG) values (8, 'https://www.avisistemas.com.ar/795-thickbox_default/audio-technica-ath-m40x-auricular-profesional-estudio.jpg')
 
+INSERT INTO MARCAS (NOMBRE, ESTADO) values ('Hyperx',1)
+INSERT INTO MARCAS (NOMBRE, ESTADO) values ('Samsung',1)
+INSERT INTO MARCAS (NOMBRE, ESTADO) values ('Redragon',1)
+INSERT INTO MARCAS (NOMBRE, ESTADO) values ('Apple',1)
+INSERT INTO MARCAS (NOMBRE, ESTADO) values ('Motorola',1)
+INSERT INTO MARCAS (NOMBRE, ESTADO) values ('Sony',1)
+INSERT INTO MARCAS (NOMBRE, ESTADO) values ('JBL',1)
 
---select * from PRODUCTOS
