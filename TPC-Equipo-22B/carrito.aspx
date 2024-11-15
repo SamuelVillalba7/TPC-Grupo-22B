@@ -12,29 +12,31 @@
     </div>
     <div class="table-container">
 
-        <asp:GridView ID="dgv_carrito" runat="server" class="table-bordered" AutoGenerateColumns="false">
-         <%--   DataKeyNames="IdProducto" OnRowEditing="dgvcarrito_RowEditing"
-            OnRowUpdating="dgvcarrito_RowUpdating" OnRowCancelingEdit="dgvcarrito_RowCancelingEdit">--%>
+        <asp:GridView ID="dgv_carrito" runat="server" class="table-bordered" AutoGenerateColumns="false" EnableViewState="True" DataKeyNames="IdProducto">
 
             <Columns>
                 <asp:BoundField HeaderText="Articulo" DataField="nombreProducto" />
 
                 <asp:TemplateField HeaderText="Cantidad">
                     <ItemTemplate>
-                        <asp:Label ID="lblCantidad" runat="server" Text='<%# Eval("cantidad") %>'></asp:Label>
+                        <asp:TextBox ID="txtCantidad" runat="server" Text='<%# Bind("Cantidad") %>' OnTextChanged="txtCantidad_TextChanged" AutoPostBack="true" />
                     </ItemTemplate>
-                    <EditItemTemplate>
-                        <asp:TextBox ID="txtCantidad" runat="server" Text='<%# Bind("cantidad") %>'></asp:TextBox>
-                    </EditItemTemplate>
                 </asp:TemplateField>
-                <%--<asp:BoundField HeaderText="Cantidad" DataField="cantidad" />--%>
+
                 <asp:BoundField HeaderText="Subtotal" DataField="Subtotal" />
-                <%-- <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("IdProducto") %>' />--%>
+
+                <asp:TemplateField HeaderText="Eliminar del carrito">
+                    <ItemTemplate>
+                        <asp:Button ID="btnEliminar" runat="server" Text="X" CommandName="EliminarProducto" CommandArgument='<%# Eval("IdProducto") %>' OnCommand="btnEliminar_Command" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+
             </Columns>
         </asp:GridView>
 
         <br />
         <a href="filtros.aspx" class="btn btn-primary">Seguir comprando</a>
+        <a href="pedidos.aspx" class="btn btn-primary">Realizar pedido</a>
 
 
     </div>

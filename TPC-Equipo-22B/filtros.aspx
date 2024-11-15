@@ -21,6 +21,8 @@
             <div>
             </div>
 
+            <br />
+
             <div class="filter__category">
                 <p class="filter__category-text">Filtrar productos</p>
 
@@ -30,7 +32,7 @@
                 <asp:DropDownList ID="ddlCategoria" runat="server" AutoPostBack="true" OnSelectedIndexChanged="FiltrarProductos">
                 </asp:DropDownList>
 
-                <hr />
+                <br />
 
                 <!-- Filtro por Marca -->
                 <label for="ddlMarca">Marca:</label>
