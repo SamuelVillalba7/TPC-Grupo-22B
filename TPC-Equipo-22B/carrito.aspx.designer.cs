@@ -15,6 +15,15 @@ namespace TPC_Equipo_22B
     {
 
         /// <summary>
+        /// lblMensaje control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMensaje;
+
+        /// <summary>
         /// dgv_carrito control.
         /// </summary>
         /// <remarks>
@@ -22,5 +31,14 @@ namespace TPC_Equipo_22B
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView dgv_carrito;
+
+        /// <summary>
+        /// btnFinalizarCompra control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnFinalizarCompra;
     }
 }

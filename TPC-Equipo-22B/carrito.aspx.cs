@@ -117,5 +117,27 @@ namespace TPC_Equipo_22B
             dgv_carrito.DataBind();  // Recargar la tabla para reflejar los cambios
 
         }
+
+        protected void btnFinalizarCompra_Click(object sender, EventArgs e)
+        {
+            var carrito = Session["carrito"] as List<ItemCarrito>;
+            if (carrito == null || carrito.Count == 0)
+            {
+                lblMensaje.Text = "El carrito está vacío. Agrega productos antes de finalizar la compra.";
+                lblMensaje.Visible = true;
+                return;
+            }
+
+            // Depuración: verificar el contenido del carrito
+            Console.WriteLine("Contenido del carrito:");
+            foreach (var item in carrito)
+            {
+                Console.WriteLine($"Producto: {item.art.Nombre}, Cantidad: {item.cantidad}, Subtotal: {item.art.Precio * item.cantidad}");
+            }
+
+            // Redirigir a la página FinalizarCompra.aspx
+            Response.Redirect("FinalizarCompra.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
+        }
     }
 }

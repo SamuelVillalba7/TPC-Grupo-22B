@@ -12,34 +12,38 @@
     </div>
     <div class="table-container">
 
-        <asp:GridView ID="dgv_carrito" runat="server" class="table-bordered" AutoGenerateColumns="false" EnableViewState="True" DataKeyNames="IdProducto">
+        <!-- Label para mensajes -->
+        <asp:Label ID="lblMensaje" runat="server" CssClass="text-danger" Visible="false"></asp:Label>
+        <div class="table-container">
+            <asp:GridView ID="dgv_carrito" runat="server" class="table-bordered" AutoGenerateColumns="false" EnableViewState="True" DataKeyNames="IdProducto">
 
-            <Columns>
-                <asp:BoundField HeaderText="Articulo" DataField="nombreProducto" />
+                <Columns>
+                    <asp:BoundField HeaderText="Articulo" DataField="nombreProducto" />
 
-                <asp:TemplateField HeaderText="Cantidad">
-                    <ItemTemplate>
-                        <asp:TextBox ID="txtCantidad" runat="server" Text='<%# Bind("Cantidad") %>' OnTextChanged="txtCantidad_TextChanged" AutoPostBack="true" />
-                    </ItemTemplate>
-                </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Cantidad">
+                        <ItemTemplate>
+                            <asp:TextBox ID="txtCantidad" runat="server" Text='<%# Bind("Cantidad") %>' OnTextChanged="txtCantidad_TextChanged" AutoPostBack="true" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
 
-                <asp:BoundField HeaderText="Subtotal" DataField="Subtotal" />
+                    <asp:BoundField HeaderText="Subtotal" DataField="Subtotal" />
 
-                <asp:TemplateField HeaderText="Eliminar del carrito">
-                    <ItemTemplate>
-                        <asp:Button ID="btnEliminar" runat="server" Text="X" CommandName="EliminarProducto" CommandArgument='<%# Eval("IdProducto") %>' OnCommand="btnEliminar_Command" />
-                    </ItemTemplate>
-                </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Eliminar del carrito">
+                        <ItemTemplate>
+                            <asp:Button ID="btnEliminar" runat="server" Text="X" CommandName="EliminarProducto" CommandArgument='<%# Eval("IdProducto") %>' OnCommand="btnEliminar_Command" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
 
-            </Columns>
-        </asp:GridView>
+                </Columns>
+            </asp:GridView>
 
-        <br />
-        <a href="filtros.aspx" class="btn btn-primary">Seguir comprando</a>
-        <a href="pedidos.aspx" class="btn btn-primary">Realizar pedido</a>
+            <br />
+            <a href="filtros.aspx" class="btn btn-primary">Seguir comprando</a>
+            <div class="mt-4">
+                <asp:Button ID="btnFinalizarCompra" runat="server" CssClass="btn btn-primary btn-block"
+                    Text="Proceder a Finalizar Compra" OnClick="btnFinalizarCompra_Click" />
+            </div>
 
 
-    </div>
-
-
+        </div>
 </asp:Content>

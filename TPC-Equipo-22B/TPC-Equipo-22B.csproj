@@ -73,6 +73,7 @@
     <Content Include="carrito.aspx" />
     <Content Include="EliminarProducto.aspx" />
     <Content Include="filtros.aspx" />
+    <Content Include="FinalizarCompra.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Default.aspx" />
     <Content Include="img\categorias\console.png" />
@@ -162,6 +163,13 @@
     </Compile>
     <Compile Include="filtros.aspx.designer.cs">
       <DependentUpon>filtros.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FinalizarCompra.aspx.cs">
+      <DependentUpon>FinalizarCompra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FinalizarCompra.aspx.designer.cs">
+      <DependentUpon>FinalizarCompra.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
