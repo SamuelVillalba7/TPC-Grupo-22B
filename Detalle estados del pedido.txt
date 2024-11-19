@@ -1,0 +1,19 @@
+1. *Pendiente*: El pedido ha sido realizado, pero el pago aún no ha sido confirmado. Está a la espera de la confirmación del pago por parte del cliente.
+
+2. *Pago confirmado*: El pago ha sido recibido y verificado, por lo que el pedido está listo para ser procesado.
+
+3. *En procesamiento*: El pedido está siendo preparado. Esto incluye la verificación del inventario, el empaquetado y cualquier otra actividad previa al envío.
+
+4. *Enviado*: El pedido ha sido despachado y se encuentra en camino hacia el cliente. En esta etapa, se proporciona un número de seguimiento (tracking) para que el cliente pueda monitorear el envío.
+
+5. *Entregado*: El cliente ha recibido el pedido. Este es el estado final cuando el proceso de entrega ha sido completado exitosamente.
+
+6. *Cancelado*: El pedido fue cancelado, ya sea por el cliente o por la tienda, debido a algún problema (por ejemplo, falta de stock, errores en el pago, o solicitud del cliente).
+
+7. *Devuelto*: El cliente ha devuelto el pedido, y este se encuentra en proceso de devolución o reembolso.
+
+8. *Reembolsado*: El reembolso ha sido procesado y el dinero ha sido devuelto al cliente.
+
+9. *En espera*: El pedido está pausado temporalmente por algún motivo, como falta de inventario, problemas con la información del cliente, o espera de confirmación adicional.
+
+10. *Fallido*: El pago no fue procesado correctamente, por lo que el pedido no pudo completarse. Puede deberse a problemas con el método de pago o al rechazo de la transacción.
