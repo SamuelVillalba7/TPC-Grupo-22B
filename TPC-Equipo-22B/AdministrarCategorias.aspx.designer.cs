@@ -33,6 +33,24 @@ namespace TPC_Equipo_22B
         protected global::System.Web.UI.WebControls.TextBox txtNombreCategoria;
 
         /// <summary>
+        /// Control txtURLCategoria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtURLCategoria;
+
+        /// <summary>
+        /// Control chkEstadoCategoria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkEstadoCategoria;
+
+        /// <summary>
         /// Control btnAgregarCategoria.
         /// </summary>
         /// <remarks>

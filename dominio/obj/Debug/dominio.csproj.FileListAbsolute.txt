@@ -40,3 +40,9 @@ D:\TUP-UTN\Programacion 3\TP-Grupal\TPC-Grupo-22B\dominio\obj\Debug\dominio.cspr
 D:\TUP-UTN\Programacion 3\TP-Grupal\TPC-Grupo-22B\dominio\obj\Debug\dominio.csproj.CoreCompileInputs.cache
 D:\TUP-UTN\Programacion 3\TP-Grupal\TPC-Grupo-22B\dominio\obj\Debug\dominio.dll
 D:\TUP-UTN\Programacion 3\TP-Grupal\TPC-Grupo-22B\dominio\obj\Debug\dominio.pdb
+D:\TUP-UTN\Programacion 3\tp_grupo_22\TPC-Grupo-22B\dominio\bin\Debug\dominio.dll
+D:\TUP-UTN\Programacion 3\tp_grupo_22\TPC-Grupo-22B\dominio\bin\Debug\dominio.pdb
+D:\TUP-UTN\Programacion 3\tp_grupo_22\TPC-Grupo-22B\dominio\obj\Debug\dominio.csproj.AssemblyReference.cache
+D:\TUP-UTN\Programacion 3\tp_grupo_22\TPC-Grupo-22B\dominio\obj\Debug\dominio.csproj.CoreCompileInputs.cache
+D:\TUP-UTN\Programacion 3\tp_grupo_22\TPC-Grupo-22B\dominio\obj\Debug\dominio.dll
+D:\TUP-UTN\Programacion 3\tp_grupo_22\TPC-Grupo-22B\dominio\obj\Debug\dominio.pdb
