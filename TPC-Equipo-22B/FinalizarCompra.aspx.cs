@@ -65,8 +65,9 @@ namespace TPC_Equipo_22B
 
             try
             {
-                int idPedido = CrearPedido();
-                GuardarDetallePedido(idPedido);
+                PedidoNegocio negocio = new PedidoNegocio();
+                //Falta pasar el ID del usuario que está logueado, que pida la ciudad y el CP en caso de querar entrega a domicilio, hacer un condiconal para ver que estado toma de acuerdo al metodo de pago seleccionado, pasar el monto
+                negocio.RegistrarPedido(1, 1, int.Parse(rblEntrega.SelectedValue), "Buenos Aires", "1618", txtDireccion.ToString(), 1, DateTime.Now , 1000);
                 ActualizarStock();
 
                 Session["carrito"] = null; // Limpiar el carrito después de confirmar la compra
