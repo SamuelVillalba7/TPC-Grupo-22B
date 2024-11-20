@@ -120,6 +120,17 @@ namespace TPC_Equipo_22B
 
         protected void btnFinalizarCompra_Click(object sender, EventArgs e)
         {
+            
+
+
+            if(Session["usuario"] == null)
+            {
+                lblMensaje.Text = "Debe loguearse antes de finalizar la compra.";
+                lblMensaje.Visible = true;
+                return;
+            }
+
+
             var carrito = Session["carrito"] as List<ItemCarrito>;
             if (carrito == null || carrito.Count == 0)
             {

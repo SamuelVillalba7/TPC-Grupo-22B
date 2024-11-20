@@ -42,6 +42,7 @@
             <div class="mt-4">
                 <asp:Button ID="btnFinalizarCompra" runat="server" CssClass="btn btn-primary btn-block"
                     Text="Proceder a Finalizar Compra" OnClick="btnFinalizarCompra_Click" />
+             
             </div>
 
 

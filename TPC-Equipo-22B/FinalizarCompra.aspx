@@ -65,9 +65,9 @@
             <div class="step-title">2. Método de Pago</div>
             <asp:DropDownList ID="ddlMetodoPago" runat="server" CssClass="form-control">
                 <asp:ListItem Text="Seleccione un método" Value="" />
-                <asp:ListItem Text="Transferencia Bancaria" Value="Transferencia" />
-                <asp:ListItem Text="Tarjeta de Crédito" Value="Credito" />
-                <asp:ListItem Text="Tarjeta de Débito" Value="Debito" />
+                <asp:ListItem Text="Transferencia Bancaria" Value="1" />
+                <asp:ListItem Text="Tarjeta de Débito" Value="2" />
+                <asp:ListItem Text="Tarjeta de Crédito" Value="3" />
             </asp:DropDownList>
         </div>
 
@@ -90,6 +90,21 @@
                 <label class="form-label">Teléfono</label>
                 <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" placeholder="Ingrese su número de teléfono"></asp:TextBox>
             </div>
+            <div class="form-group">
+                <label class="form-label">Ciudad</label>
+                <asp:TextBox ID="txtCiudad" runat="server" CssClass="form-control" placeholder="Ingrese su ciudad"></asp:TextBox>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Codigo Postal</label>
+                <asp:TextBox ID="txtCodigoPostal" runat="server" CssClass="form-control" placeholder="Ingrese su codigo postal"></asp:TextBox>
+            </div>
+             <div class="form-group">
+                <label class="form-label" for="ddlProvincias">Provincias</label> <br>
+                <asp:DropDownList ID="ddlProvincias" runat="server"  >
+                </asp:DropDownList>
+
+             </div>
+
         </div>
 
         <!-- Opciones de Entrega -->

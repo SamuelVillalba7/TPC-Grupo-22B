@@ -13,11 +13,37 @@ namespace TPC_Equipo_22B
 {
     public partial class FinalizarCompra : System.Web.UI.Page
     {
+
+        public List<Provincia> provincias;
+        public Usuario usuario;
+        public Decimal montoTotal;
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+            
+            usuario = (dominio.Usuario)Session["usuario"];
+
+            txtEmail.Text = usuario.Email;
+            txtNombre.Text= usuario.Nombre+" "+ usuario.Apellido;
+            txtTelefono.Text= usuario.Telefono;
+          
+
+
             if (!IsPostBack)
             {
                 CargarCarrito();
+                ProvinciaNegocio negocio = new ProvinciaNegocio();
+                provincias = negocio.ListarProvincias();
+                ddlProvincias.DataSource = provincias;
+                ddlProvincias.DataTextField = "NombreProv";
+                ddlProvincias.DataValueField = "IdProvincia";
+                ddlProvincias.DataBind();
+
+
+                
+
+
             }
         }
 
@@ -50,7 +76,8 @@ namespace TPC_Equipo_22B
             gvCarrito.DataSource = carritoTable;
             gvCarrito.DataBind();
 
-            lblTotal.Text = $"Total: ${carrito.Sum(item => item.art.Precio * item.cantidad):N2}";
+            montoTotal = carrito.Sum(item => item.art.Precio * item.cantidad);
+            lblTotal.Text = $"Total: ${montoTotal:N2}";
         }
 
 
@@ -67,7 +94,7 @@ namespace TPC_Equipo_22B
             {
                 PedidoNegocio negocio = new PedidoNegocio();
                 //Falta pasar el ID del usuario que está logueado, que pida la ciudad y el CP en caso de querar entrega a domicilio, hacer un condiconal para ver que estado toma de acuerdo al metodo de pago seleccionado, pasar el monto
-                negocio.RegistrarPedido(1, 1, int.Parse(rblEntrega.SelectedValue), "Buenos Aires", "1618", txtDireccion.ToString(), 1, DateTime.Now , 1000);
+                negocio.RegistrarPedido(usuario.Id,int.Parse(ddlProvincias.SelectedValue), int.Parse(ddlMetodoPago.SelectedValue), txtCiudad.Text , txtCodigoPostal.Text , txtDireccion.Text, 1, DateTime.Now ,montoTotal );
                 ActualizarStock();
 
                 Session["carrito"] = null; // Limpiar el carrito después de confirmar la compra
