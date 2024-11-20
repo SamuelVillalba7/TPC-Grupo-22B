@@ -28,15 +28,15 @@
 
                 
                 <!-- Filtro por Categoría -->
-                <label for="ddlCategoria">Categoría:</label>
-                <asp:DropDownList ID="ddlCategoria" runat="server" AutoPostBack="true" OnSelectedIndexChanged="FiltrarProductos">
+                <label for="ddlCategoria">Categoría:</label> <br />
+                <asp:DropDownList CssClass="btn btn-secondary dropdown-toggle" ID="ddlCategoria" runat="server" AutoPostBack="true" OnSelectedIndexChanged="FiltrarProductos">
                 </asp:DropDownList>
 
                 <br />
 
                 <!-- Filtro por Marca -->
-                <label for="ddlMarca">Marca:</label>
-                <asp:DropDownList ID="ddlMarca" runat="server" AutoPostBack="true" OnSelectedIndexChanged="FiltrarProductos">
+                <label for="ddlMarca">Marca:</label> <br />
+                <asp:DropDownList CssClass="btn btn-secondary dropdown-toggle" ID="ddlMarca" runat="server" AutoPostBack="true" OnSelectedIndexChanged="FiltrarProductos">
                 </asp:DropDownList>
 
                 

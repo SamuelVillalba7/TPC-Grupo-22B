@@ -27,14 +27,15 @@
         }
 
         .btn-finalizar {
-            background-color: #007bff;
+            
+            background-color: #0056b3;
             color: white;
             font-size: 1.2rem;
             font-weight: bold;
         }
 
             .btn-finalizar:hover {
-                background-color: #0056b3;
+                background-color: #007bff;
                 color: white;
             }
     </style>
@@ -79,10 +80,6 @@
                 <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" placeholder="Ingrese su nombre completo"></asp:TextBox>
             </div>
             <div class="form-group">
-                <label class="form-label">Dirección</label>
-                <asp:TextBox ID="txtDireccion" runat="server" CssClass="form-control" placeholder="Ingrese su dirección"></asp:TextBox>
-            </div>
-            <div class="form-group">
                 <label class="form-label">Email</label>
                 <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="Ingrese su correo electrónico"></asp:TextBox>
             </div>
@@ -90,31 +87,43 @@
                 <label class="form-label">Teléfono</label>
                 <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" placeholder="Ingrese su número de teléfono"></asp:TextBox>
             </div>
-            <div class="form-group">
-                <label class="form-label">Ciudad</label>
-                <asp:TextBox ID="txtCiudad" runat="server" CssClass="form-control" placeholder="Ingrese su ciudad"></asp:TextBox>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Codigo Postal</label>
-                <asp:TextBox ID="txtCodigoPostal" runat="server" CssClass="form-control" placeholder="Ingrese su codigo postal"></asp:TextBox>
-            </div>
-             <div class="form-group">
-                <label class="form-label" for="ddlProvincias">Provincias</label> <br>
-                <asp:DropDownList ID="ddlProvincias" runat="server"  >
-                </asp:DropDownList>
-
-             </div>
+          
 
         </div>
 
+
         <!-- Opciones de Entrega -->
-        <div class="form-section">
+        <div class="form-section" >
             <div class="step-title">4. Opciones de Entrega</div>
-            <asp:RadioButtonList ID="rblEntrega" runat="server" CssClass="form-check">
-                <asp:ListItem Text="Retiro en tienda" Value="Retiro" />
-                <asp:ListItem Text="Envío a domicilio" Value="Envio" />
+            <asp:RadioButtonList ID="rblEntrega" runat="server" CssClass="form-check" OnSelectedIndexChanged="rblEntrega_SelectedIndexChanged" AutoPostBack="True">
+                <asp:ListItem Text="Retiro en tienda" Value="0" />
+                <asp:ListItem Text="Envío a domicilio" Value="1" Selected="True" />
             </asp:RadioButtonList>
             <asp:TextBox ID="txtDireccionEnvio" runat="server" CssClass="form-control mt-2" placeholder="Dirección de envío" Visible="false"></asp:TextBox>
+        </div>
+
+         <div class="form-section" ID="FormDatosEnvio" runat="server"  >
+           <div class="form-group">
+              <div class="step-title">5. Datos de Envio</div>
+               <div class="form-group">
+                   <label class="form-label" for="ddlProvincias">Provincia</label> <br>
+                   <asp:DropDownList  ID="ddlProvincias" CssClass="form-control" runat="server"  >
+                   </asp:DropDownList>
+
+                </div>
+               <label class="form-label">Ciudad</label>
+               <asp:TextBox ID="txtCiudad" runat="server" CssClass="form-control" placeholder="Ingrese su ciudad"></asp:TextBox>
+           </div>
+           <div class="form-group">
+               <label class="form-label">Codigo Postal</label>
+               <asp:TextBox ID="txtCodigoPostal" runat="server" CssClass="form-control" placeholder="Ingrese su codigo postal"></asp:TextBox>
+           </div>
+        
+             <div class="form-group">
+                 <label class="form-label">Dirección</label>
+                 <asp:TextBox ID="txtDireccion" runat="server" CssClass="form-control" placeholder="Ingrese su dirección"></asp:TextBox>
+             </div>
+
         </div>
 
         <!-- Confirmación de Compra -->

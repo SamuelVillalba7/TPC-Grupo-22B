@@ -19,7 +19,7 @@ namespace TPC_Equipo_22B
         public Decimal montoTotal;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           
             UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
             
             usuario = (dominio.Usuario)Session["usuario"];
@@ -27,7 +27,7 @@ namespace TPC_Equipo_22B
             txtEmail.Text = usuario.Email;
             txtNombre.Text= usuario.Nombre+" "+ usuario.Apellido;
             txtTelefono.Text= usuario.Telefono;
-          
+         
 
 
             if (!IsPostBack)
@@ -93,8 +93,15 @@ namespace TPC_Equipo_22B
             try
             {
                 PedidoNegocio negocio = new PedidoNegocio();
+                DatosEnvioNegocio datosEnvioNegocio = new DatosEnvioNegocio();
                 //Falta pasar el ID del usuario que está logueado, que pida la ciudad y el CP en caso de querar entrega a domicilio, hacer un condiconal para ver que estado toma de acuerdo al metodo de pago seleccionado, pasar el monto
-                negocio.RegistrarPedido(usuario.Id,int.Parse(ddlProvincias.SelectedValue), int.Parse(ddlMetodoPago.SelectedValue), txtCiudad.Text , txtCodigoPostal.Text , txtDireccion.Text, 1, DateTime.Now ,montoTotal );
+                int IdPedido= negocio.RegistrarPedido(usuario.Id, int.Parse(ddlMetodoPago.SelectedValue),  1, DateTime.Now , int.Parse(rblEntrega.SelectedValue), montoTotal );
+
+                if (int.Parse(rblEntrega.SelectedValue) == 1)
+                {
+                    datosEnvioNegocio.agregar(IdPedido, int.Parse(ddlProvincias.SelectedValue), txtCiudad.Text, txtCodigoPostal.Text, txtDireccion.Text);
+                }
+
                 ActualizarStock();
 
                 Session["carrito"] = null; // Limpiar el carrito después de confirmar la compra
@@ -211,5 +218,11 @@ namespace TPC_Equipo_22B
                 datos.cerrarConexion();
             }
         }
+
+        protected void rblEntrega_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FormDatosEnvio.Visible = rblEntrega.SelectedValue == "1";
+        }
+        
     }
 }

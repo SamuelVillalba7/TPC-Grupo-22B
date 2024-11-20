@@ -36,7 +36,7 @@ namespace TPC_Equipo_22B
                 ddlCategoria.DataTextField = "Nombre";
                 ddlCategoria.DataValueField = "Id";
                 ddlCategoria.DataBind();
-                ddlCategoria.Items.Insert(0, new ListItem("--Todas--", ""));
+                ddlCategoria.Items.Insert(0, new ListItem("Todas", ""));
                 ddlCategoria.SelectedIndex = 0;
 
 
@@ -44,7 +44,7 @@ namespace TPC_Equipo_22B
                 ddlMarca.DataTextField = "Nombre";
                 ddlMarca.DataValueField = "Codigo";
                 ddlMarca.DataBind();
-                ddlMarca.Items.Insert(0, new ListItem("--Todas--", ""));
+                ddlMarca.Items.Insert(0, new ListItem("Todas", ""));
                 ddlMarca.SelectedIndex = 0;
 
 

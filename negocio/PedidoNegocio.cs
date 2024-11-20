@@ -9,26 +9,26 @@ namespace negocio
 {
     public class PedidoNegocio
     {
-        public void RegistrarPedido(int IDUSUARIO, int IDPROVINCIA, int IDMETODO, string CIUDAD, string CODIGOPOSTAL, string DIRECCION, int IDESTADO, DateTime FECHAPEDIDO, decimal MONTOTOTAL)
+   
+        public int RegistrarPedido(int IDUSUARIO, int IDMETODO, int IDESTADO, DateTime FECHAPEDIDO,int ENVIO, decimal MONTOTOTAL)
         {
-            List<Pedido> lista = new List<Pedido>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
 
 
-                datos.setearConsulta("insert into PEDIDOS (IDUSUARIO, IDPROVINCIA, IDMETODO, CIUDAD, CODIGOPOSTAL, DIRECCION, IDESTADO, FECHAPEDIDO, MONTOTOTAL ) VALUES (@IdUsuario, @IdProvincia, @IdMetodo, @Ciudad, @CodigoPostal, @Direccion, @IdEstado, @Fecha, @MontoTotal)");
+                datos.setearConsulta("insert into PEDIDOS (IDUSUARIO, IDMETODO, IDESTADO, FECHAPEDIDO,ENVIO, MONTOTOTAL ) VALUES (@IdUsuario, @IdMetodo, @IdEstado, @Fecha,@Envio, @MontoTotal) SELECT CAST(SCOPE_IDENTITY() AS INT) AS UltimoIDPedido;");
                 datos.setearParametro("@IdUsuario", IDUSUARIO);
-                datos.setearParametro("@IdProvincia", IDPROVINCIA);
                 datos.setearParametro("@IdMetodo", IDMETODO);
-                datos.setearParametro("@Ciudad", CIUDAD);
-                datos.setearParametro("@CodigoPostal", CODIGOPOSTAL);
-                datos.setearParametro("@Direccion", DIRECCION);
                 datos.setearParametro("@IdEstado", IDESTADO);
+                datos.setearParametro("@Envio", ENVIO);
                 datos.setearParametro("@Fecha", FECHAPEDIDO);
                 datos.setearParametro("@MontoTotal", MONTOTOTAL);
 
-                datos.ejecutarAccion();
+                int ultimoIDPedido = Convert.ToInt32(datos.ejecutarEscalar());
+
+                return ultimoIDPedido;
+
 
             }
             catch (Exception ex)
@@ -49,7 +49,7 @@ namespace negocio
             try
             {
              
-                datos.setearConsulta("select IDPEDIDO, IDUSUARIO, IDPROVINCIA, IDMETODO, CIUDAD, CODIGOPOSTAL, DIRECCION, IDESTADO, FECHAPEDIDO, MONTOTOTAL from PEDIDOS");
+                datos.setearConsulta("select IDPEDIDO, IDUSUARIO, IDMETODO, IDESTADO, FECHAPEDIDO, MONTOTOTAL from PEDIDOS");
 
               
                 datos.ejecutarLectura();
@@ -62,15 +62,10 @@ namespace negocio
                   
                     pedido.IdPedido = (int)datos.Lector["IDPEDIDO"];
                     pedido.IdUsuario = (int)datos.Lector["IDUSUARIO"];
-                    pedido.IdProvincia = (int)datos.Lector["IDPROVINCIA"];
                     pedido.IdMetodoPago = (int)datos.Lector["IDMETODO"];
-                    pedido.Ciudad = datos.Lector["CIUDAD"].ToString();
-                    pedido.CP = datos.Lector["CODIGOPOSTAL"].ToString();
-                    pedido.Direccion = datos.Lector["DIRECCION"].ToString();
                     pedido.IdEstado = (int)datos.Lector["IDESTADO"];
                     pedido.FechaPedido = (DateTime)datos.Lector["FECHAPEDIDO"];
                     pedido.MontoTotal = (decimal)datos.Lector["MONTOTOTAL"];
-
                     
                     listaPedidos.Add(pedido);
                 }
