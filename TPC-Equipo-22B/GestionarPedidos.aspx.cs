@@ -38,7 +38,7 @@ namespace TPC_Equipo_22B
             // Poner el GridView en modo edición
             gvPedidos.EditIndex = e.NewEditIndex;
             CargarPedidos();
-            ddlEstado.
+
         }
 
         protected void gvPedidos_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
