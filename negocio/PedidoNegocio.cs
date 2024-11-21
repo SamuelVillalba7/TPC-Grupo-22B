@@ -84,5 +84,93 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void GuardarDetallePedido(int idPedido, List<ItemCarrito> prodcarrito)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                foreach (ItemCarrito item in prodcarrito)
+                {
+                    guardarDetallePedido(item, idPedido);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void guardarDetallePedido(ItemCarrito item, int idPedido)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("INSERT INTO DETALLEPEDIDOS (IDPEDIDO, IDPRODUCTO, CANTIDAD, PRECIOUNITARIO) " +
+                                        "VALUES (@IDPedido, @IDProducto, @Cantidad, @Precio)");
+                datos.setearParametro("@IDPedido", idPedido);
+                datos.setearParametro("@IDProducto", item.IdProducto);
+                datos.setearParametro("@Cantidad", item.cantidad);
+                datos.setearParametro("@Precio", item.art.Precio);
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally { datos.cerrarConexion(); }
+
+
+        }
+
+
+
+
+        public void ActualizarStock(List<ItemCarrito> prodcarrito)
+        {
+            try
+            {
+                foreach (ItemCarrito item in prodcarrito)
+                {
+                    actualizarStock(item.IdProducto, item.cantidad);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+
+        public void actualizarStock(int id, int cantidad)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("UPDATE Productos SET Stock = Stock - @Cantidad WHERE IDProducto = @IDProducto");
+                datos.setearParametro("@Cantidad", cantidad);
+                datos.setearParametro("@IDProducto", id);
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally { datos.cerrarConexion(); }
+
+
+
+        }
+
+
+
+
     }
 }

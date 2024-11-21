@@ -94,19 +94,23 @@ namespace TPC_Equipo_22B
             {
                 PedidoNegocio negocio = new PedidoNegocio();
                 DatosEnvioNegocio datosEnvioNegocio = new DatosEnvioNegocio();
+                List<ItemCarrito> prodcarrito = new List<ItemCarrito>();
+                prodcarrito = Session["carrito"] as List<ItemCarrito>;
                 //Falta pasar el ID del usuario que está logueado, que pida la ciudad y el CP en caso de querar entrega a domicilio, hacer un condiconal para ver que estado toma de acuerdo al metodo de pago seleccionado, pasar el monto
-                int IdPedido= negocio.RegistrarPedido(usuario.Id, int.Parse(ddlMetodoPago.SelectedValue),  1, DateTime.Now , int.Parse(rblEntrega.SelectedValue), montoTotal );
+                montoTotal = CalcularMontoTotal();
+                int IdPedido = negocio.RegistrarPedido(usuario.Id, int.Parse(ddlMetodoPago.SelectedValue), 1, DateTime.Now, int.Parse(rblEntrega.SelectedValue), montoTotal);
 
                 if (int.Parse(rblEntrega.SelectedValue) == 1)
                 {
                     datosEnvioNegocio.agregar(IdPedido, int.Parse(ddlProvincias.SelectedValue), txtCiudad.Text, txtCodigoPostal.Text, txtDireccion.Text);
                 }
+                negocio.GuardarDetallePedido(IdPedido, prodcarrito);
+                negocio.ActualizarStock(prodcarrito);
 
-                ActualizarStock();
 
                 Session["carrito"] = null; // Limpiar el carrito después de confirmar la compra
 
-                Response.Redirect("Confirmacion.aspx");
+                  Response.Redirect("Default.aspx",false);
             }
             catch (Exception ex)
             {
@@ -145,17 +149,12 @@ namespace TPC_Equipo_22B
         private decimal CalcularMontoTotal()
         {
             decimal total = 0;
+            List<ItemCarrito> prodcarrito = new List<ItemCarrito>();
+            prodcarrito = Session["carrito"] as List<ItemCarrito>;
 
-            // Verificar si el carrito no es null
-            var carrito = Session["carrito"] as DataTable;
-            if (carrito == null || carrito.Rows.Count == 0)
+            foreach (ItemCarrito item in prodcarrito)
             {
-                return total; // Si no hay productos, el total es 0
-            }
-
-            foreach (DataRow row in carrito.Rows)
-            {
-                total += Convert.ToDecimal(row["Cantidad"]) * Convert.ToDecimal(row["Precio"]);
+                total += item.Subtotal;
             }
             return total;
         }
