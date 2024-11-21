@@ -11,52 +11,43 @@ namespace TPC_Equipo_22B
 {
 
 
-    public partial class administrar
+    public partial class AdministrarMarcas
     {
 
         /// <summary>
-        /// Control gvProductos.
+        /// Control gvMarcas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvProductos;
+        protected global::System.Web.UI.WebControls.GridView gvMarcas;
 
         /// <summary>
-        /// Control btnAgregarProducto.
+        /// Control txtNombreMarca.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregarProducto;
+        protected global::System.Web.UI.WebControls.TextBox txtNombreMarca;
 
         /// <summary>
-        /// Control btnEliminarProducto.
+        /// Control chkEstadoMarca.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEliminarProducto;
+        protected global::System.Web.UI.WebControls.CheckBox chkEstadoMarca;
 
         /// <summary>
-        /// Control btnAdministrarCategorias.
+        /// Control btnAgregarMarca.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAdministrarCategorias;
-
-        /// <summary>
-        /// Control btnAdministrarMarcas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAdministrarMarcas;
+        protected global::System.Web.UI.WebControls.Button btnAgregarMarca;
     }
 }

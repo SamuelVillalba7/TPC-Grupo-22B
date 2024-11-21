@@ -407,6 +407,11 @@ namespace TPC_Equipo_22B
             Response.Redirect("EliminarProducto.aspx");
         }
 
+        protected void btnAdministrarMarcas_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdministrarMarcas.aspx");
+        }
+
     }
 
 

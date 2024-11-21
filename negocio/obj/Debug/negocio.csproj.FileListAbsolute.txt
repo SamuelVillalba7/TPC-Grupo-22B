@@ -70,3 +70,12 @@ D:\TUP-UTN\Programacion 3\tp_grupo_22\TPC-Grupo-22B\negocio\obj\Debug\negocio.cs
 D:\TUP-UTN\Programacion 3\tp_grupo_22\TPC-Grupo-22B\negocio\obj\Debug\negocio.csproj.Up2Date
 D:\TUP-UTN\Programacion 3\tp_grupo_22\TPC-Grupo-22B\negocio\obj\Debug\negocio.dll
 D:\TUP-UTN\Programacion 3\tp_grupo_22\TPC-Grupo-22B\negocio\obj\Debug\negocio.pdb
+D:\TUP-UTN\TPC-Grupo-22B\negocio\bin\Debug\negocio.dll
+D:\TUP-UTN\TPC-Grupo-22B\negocio\bin\Debug\negocio.pdb
+D:\TUP-UTN\TPC-Grupo-22B\negocio\bin\Debug\dominio.dll
+D:\TUP-UTN\TPC-Grupo-22B\negocio\bin\Debug\dominio.pdb
+D:\TUP-UTN\TPC-Grupo-22B\negocio\obj\Debug\negocio.csproj.AssemblyReference.cache
+D:\TUP-UTN\TPC-Grupo-22B\negocio\obj\Debug\negocio.csproj.CoreCompileInputs.cache
+D:\TUP-UTN\TPC-Grupo-22B\negocio\obj\Debug\negocio.csproj.Up2Date
+D:\TUP-UTN\TPC-Grupo-22B\negocio\obj\Debug\negocio.dll
+D:\TUP-UTN\TPC-Grupo-22B\negocio\obj\Debug\negocio.pdb

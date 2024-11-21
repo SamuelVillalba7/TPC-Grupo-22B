@@ -6,24 +6,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container mt-5">
         <!-- Título de la página -->
-        <div class="row">
+        <div class="row mb-5">
             <div class="col-md-12 text-center">
-                <h1 class="display-4">Administrar Productos</h1>
+                <h1 class="display-4">Panel de Administración</h1>
                 <hr />
             </div>
         </div>
 
-        <!-- Botón para agregar un nuevo producto -->
-        <div class="row mb-4">
-            <div class="col-md-6 text-left">
-                <asp:Button ID="btnAgregarProducto" runat="server" Text="Agregar Nuevo Producto" CssClass="btn btn-success"
-                    OnClick="btnAgregarProducto_Click" />
-            </div>
-            <div class="col-md-6 text-right">
-                <asp:Button ID="btnEliminarProducto" runat="server" Text="Eliminar Producto" CssClass="btn btn-danger"
-                    OnClick="btnEliminarProducto_Click" />
-            </div>
-        </div>
 
         <!-- Tabla de productos -->
         <div class="row">
@@ -51,7 +40,8 @@
 
                         <asp:TemplateField HeaderText="Precio">
                             <ItemTemplate>
-                                <asp:Label ID="lblPrecio" runat="server" Text='<%# Eval("PRECIO") %>'></asp:Label>
+                                <asp:Label ID="lblPrecio" runat="server"
+                                    Text='<%# "$ " + Convert.ToDecimal(Eval("PRECIO")).ToString("N2").Replace(",", "#").Replace(".", ",").Replace("#", ".") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
                                 <asp:TextBox ID="txtPrecio" runat="server" Text='<%# Bind("PRECIO") %>' CssClass="form-control" />
@@ -92,8 +82,26 @@
                 </asp:GridView>
             </div>
         </div>
-        <asp:Button ID="btnAdministrarCategorias" runat="server" Text="Administrar Categorías" CssClass="btn btn-secondary btn-block" 
-            PostBackUrl="~/AdministrarCategorias.aspx" />
 
+        <!-- Botón para agregar un nuevo producto -->
+        <div class="row mb-4 text-center">
+            <div class="col-md-3">
+                <asp:Button ID="btnAgregarProducto" runat="server" Text="Agregar Nuevo Producto" CssClass="btn btn-primary btn-lg btn-block"
+                    OnClick="btnAgregarProducto_Click" />
+            </div>
+            <div class="col-md-3">
+                <asp:Button ID="btnEliminarProducto" runat="server" Text="Eliminar Producto" CssClass="btn btn-secondary btn-lg btn-block"
+                    OnClick="btnEliminarProducto_Click" />
+            </div>
+            <div class="col-md-3">
+                <asp:Button ID="btnAdministrarCategorias" runat="server" Text="Administrar Categorías" CssClass="btn btn-info btn-lg btn-block"
+                    PostBackUrl="~/AdministrarCategorias.aspx" />
+            </div>
+
+            <div class="col-md-3">
+                <asp:Button ID="btnAdministrarMarcas" runat="server" Text="Administrar Marcas" CssClass="btn btn-success btn-lg btn-block"
+                    OnClick="btnAdministrarMarcas_Click" />
+            </div>
+        </div>
     </div>
 </asp:Content>

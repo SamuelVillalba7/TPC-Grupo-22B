@@ -1,6 +1,7 @@
 ﻿using negocio;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -12,10 +13,11 @@ namespace TPC_Equipo_22B
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if ((Session["usuario"] == null || ((dominio.Usuario)Session["usuario"]).Administrador == false))
+            if (Session["usuario"] == null || ((dominio.Usuario)Session["usuario"]).Administrador == false)
             {
                 Response.Redirect("Default.aspx");
             }
+
             if (!IsPostBack)
             {
                 CargarProductos();
@@ -28,20 +30,21 @@ namespace TPC_Equipo_22B
 
             try
             {
+                // Obtener los productos para llenar la grilla
                 datos.setearConsulta("SELECT IDPRODUCTO, NOMBRE FROM PRODUCTOS");
                 datos.ejecutarLectura();
 
-                ddlProductos.Items.Clear();
-                ddlProductos.Items.Add(new ListItem("Seleccione un producto", ""));
+                // Convertir los datos a DataTable
+                DataTable dtProductos = new DataTable();
+                dtProductos.Load(datos.Lector);
 
-                while (datos.Lector.Read())
-                {
-                    ddlProductos.Items.Add(new ListItem(datos.Lector["NOMBRE"].ToString(), datos.Lector["IDPRODUCTO"].ToString()));
-                }
+                // Asignar el DataSource y enlazar los datos
+                gvProductos.DataSource = dtProductos;
+                gvProductos.DataBind();
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Error al cargar productos: " + ex.Message);
             }
             finally
             {
@@ -49,19 +52,19 @@ namespace TPC_Equipo_22B
             }
         }
 
-        protected void btnEliminar_Click(object sender, EventArgs e)
+        protected void gvProductos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (ddlProductos.SelectedValue == "")
+            if (e.CommandName == "Eliminar")
             {
-                // Opcional: Mostrar un mensaje de error indicando que debe seleccionar un producto.
-                return;
+                // Obtener el ID del producto seleccionado
+                int idProducto = Convert.ToInt32(e.CommandArgument);
+
+                // Eliminar el producto
+                EliminarProductoFisicamente(idProducto);
+
+                // Recargar la lista de productos después de eliminar
+                CargarProductos();
             }
-
-            int idProducto = Convert.ToInt32(ddlProductos.SelectedValue);
-            EliminarProductoFisicamente(idProducto);
-
-            // Recargar la lista de productos después de eliminar
-            CargarProductos();
         }
 
         private void EliminarProductoFisicamente(int idProducto)
@@ -69,18 +72,19 @@ namespace TPC_Equipo_22B
             AccesoDatos datos = new AccesoDatos();
             try
             {
+                // Eliminar el producto de la base de datos
                 datos.setearConsulta("DELETE FROM PRODUCTOS WHERE IDPRODUCTO = @idProducto");
                 datos.setearParametro("@idProducto", idProducto);
                 datos.ejecutarAccion();
 
-                // Opcional: También eliminar imágenes asociadas al producto si es necesario
+                // Opcional: Eliminar imágenes asociadas al producto
                 datos.setearConsulta("DELETE FROM IMAGENES WHERE IDPRODUCTO = @idProducto");
                 datos.setearParametro("@idProducto", idProducto);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al eliminar el producto: " + ex.Message);
+                Console.WriteLine("Error al eliminar producto: " + ex.Message);
             }
             finally
             {
