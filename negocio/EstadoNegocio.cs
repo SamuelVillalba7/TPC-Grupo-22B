@@ -46,5 +46,12 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+        public List<string> ListarEstados()
+        {
+            return new List<string> { "Pendiente", "Enviado", "Entregado", "Cancelado" };
+        }
     }
+
+
 }

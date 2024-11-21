@@ -9,8 +9,8 @@ namespace negocio
 {
     public class PedidoNegocio
     {
-   
-        public int RegistrarPedido(int IDUSUARIO, int IDMETODO, int IDESTADO, DateTime FECHAPEDIDO,int ENVIO, decimal MONTOTOTAL)
+
+        public int RegistrarPedido(int IDUSUARIO, int IDMETODO, int IDESTADO, DateTime FECHAPEDIDO, int ENVIO, decimal MONTOTOTAL)
         {
             AccesoDatos datos = new AccesoDatos();
             try
@@ -48,29 +48,32 @@ namespace negocio
 
             try
             {
-             
-                datos.setearConsulta("select IDPEDIDO, IDUSUARIO, IDMETODO, IDESTADO, FECHAPEDIDO, MONTOTOTAL from PEDIDOS");
 
-              
+                datos.setearConsulta("select P.IDPEDIDO, P.IDUSUARIO, U.NOMBRE AS UNOMBRE, P.IDMETODO, MP.NOMBRE AS MPNOMBRE, P.IDESTADO, E.NOMBRE AS ENOMBRE,  P.ENVIO, P.FECHAPEDIDO, P.MONTOTOTAL from PEDIDOS P INNER JOIN USUARIOS U ON P.IDUSUARIO = U.IDUSUARIO INNER JOIN METODODEPAGO MP ON P.IDMETODO = MP.IDMETODO INNER JOIN ESTADOS E ON P.IDESTADO = E.IDESTADO");
+
+
                 datos.ejecutarLectura();
 
-               
+
                 while (datos.Lector.Read())
                 {
                     Pedido pedido = new Pedido();
 
-                  
-                    pedido.IdPedido = (int)datos.Lector["IDPEDIDO"];
-                    pedido.IdUsuario = (int)datos.Lector["IDUSUARIO"];
+
+                    pedido.IdPedido = (int)(long)(datos.Lector["IDPEDIDO"]);
+                    pedido.IdUsuario = (int)(long)(datos.Lector["IDUSUARIO"]);
                     pedido.IdMetodoPago = (int)datos.Lector["IDMETODO"];
                     pedido.IdEstado = (int)datos.Lector["IDESTADO"];
                     pedido.FechaPedido = (DateTime)datos.Lector["FECHAPEDIDO"];
                     pedido.MontoTotal = (decimal)datos.Lector["MONTOTOTAL"];
-                    
+                    pedido.NombreUsuario = (string)datos.Lector["UNOMBRE"];
+                    pedido.MetodoNombre = (string)datos.Lector["MPNOMBRE"];
+                    pedido.EstadoNombre = (string)datos.Lector["ENOMBRE"];
+
                     listaPedidos.Add(pedido);
                 }
 
-                return listaPedidos; 
+                return listaPedidos;
             }
             catch (Exception ex)
             {

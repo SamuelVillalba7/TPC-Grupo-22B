@@ -75,6 +75,7 @@
     <Content Include="EliminarProducto.aspx" />
     <Content Include="filtros.aspx" />
     <Content Include="FinalizarCompra.aspx" />
+    <Content Include="GestionarPedidos.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Default.aspx" />
     <Content Include="img\categorias\console.png" />
@@ -111,6 +112,7 @@
     <Content Include="img\servicios\pago.svg" />
     <Content Include="img\servicios\soporte.svg" />
     <Content Include="login.aspx" />
+    <Content Include="MisPedidos.aspx" />
     <Content Include="productoDescripcion.aspx" />
     <Content Include="registrar.aspx" />
     <Content Include="style\carrito.css" />
@@ -179,6 +181,13 @@
     <Compile Include="FinalizarCompra.aspx.designer.cs">
       <DependentUpon>FinalizarCompra.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GestionarPedidos.aspx.cs">
+      <DependentUpon>GestionarPedidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionarPedidos.aspx.designer.cs">
+      <DependentUpon>GestionarPedidos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -195,6 +204,13 @@
     </Compile>
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MisPedidos.aspx.cs">
+      <DependentUpon>MisPedidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MisPedidos.aspx.designer.cs">
+      <DependentUpon>MisPedidos.aspx</DependentUpon>
     </Compile>
     <Compile Include="productoDescripcion.aspx.cs">
       <DependentUpon>productoDescripcion.aspx</DependentUpon>
