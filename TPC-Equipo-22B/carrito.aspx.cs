@@ -21,43 +21,52 @@ namespace TPC_Equipo_22B
                 lblMensaje.Visible = false; // Ocultar el mensaje al cargar la página
                 prodcarrito = Session["carrito"] as List<ItemCarrito> ?? new List<ItemCarrito>();
 
-                string id = Session["idp"]?.ToString();
-                string cantidadSesion = Session["Cantidad"]?.ToString();
-
-                if (id != null && int.TryParse(cantidadSesion, out int cantidadSolicitada))
+                // Validar que exista un producto y una cantidad en la sesión
+                if (Session["idp"] != null && Session["Cantidad"] != null)
                 {
-                    ArticuloNegocio articuloNegocio = new ArticuloNegocio();
-                    Articulo articulo = articuloNegocio.listarId(id);
+                    string id = Session["idp"].ToString();
+                    string cantidadSesion = Session["Cantidad"].ToString();
 
-                    if (articuloNegocio.ConsultarStock(int.Parse(id)) >= cantidadSolicitada)
+                    if (int.TryParse(cantidadSesion, out int cantidadSolicitada))
                     {
-                        // Si el producto ya está en el carrito, sumar la cantidad
-                        int indice = articuloNegocio.encontrarArticulo(prodcarrito, int.Parse(id));
-                        if (indice == -1)
+                        ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+                        Articulo articulo = articuloNegocio.listarId(id);
+
+                        if (articuloNegocio.ConsultarStock(int.Parse(id)) >= cantidadSolicitada)
                         {
-                            prodcarrito.Add(new ItemCarrito
+                            // Si el producto ya está en el carrito, sumar la cantidad
+                            int indice = articuloNegocio.encontrarArticulo(prodcarrito, int.Parse(id));
+                            if (indice == -1)
                             {
-                                art = articulo,
-                                cantidad = cantidadSolicitada
-                            });
+                                prodcarrito.Add(new ItemCarrito
+                                {
+                                    art = articulo,
+                                    cantidad = cantidadSolicitada
+                                });
+                            }
+                            else
+                            {
+                                prodcarrito[indice].cantidad += cantidadSolicitada;
+                            }
                         }
                         else
                         {
-                            prodcarrito[indice].cantidad += cantidadSolicitada;
+                            lblMensaje.Text = "No hay suficiente stock disponible para añadir al carrito.";
+                            lblMensaje.Visible = true;
                         }
                     }
-                    else
-                    {
-                        lblMensaje.Text = "No hay suficiente stock disponible para añadir al carrito.";
-                        lblMensaje.Visible = true;
-                    }
+                    // Limpiar las variables de sesión
+                    Session["idp"] = null;
+                    Session["Cantidad"] = null;
                 }
 
+                // Actualizar la sesión y enlazar al GridView
                 Session["carrito"] = prodcarrito;
                 dgv_carrito.DataSource = prodcarrito;
                 dgv_carrito.DataBind();
             }
         }
+
 
 
 
