@@ -85,6 +85,66 @@ namespace negocio
             }
         }
 
+        public List<Pedido> ListarPedidosPorUsuario(int idUsuario)
+        {
+            List<Pedido> listaPedidos = new List<Pedido>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                // Consulta SQL para filtrar pedidos por usuario
+                datos.setearConsulta(@"
+            SELECT 
+                P.IDPEDIDO, 
+                P.IDUSUARIO, 
+                U.NOMBRE AS UNOMBRE, 
+                P.IDMETODO, 
+                MP.NOMBRE AS MPNOMBRE, 
+                P.IDESTADO, 
+                E.NOMBRE AS ENOMBRE, 
+                P.FECHAPEDIDO, 
+                P.MONTOTOTAL
+            FROM 
+                PEDIDOS P
+            INNER JOIN USUARIOS U ON P.IDUSUARIO = U.IDUSUARIO
+            INNER JOIN METODODEPAGO MP ON P.IDMETODO = MP.IDMETODO
+            INNER JOIN ESTADOS E ON P.IDESTADO = E.IDESTADO
+            WHERE P.IDUSUARIO = @IdUsuario");
+
+                datos.setearParametro("@IdUsuario", idUsuario);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Pedido pedido = new Pedido
+                    {
+                        IdPedido = (int)(long)(datos.Lector["IDPEDIDO"]),
+                        IdUsuario = (int)(long)(datos.Lector["IDUSUARIO"]),
+                        NombreUsuario = datos.Lector["UNOMBRE"].ToString(),
+                        IdMetodoPago = (int)datos.Lector["IDMETODO"],
+                        MetodoNombre = datos.Lector["MPNOMBRE"].ToString(),
+                        IdEstado = (int)datos.Lector["IDESTADO"],
+                        EstadoNombre = datos.Lector["ENOMBRE"].ToString(),
+                        FechaPedido = (DateTime)datos.Lector["FECHAPEDIDO"],
+                        MontoTotal = (decimal)datos.Lector["MONTOTOTAL"]
+                    };
+
+                    listaPedidos.Add(pedido);
+                }
+
+                return listaPedidos;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
         public void GuardarDetallePedido(int idPedido, List<ItemCarrito> prodcarrito)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -129,8 +189,6 @@ namespace negocio
         }
 
 
-
-
         public void ActualizarStock(List<ItemCarrito> prodcarrito)
         {
             try
@@ -164,40 +222,65 @@ namespace negocio
                 throw ex;
             }
             finally { datos.cerrarConexion(); }
-
-
-
         }
 
-        public List<Pedido> ListarPedidos(int IDUsuario)
+        public void ActualizarEstadoPedido(int idPedido, int idEstado)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("UPDATE Pedidos SET IdEstado = @IdEstado WHERE IdPedido = @IdPedido");
+                datos.setearParametro("@IdEstado", idEstado);
+                datos.setearParametro("@IdPedido", idPedido);
+                datos.ejecutarAccion();
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public List<Pedido> ListarPedidosConEstados()
         {
             List<Pedido> listaPedidos = new List<Pedido>();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-
-                datos.setearConsulta("select P.IDPEDIDO, P.IDUSUARIO, U.NOMBRE AS UNOMBRE, P.IDMETODO, MP.NOMBRE AS MPNOMBRE, P.IDESTADO, E.NOMBRE AS ENOMBRE,  P.ENVIO, P.FECHAPEDIDO, P.MONTOTOTAL from PEDIDOS P INNER JOIN USUARIOS U ON P.IDUSUARIO = U.IDUSUARIO INNER JOIN METODODEPAGO MP ON P.IDMETODO = MP.IDMETODO INNER JOIN ESTADOS E ON P.IDESTADO = E.IDESTADO WHERE P.IDUSUARIO = @IDUSUARIO");
-                datos.setearParametro("IDUSUARIO", IDUsuario);
-
+                // Consulta SQL que incluye los estados
+                datos.setearConsulta(@"
+            SELECT 
+                P.IDPEDIDO, 
+                P.IDUSUARIO, 
+                U.NOMBRE AS UNOMBRE, 
+                P.IDMETODO, 
+                MP.NOMBRE AS MPNOMBRE, 
+                P.IDESTADO, 
+                E.NOMBRE AS ENOMBRE, 
+                P.FECHAPEDIDO, 
+                P.MONTOTOTAL
+            FROM 
+                PEDIDOS P
+            INNER JOIN USUARIOS U ON P.IDUSUARIO = U.IDUSUARIO
+            INNER JOIN METODODEPAGO MP ON P.IDMETODO = MP.IDMETODO
+            INNER JOIN ESTADOS E ON P.IDESTADO = E.IDESTADO");
 
                 datos.ejecutarLectura();
 
-
                 while (datos.Lector.Read())
                 {
-                    Pedido pedido = new Pedido();
-
-
-                    pedido.IdPedido = (int)(long)(datos.Lector["IDPEDIDO"]);
-                    pedido.IdUsuario = (int)(long)(datos.Lector["IDUSUARIO"]);
-                    pedido.IdMetodoPago = (int)datos.Lector["IDMETODO"];
-                    pedido.IdEstado = (int)datos.Lector["IDESTADO"];
-                    pedido.FechaPedido = (DateTime)datos.Lector["FECHAPEDIDO"];
-                    pedido.MontoTotal = (decimal)datos.Lector["MONTOTOTAL"];
-                    pedido.NombreUsuario = (string)datos.Lector["UNOMBRE"];
-                    pedido.MetodoNombre = (string)datos.Lector["MPNOMBRE"];
-                    pedido.EstadoNombre = (string)datos.Lector["ENOMBRE"];
+                    Pedido pedido = new Pedido
+                    {
+                        IdPedido = (int)(long)(datos.Lector["IDPEDIDO"]),
+                        IdUsuario = (int)(long)(datos.Lector["IDUSUARIO"]),
+                        NombreUsuario = datos.Lector["UNOMBRE"].ToString(),
+                        IdMetodoPago = (int)datos.Lector["IDMETODO"],
+                        MetodoNombre = datos.Lector["MPNOMBRE"].ToString(),
+                        IdEstado = (int)datos.Lector["IDESTADO"],
+                        EstadoNombre = datos.Lector["ENOMBRE"].ToString(),
+                        FechaPedido = (DateTime)datos.Lector["FECHAPEDIDO"],
+                        MontoTotal = (decimal)datos.Lector["MONTOTOTAL"]
+                    };
 
                     listaPedidos.Add(pedido);
                 }
@@ -213,9 +296,5 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
-
-
-
-
     }
 }

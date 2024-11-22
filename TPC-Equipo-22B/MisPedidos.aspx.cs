@@ -15,22 +15,27 @@ namespace TPC_Equipo_22B
         private void CargarPedidos()
         {
             PedidoNegocio pedidoNegocio = new PedidoNegocio();
-            List<Pedido> pedidos = pedidoNegocio.ListarPedidos(usuario.Id);
+            List<Pedido> pedidos = pedidoNegocio.ListarPedidosPorUsuario(usuario.Id);
             gvPedidos.DataSource = pedidos;
             gvPedidos.DataBind();
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
             if (!IsPostBack)
             {
                 usuario = (Usuario)Session["usuario"];
-                // Cargar pedidos
+
+                if (usuario == null)
+                {
+                    Response.Redirect("Default.aspx"); // Redirige al inicio si no hay usuario en la sesión
+                    return;
+                }
+
                 CargarPedidos();
-                
             }
         }
+
 
         protected void gvPedidos_RowCommand(object sender, GridViewCommandEventArgs e)
         {

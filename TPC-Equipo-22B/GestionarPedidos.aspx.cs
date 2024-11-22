@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using dominio;
@@ -11,8 +9,13 @@ namespace TPC_Equipo_22B
 {
     public partial class GestionarPedidos : System.Web.UI.Page
     {
-        List<Pedido> pedidos = new List<Pedido>();
-
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                CargarPedidos();
+            }
+        }
 
         // Cargar los pedidos desde la base de datos
         private void CargarPedidos()
@@ -23,57 +26,66 @@ namespace TPC_Equipo_22B
             gvPedidos.DataBind();
         }
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            if (!IsPostBack)
-            {
-                // Cargar pedidos (simulado)
-                CargarPedidos();
-            }
-        }
-
-
         protected void gvPedidos_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            // Poner el GridView en modo edición
             gvPedidos.EditIndex = e.NewEditIndex;
             CargarPedidos();
-
         }
 
         protected void gvPedidos_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
-            // Cancelar la edición
             gvPedidos.EditIndex = -1;
             CargarPedidos();
         }
 
         protected void gvPedidos_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            // Obtener el ID del pedido que se está actualizando
-            int idPedido = Convert.ToInt32(gvPedidos.DataKeys[e.RowIndex].Value);
-
-            // Obtener la fila que está en edición
-            GridViewRow row = gvPedidos.Rows[e.RowIndex];
-
-            // Obtener el valor actualizado del DropDownList
-            DropDownList ddlEstado = (DropDownList)row.FindControl("ddlEstado");
-            int nuevoEstado = Convert.ToInt32(ddlEstado.SelectedValue);
-
-            // Actualizar el estado en tu base de datos
-            // Aquí llamarías a tu capa de negocio para actualizar el pedido en la base de datos
-
-            // Simulación de actualización en la lista local
-            Pedido pedido = pedidos.Find(p => p.IdPedido == idPedido);
-            if (pedido != null)
+            try
             {
-                pedido.IdEstado = nuevoEstado;
-            }
+                int idPedido = Convert.ToInt32(gvPedidos.DataKeys[e.RowIndex].Value);
 
-            // Terminar edición
-            gvPedidos.EditIndex = -1;
-            CargarPedidos();
+                GridViewRow row = gvPedidos.Rows[e.RowIndex];
+                DropDownList ddlEstado = (DropDownList)row.FindControl("ddlEstado");
+                int nuevoEstado = Convert.ToInt32(ddlEstado.SelectedValue);
+
+                PedidoNegocio pedidoNegocio = new PedidoNegocio();
+                pedidoNegocio.ActualizarEstadoPedido(idPedido, nuevoEstado);
+
+                gvPedidos.EditIndex = -1;
+                CargarPedidos();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al actualizar el estado del pedido: {ex.Message}");
+            }
+        }
+
+        protected void gvPedidos_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowState.HasFlag(DataControlRowState.Edit))
+            {
+                DropDownList ddlEstado = (DropDownList)e.Row.FindControl("ddlEstado");
+
+                if (ddlEstado != null)
+                {
+                    EstadoNegocio estadoNegocio = new EstadoNegocio();
+                    List<Estados> estados = estadoNegocio.ListarEstados();
+
+                    ddlEstado.DataSource = estados;
+                    ddlEstado.DataTextField = "Nombre";
+                    ddlEstado.DataValueField = "IdEstado";
+                    ddlEstado.DataBind();
+
+                    Pedido pedido = (Pedido)e.Row.DataItem;
+                    if (pedido != null)
+                    {
+                        if (ddlEstado.Items.FindByValue(pedido.IdEstado.ToString()) != null)
+                        {
+                            ddlEstado.SelectedValue = pedido.IdEstado.ToString();
+                        }
+                    }
+                }
+            }
         }
     }
-
 }
