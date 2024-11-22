@@ -18,10 +18,13 @@
             <div class="detalle-producto__container-buttons">
                    <%--<input type="number" class="detalle-producto__cantidad" name="quantity" value="1" title="Qty" size="4" min="1" max="" step="1" placeholder="" inputmode="numeric" autocomplete="off">--%>
                 <asp:TextBox ID="txtCantidad" runat="server" type="number" min="1" max="<%:articulo.Stock %>" Text="1"></asp:TextBox>
-                <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
-                <asp:Button ID="btnAgregarAlCarrito" Onclick="Button1_Click" CssClass="detalle-producto__button" runat="server" Text="Add to cart" />
+                <asp:Label ID="lblError" runat="server" Text=""></asp:Label>                <asp:Button ID="btnAgregarAlCarrito" Onclick="Button1_Click" CssClass="detalle-producto__button" runat="server" Text="Add to cart" />
                
             </div>
+            <div>
+                <asp:Label class="detalle-producto__categoria" ID="Label1" runat="server" Text="" ForeColor="Red" ></asp:Label>
+            </div>
+ 
             <p class="detalle-producto__categoria">Category:<%:articulo.Categoria.Nombre%></p>
 
         </div>

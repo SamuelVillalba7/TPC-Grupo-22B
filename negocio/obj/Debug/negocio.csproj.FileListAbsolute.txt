@@ -16,15 +16,6 @@ D:\TUP-UTN\Programacion 3\TPC-Grupo-22B\negocio\obj\Debug\negocio.csproj.CoreCom
 D:\TUP-UTN\Programacion 3\TPC-Grupo-22B\negocio\obj\Debug\negocio.csproj.Up2Date
 D:\TUP-UTN\Programacion 3\TPC-Grupo-22B\negocio\obj\Debug\negocio.dll
 D:\TUP-UTN\Programacion 3\TPC-Grupo-22B\negocio\obj\Debug\negocio.pdb
-C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\negocio\bin\Debug\negocio.dll
-C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\negocio\bin\Debug\negocio.pdb
-C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\negocio\bin\Debug\dominio.dll
-C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\negocio\bin\Debug\dominio.pdb
-C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\negocio\obj\Debug\negocio.csproj.AssemblyReference.cache
-C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\negocio\obj\Debug\negocio.csproj.CoreCompileInputs.cache
-C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\negocio\obj\Debug\negocio.csproj.CopyComplete
-C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\negocio\obj\Debug\negocio.dll
-C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\negocio\obj\Debug\negocio.pdb
 C:\Users\Usuario\Desktop\TPC-Grupo-22B\negocio\bin\Debug\negocio.dll
 C:\Users\Usuario\Desktop\TPC-Grupo-22B\negocio\bin\Debug\negocio.pdb
 C:\Users\Usuario\Desktop\TPC-Grupo-22B\negocio\bin\Debug\dominio.dll
@@ -79,3 +70,12 @@ D:\TUP-UTN\TPC-Grupo-22B\negocio\obj\Debug\negocio.csproj.CoreCompileInputs.cach
 D:\TUP-UTN\TPC-Grupo-22B\negocio\obj\Debug\negocio.csproj.Up2Date
 D:\TUP-UTN\TPC-Grupo-22B\negocio\obj\Debug\negocio.dll
 D:\TUP-UTN\TPC-Grupo-22B\negocio\obj\Debug\negocio.pdb
+C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\negocio\bin\Debug\negocio.dll
+C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\negocio\bin\Debug\negocio.pdb
+C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\negocio\bin\Debug\dominio.dll
+C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\negocio\bin\Debug\dominio.pdb
+C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\negocio\obj\Debug\negocio.csproj.AssemblyReference.cache
+C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\negocio\obj\Debug\negocio.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\negocio\obj\Debug\negocio.csproj.CopyComplete
+C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\negocio\obj\Debug\negocio.dll
+C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\negocio\obj\Debug\negocio.pdb

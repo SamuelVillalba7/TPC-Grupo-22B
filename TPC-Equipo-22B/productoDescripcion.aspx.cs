@@ -55,6 +55,8 @@ namespace TPC_Equipo_22B
             {
                 lblError.Text = "Por favor, ingresa un valor válido.";
             }
+
+
         }
 
         
