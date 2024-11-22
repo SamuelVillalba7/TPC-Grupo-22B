@@ -15,6 +15,24 @@
 
     <link href="style/master.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/a291c56e45.js" crossorigin="anonymous"></script>
+    <style>
+        .logo-img {
+            max-width: 150px; /* Ajusta el ancho máximo */
+            max-height: 50px; /* Ajusta la altura máxima */
+            object-fit: contain; /* Mantiene las proporciones */
+            margin-right: 10px; /* Espacio entre el logo y el texto */
+        }
+
+        .header__ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .header__li {
+            margin-right: 20px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -22,12 +40,12 @@
             <header class="header">
                 <div class="header__container">
                     <div class="header__logo">
-                        <img src="" alt="" />
-                        <a class="header__nombre">PHLOX</a>
+                        <img src="img/logo/logo.png" alt="Logo de PHLOX" class="logo-img" />
+
                     </div>
                     <nav class="header__nav">
-                        <a class="header__a" href="Default.aspx">Home</a>
-                        <a class="header__a" href="filtros.aspx">Shop</a>
+                        <a class="header__a" href="Default.aspx">Inicio</a>
+                        <a class="header__a" href="filtros.aspx">Tienda</a>
                         <% if (Session["usuario"] != null)
                             { %>
                         <% if (((dominio.Usuario)Session["usuario"]).Administrador)
@@ -35,27 +53,22 @@
                         <a class="header__a" href="administrar.aspx">Administrar</a>
                         <a class="header__a" href="GestionarPedidos.aspx">Gestionar Pedidos</a>
                         <% }
-                        else
-                        { %>
+                            else
+                            { %>
                         <a class="header__a" href="MisPedidos.aspx">Mis Pedidos</a>
                         <% } %>
                         <a class="header__a" href="Logout.aspx">Cerrar Sesión</a>
                         <% }
-                        else
-                        { %>
+                            else
+                            { %>
                         <a class="header__a" href="login.aspx">Iniciar Sesión</a>
                         <% } %>
                     </nav>
-
                 </div>
                 <div class="header__container">
                     <ul class="header__ul">
-                        <li class="header__li"><a class="header__a" href="login.aspx">login</a></li>
-                        <li class="header__li">
-                            <img src="./img/header/search.svg" alt="" /></li>
                         <li class="header__li"><a href="carrito.aspx">
-                            <img src="./img/header/bag.svg" alt="" /></a></li>
-
+                            <img src="./img/header/bag.svg" alt="Carrito de Compras" /></a></li>
                     </ul>
                 </div>
             </header>
@@ -65,19 +78,19 @@
 
             <div class="publicidad">
                 <div class="publicidad__item">
-                    <img class="publicidad__img" src="./img/publicidad/golden.png" alt="">
+                    <img class="publicidad__img" src="./img/publicidad/golden.png" alt="Publicidad Golden">
                 </div>
                 <div class="publicidad__item">
-                    <img class="publicidad__img" src="./img/publicidad/sweety.png" alt="">
+                    <img class="publicidad__img" src="./img/publicidad/sweety.png" alt="Publicidad Sweety">
                 </div>
                 <div class="publicidad__item">
-                    <img class="publicidad__img" src="./img/publicidad/fastlane.png" alt="">
+                    <img class="publicidad__img" src="./img/publicidad/fastlane.png" alt="Publicidad Fastlane">
                 </div>
                 <div class="publicidad__item">
-                    <img class="publicidad__img" src="./img/publicidad/migthy.png" alt="">
+                    <img class="publicidad__img" src="./img/publicidad/migthy.png" alt="Publicidad Mighty">
                 </div>
                 <div class="publicidad__item">
-                    <img class="publicidad__img" src="./img/publicidad/jackroller.png" alt="">
+                    <img class="publicidad__img" src="./img/publicidad/jackroller.png" alt="Publicidad Jackroller">
                 </div>
             </div>
 
@@ -85,45 +98,33 @@
                 <div class="footer">
                     <div class="footer__box">
                         <div class="footer__img">
-                            <img src="./img/header/logotype.png" alt="" />
+                            <img src="img/logo/logo.png" alt="Logo de PHLOX" class="logo-img" />
                         </div>
                     </div>
                     <div class="footer__box2">
-                        <h3 class="footer__title">Quick Links</h3>
+                        <h3 class="footer__title">Enlaces Rápidos</h3>
                         <ul class="footer__ul">
-                            <li class="footer__li"><a href="Default.aspx" class="footer__a">Home</a> </li>
-                            <li class="footer__li"><a href="filtros.aspx" class="footer__a">Shop</a> </li>
-                            <li class="footer__li"><a href="about.aspx" class="footer__a">About</a> </li>
-                            <li class="footer__li"><a href="contact.aspx" class="footer__a">Contact</a> </li>
+                            <li class="footer__li"><a href="Default.aspx" class="footer__a">Inicio</a></li>
+                            <li class="footer__li"><a href="filtros.aspx" class="footer__a">Tienda</a></li>
+                            <li class="footer__li"><a href="Default.aspx" class="footer__a">Acerca de Nosotros</a></li>
+                            <li class="footer__li"><a href="Default.aspx" class="footer__a">Contacto</a></li>
                         </ul>
                     </div>
-                    <%--<div class="footer__box3">
-                        <h3 class="footer__title">Contact</h3>
-                        <p class="footer__p">
-                            +99 (0) 101 0000 888 Patricia
-                            <br>
-                            C. Amedee 4401 Waldeck
-                            <br>
-                            Street Grapevine Nashville, Tx
-                            <br>
-                            76051
-                       
-                        </p>
-                    </div>--%>
+
                     <div class="footer__box4">
-                        <h3 class="footer__title">Subscribete!</h3>
-                        <span class="footer__span">Para mas novedades</span>
+                        <h3 class="footer__title">Suscríbete</h3>
+                        <span class="footer__span">Recibe más novedades</span>
                         <div class="footer__container-input">
-                            <input type="text" class="footer__input" placeholder="Enter Your Email">
-                            <button class="footer__button">subscribe</button>
+                            <input type="text" class="footer__input" placeholder="Ingresa tu correo electrónico">
+                            <button class="footer__button">Suscribirse</button>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="end">
-                <span class="end__span">© 2024 Phlox Digital Shop. All rights reserved.</span>
-                <span class="end__span">Privacy Policy . Term Condition</span>
+                <span class="end__span">© 2024 PHLOX Tienda Digital. Todos los derechos reservados.</span>
+                <span class="end__span">Política de Privacidad . Términos y Condiciones</span>
             </div>
         </div>
     </form>
