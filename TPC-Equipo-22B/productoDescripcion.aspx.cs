@@ -34,20 +34,24 @@ namespace TPC_Equipo_22B
         {
             int cantidadIngresada;
             ArticuloNegocio negocio = new ArticuloNegocio();
-            int stockMaximo = negocio.ConsultarStock(int.Parse(Request.QueryString["productoId"])); // Aquí va el valor máximo que has definido en el front-end
+            int stockDisponible = negocio.ConsultarStock(int.Parse(id)); // Consulta el stock actual del producto
 
             if (int.TryParse(txtCantidad.Text, out cantidadIngresada))
             {
-                if (cantidadIngresada > stockMaximo)
+                if (cantidadIngresada > stockDisponible)
                 {
-                    // Mostrar mensaje de error o corregir el valor a su máximo permitido
+                    // Mostrar mensaje de error
                     lblError.Text = "La cantidad ingresada excede el stock disponible.";
-                    txtCantidad.Text = stockMaximo.ToString(); // Opcionalmente, ajustar el valor al máximo permitido
+                }
+                else if (cantidadIngresada <= 0)
+                {
+                    lblError.Text = "La cantidad debe ser mayor a 0.";
                 }
                 else
                 {
+                    // Si la cantidad es válida, agregar a la sesión y redirigir al carrito
                     Session.Add("idp", id);
-                    Session.Add("Cantidad", txtCantidad.Text);
+                    Session.Add("Cantidad", cantidadIngresada.ToString());
                     Response.Redirect("carrito.aspx", false);
                 }
             }
@@ -55,10 +59,7 @@ namespace TPC_Equipo_22B
             {
                 lblError.Text = "Por favor, ingresa un valor válido.";
             }
-
-
         }
 
-        
-        }
     }
+}

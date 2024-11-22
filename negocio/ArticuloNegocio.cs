@@ -289,30 +289,51 @@ namespace negocio
         //    }
         //}
 
-        public int ConsultarStock(int IdProducto)
+        //public int ConsultarStock(int IdProducto)
+        //{
+        //    List<Articulo> lista = new List<Articulo>();
+        //    AccesoDatos datos = new AccesoDatos();
+        //    try
+        //    {
+
+        //        datos.setearConsulta("select IDPRODUCTO, STOCK from PRODUCTOS WHERE IDPRODUCTO = @IDPRO");
+        //        datos.setearParametro("IDPRO", IdProducto);
+        //        datos.ejecutarLectura();
+
+        //        int stock = 0;
+
+        //        while (datos.Lector.Read())
+        //        {
+        //            stock = (int)datos.Lector["STOCK"];
+
+        //        }
+
+        //        return stock;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //    finally
+        //    {
+        //        datos.cerrarConexion();
+        //    }
+        //}
+
+        public int ConsultarStock(int idProducto)
         {
-            List<Articulo> lista = new List<Articulo>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
-
-                datos.setearConsulta("select IDPRODUCTO, STOCK from PRODUCTOS WHERE IDPRODUCTO = @IDPRO");
-                datos.setearParametro("IDPRO", IdProducto);
+                datos.setearConsulta("select IDPRODUCTO, STOCK from PRODUCTOS WHERE IDPRODUCTO = @idProducto");
+                datos.setearParametro("@idProducto", idProducto);
                 datos.ejecutarLectura();
 
-                int stock = 0;
-
-                while (datos.Lector.Read())
+                if (datos.Lector.Read())
                 {
-                    
-
-                    stock = (int)datos.Lector["STOCK"];
-
-                    
-
+                    return (int)datos.Lector["Stock"];
                 }
-
-                return stock;
+                return 0; // Si no encuentra el producto, devolver 0
             }
             catch (Exception ex)
             {
@@ -323,7 +344,8 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
-    
+
+
 
         public List<Articulo> listarArticulosRelacionados(int Id, int Categoria)
         {

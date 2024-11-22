@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -15,35 +16,50 @@ namespace TPC_Equipo_22B
         Articulo agregar = new Articulo();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)  // Evitar la recarga en cada postback
+            if (!IsPostBack)
             {
-                prodcarrito = Session["carrito"] as List<ItemCarrito>;
+                lblMensaje.Visible = false; // Ocultar el mensaje al cargar la página
+                prodcarrito = Session["carrito"] as List<ItemCarrito> ?? new List<ItemCarrito>();
 
-                if (prodcarrito == null)
+                string id = Session["idp"]?.ToString();
+                string cantidadSesion = Session["Cantidad"]?.ToString();
+
+                if (id != null && int.TryParse(cantidadSesion, out int cantidadSolicitada))
                 {
-                    prodcarrito = new List<ItemCarrito>();
+                    ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+                    Articulo articulo = articuloNegocio.listarId(id);
+
+                    if (articuloNegocio.ConsultarStock(int.Parse(id)) >= cantidadSolicitada)
+                    {
+                        // Si el producto ya está en el carrito, sumar la cantidad
+                        int indice = articuloNegocio.encontrarArticulo(prodcarrito, int.Parse(id));
+                        if (indice == -1)
+                        {
+                            prodcarrito.Add(new ItemCarrito
+                            {
+                                art = articulo,
+                                cantidad = cantidadSolicitada
+                            });
+                        }
+                        else
+                        {
+                            prodcarrito[indice].cantidad += cantidadSolicitada;
+                        }
+                    }
+                    else
+                    {
+                        lblMensaje.Text = "No hay suficiente stock disponible para añadir al carrito.";
+                        lblMensaje.Visible = true;
+                    }
                 }
 
-                ItemCarrito itemCarrito = new ItemCarrito();
-                ArticuloNegocio articuloNegocio = new ArticuloNegocio();
-                string id = Session["idp"].ToString();
-                itemCarrito.art = articuloNegocio.listarId(id);
-
-                if (articuloNegocio.encontrarArticulo(prodcarrito, int.Parse(id)) == -1)
-                {
-                    itemCarrito.cantidad = int.Parse(Session["Cantidad"].ToString());
-                    prodcarrito.Add(itemCarrito);
-                }
-                else
-                {
-                    prodcarrito[articuloNegocio.encontrarArticulo(prodcarrito, int.Parse(id))].cantidad += int.Parse(Session["Cantidad"].ToString());
-                }
-
-                Session.Add("carrito", prodcarrito);
+                Session["carrito"] = prodcarrito;
                 dgv_carrito.DataSource = prodcarrito;
                 dgv_carrito.DataBind();
             }
         }
+
+
 
         //protected void btnEliminar_Click(object sender, EventArgs e)
         //{
