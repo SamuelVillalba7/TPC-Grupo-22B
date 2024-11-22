@@ -583,6 +583,7 @@ D:\TUP-UTN\TPC-Grupo-22B\TPC-Equipo-22B\obj\Debug\TPC-Equipo-22B.csproj.CoreComp
 D:\TUP-UTN\TPC-Grupo-22B\TPC-Equipo-22B\obj\Debug\TPC-Equi.39C63C45.Up2Date
 D:\TUP-UTN\TPC-Grupo-22B\TPC-Equipo-22B\obj\Debug\TPC-Equipo-22B.dll
 D:\TUP-UTN\TPC-Grupo-22B\TPC-Equipo-22B\obj\Debug\TPC-Equipo-22B.pdb
+C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\TPC-Equipo-22B\bin\roslyn\System.IO.FileSystem.Primitives.dll
 C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\TPC-Equipo-22B\bin\roslyn\csc.exe.config
 C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\TPC-Equipo-22B\bin\roslyn\csc.rsp
 C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\TPC-Equipo-22B\bin\roslyn\csi.exe
@@ -606,7 +607,6 @@ C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\TPC-Equipo-22B\b
 C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\TPC-Equipo-22B\bin\roslyn\System.Globalization.Calendars.dll
 C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\TPC-Equipo-22B\bin\roslyn\System.IO.Compression.dll
 C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\TPC-Equipo-22B\bin\roslyn\System.IO.Compression.ZipFile.dll
-C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\TPC-Equipo-22B\bin\roslyn\System.IO.FileSystem.Primitives.dll
 C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\TPC-Equipo-22B\bin\roslyn\System.Net.Http.dll
 C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\TPC-Equipo-22B\bin\roslyn\System.Net.Sockets.dll
 C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\TPC-Equipo-22B\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll

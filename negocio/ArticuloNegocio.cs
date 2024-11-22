@@ -289,7 +289,41 @@ namespace negocio
         //    }
         //}
 
+        public int ConsultarStock(int IdProducto)
+        {
+            List<Articulo> lista = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
 
+                datos.setearConsulta("select IDPRODUCTO, STOCK from PRODUCTOS WHERE IDPRODUCTO = @IDPRO");
+                datos.setearParametro("IDPRO", IdProducto);
+                datos.ejecutarLectura();
+
+                int stock = 0;
+
+                while (datos.Lector.Read())
+                {
+                    
+
+                    stock = (int)datos.Lector["STOCK"];
+
+                    
+
+                }
+
+                return stock;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+    
 
         public List<Articulo> listarArticulosRelacionados(int Id, int Categoria)
         {

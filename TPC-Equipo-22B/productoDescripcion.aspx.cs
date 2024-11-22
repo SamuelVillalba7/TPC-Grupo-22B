@@ -32,10 +32,31 @@ namespace TPC_Equipo_22B
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-           
-            Session.Add("idp", id);
-            Session.Add("Cantidad", txtCantidad.Text);
-            Response.Redirect("carrito.aspx",false);
+            int cantidadIngresada;
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            int stockMaximo = negocio.ConsultarStock(int.Parse(Request.QueryString["productoId"])); // Aquí va el valor máximo que has definido en el front-end
+
+            if (int.TryParse(txtCantidad.Text, out cantidadIngresada))
+            {
+                if (cantidadIngresada > stockMaximo)
+                {
+                    // Mostrar mensaje de error o corregir el valor a su máximo permitido
+                    lblError.Text = "La cantidad ingresada excede el stock disponible.";
+                    txtCantidad.Text = stockMaximo.ToString(); // Opcionalmente, ajustar el valor al máximo permitido
+                }
+                else
+                {
+                    Session.Add("idp", id);
+                    Session.Add("Cantidad", txtCantidad.Text);
+                    Response.Redirect("carrito.aspx", false);
+                }
+            }
+            else
+            {
+                lblError.Text = "Por favor, ingresa un valor válido.";
+            }
+        }
+
+        
         }
     }
-}
