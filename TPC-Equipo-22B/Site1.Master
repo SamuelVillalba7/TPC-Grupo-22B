@@ -28,19 +28,25 @@
                     <nav class="header__nav">
                         <a class="header__a" href="Default.aspx">Home</a>
                         <a class="header__a" href="filtros.aspx">Shop</a>
-                        <%if (Session["usuario"] != null && ((dominio.Usuario)Session["usuario"]).Administrador == true)
+                        <% if (Session["usuario"] != null)
+                            { %>
+                        <% if (((dominio.Usuario)Session["usuario"]).Administrador)
                             { %>
                         <a class="header__a" href="administrar.aspx">Administrar</a>
-                        <%} %>
-                        <%if (Session["usuario"] != null && ((dominio.Usuario)Session["usuario"]).Administrador == true)
-                            { %>
                         <a class="header__a" href="GestionarPedidos.aspx">Gestionar Pedidos</a>
-                        <%} %>
-                        <%if (Session["usuario"] != null && ((dominio.Usuario)Session["usuario"]).Administrador == false)
-                            { %>
+                        <% }
+                        else
+                        { %>
                         <a class="header__a" href="MisPedidos.aspx">Mis Pedidos</a>
-                        <%} %>
+                        <% } %>
+                        <a class="header__a" href="Logout.aspx">Cerrar Sesión</a>
+                        <% }
+                        else
+                        { %>
+                        <a class="header__a" href="login.aspx">Iniciar Sesión</a>
+                        <% } %>
                     </nav>
+
                 </div>
                 <div class="header__container">
                     <ul class="header__ul">

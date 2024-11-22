@@ -27,7 +27,7 @@ namespace TPC_Equipo_22B
 
             try
             {
-                datos.setearConsulta("SELECT IDCATEGORIA, NOMBRE, ESTADO, URLIMAGEN FROM CATEGORIAS");
+                datos.setearConsulta("SELECT IDCATEGORIA, NOMBRE, ESTADO, URLIMAGEN, ORDEN FROM Categorias");
                 datos.ejecutarLectura();
 
                 dtCategorias.Load(datos.Lector);
@@ -139,5 +139,46 @@ namespace TPC_Equipo_22B
                 datos.cerrarConexion();
             }
         }
+
+        //protected void gvCategorias_RowCommand(object sender, GridViewCommandEventArgs e)
+        //{
+        //    int idCategoria = Convert.ToInt32(e.CommandArgument);
+
+        //    CategoriaNegocio negocio = new CategoriaNegocio();
+        //    if (e.CommandName == "Subir")
+        //    {
+        //        negocio.CambiarOrden(idCategoria, true); // True indica que se debe subir.
+        //    }
+        //    else if (e.CommandName == "Bajar")
+        //    {
+        //        negocio.CambiarOrden(idCategoria, false); // False indica que se debe bajar.
+        //    }
+
+        //    // Recargar categorías después del cambio.
+        //    CargarCategorias();
+        //}
+
+        protected void gvCategorias_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Subir" || e.CommandName == "Bajar")
+            {
+                int categoriaId = Convert.ToInt32(e.CommandArgument);
+                CategoriaNegocio negocio = new CategoriaNegocio();
+
+                if (e.CommandName == "Subir")
+                {
+                    negocio.CambiarOrden(categoriaId, "Subir");
+                }
+                else if (e.CommandName == "Bajar")
+                {
+                    negocio.CambiarOrden(categoriaId, "Bajar");
+                }
+
+                // Recargar el GridView después de actualizar el orden
+                CargarCategorias();
+            }
+        }
+
+
     }
 }

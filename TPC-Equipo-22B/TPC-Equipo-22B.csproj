@@ -112,6 +112,7 @@
     <Content Include="img\servicios\pago.svg" />
     <Content Include="img\servicios\soporte.svg" />
     <Content Include="login.aspx" />
+    <Content Include="Logout.aspx" />
     <Content Include="MisPedidos.aspx" />
     <Content Include="productoDescripcion.aspx" />
     <Content Include="registrar.aspx" />
@@ -204,6 +205,13 @@
     </Compile>
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="MisPedidos.aspx.cs">
       <DependentUpon>MisPedidos.aspx</DependentUpon>

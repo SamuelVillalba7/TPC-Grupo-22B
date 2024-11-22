@@ -18,6 +18,7 @@ namespace dominio
         {
             return Nombre;
         }
+        public int Orden {  get; set; }
     }
 
 }

@@ -36,11 +36,11 @@ namespace negocio
                         smtp.Credentials = new NetworkCredential(emailUsername, emailPassword); // Credenciales de Mailtrap
                         smtp.EnableSsl = true; // Activar SSL para conexión segura
 
-                        // Enviar el correo
+                        
                         smtp.Send(mail);
                     }
                 }
-                Console.WriteLine("Correo enviado con éxito.");
+                Console.WriteLine("Correo enviado con éxito");
             }
             catch (Exception ex)
             {

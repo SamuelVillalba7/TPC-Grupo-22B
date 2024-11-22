@@ -44,7 +44,8 @@
         <asp:GridView ID="gvCategorias" runat="server" CssClass="table table-striped table-bordered"
             AutoGenerateColumns="False" DataKeyNames="IDCATEGORIA" OnRowEditing="gvCategorias_RowEditing"
             OnRowCancelingEdit="gvCategorias_RowCancelingEdit" OnRowUpdating="gvCategorias_RowUpdating"
-            OnRowDeleting="gvCategorias_RowDeleting">
+            OnRowDeleting="gvCategorias_RowDeleting"
+            OnRowCommand="gvCategorias_RowCommand">
             <Columns>
                 <asp:BoundField DataField="IDCATEGORIA" HeaderText="ID" ReadOnly="True" />
                 <asp:BoundField DataField="NOMBRE" HeaderText="Nombre" />
@@ -59,6 +60,20 @@
                 <asp:BoundField DataField="URLIMAGEN" HeaderText="URL Imagen" />
                 <asp:CommandField ShowEditButton="True" EditText="Editar" />
                 <asp:CommandField ShowDeleteButton="True" DeleteText="Eliminar" />
+
+                <asp:TemplateField HeaderText="Orden">
+                    <ItemTemplate>
+                        <asp:Label ID="lblOrden" runat="server" Text='<%# Eval("ORDEN") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Acción">
+                    <ItemTemplate>
+                        <asp:Button ID="btnSubir" runat="server" Text="Subir" CommandName="Subir" CommandArgument='<%# Eval("IDCATEGORIA") %>' CssClass="btn btn-primary btn-sm" />
+                        <asp:Button ID="btnBajar" runat="server" Text="Bajar" CommandName="Bajar" CommandArgument='<%# Eval("IDCATEGORIA") %>' CssClass="btn btn-secondary btn-sm" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+
+
             </Columns>
         </asp:GridView>
 
