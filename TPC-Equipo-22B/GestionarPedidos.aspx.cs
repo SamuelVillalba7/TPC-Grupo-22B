@@ -106,6 +106,42 @@ namespace TPC_Equipo_22B
             }
         }
 
+        protected void gvPedidos_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Cancelar")
+            {
+                // Obtener el ID del pedido a partir del CommandArgument
+                int idPedido = Convert.ToInt32(e.CommandArgument);
+
+                CancelarPedido(idPedido);
+
+                // Recargar los pedidos para reflejar los cambios
+                CargarPedidos();
+                Response.Redirect("GestionarPedidos.aspx",false);
+            }
+        }
+
+        protected void CancelarPedido(int IdPedido)
+        {
+            //update PEDIDOS set IDESTADO = 6 where IDPEDIDO = @IdPedido
+
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("update PEDIDOS set IDESTADO = 6 where IDPEDIDO = @IdPedido");
+                datos.setearParametro("@IdPedido", IdPedido);
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally { datos.cerrarConexion(); }
+
+
+        }
+
 
         //protected void gvPedidos_RowDataBound(object sender, GridViewRowEventArgs e)
         //{

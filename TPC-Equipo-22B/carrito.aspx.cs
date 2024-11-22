@@ -121,8 +121,6 @@ namespace TPC_Equipo_22B
         protected void btnFinalizarCompra_Click(object sender, EventArgs e)
         {
             
-
-
             if(Session["usuario"] == null)
             {
                 lblMensaje.Text = "Debe loguearse antes de finalizar la compra.";

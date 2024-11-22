@@ -17,10 +17,10 @@
             background-color: white;
         }
 
-        /* Filas al pasar el mouse */
-        .grid-row:hover {
-            background-color: #f8f9fa; /* Color claro */
-        }
+            /* Filas al pasar el mouse */
+            .grid-row:hover {
+                background-color: #f8f9fa; /* Color claro */
+            }
 
         /* Botones de acción */
         .btn-action {
@@ -76,7 +76,8 @@
                 OnRowCancelingEdit="gvPedidos_RowCancelingEdit"
                 OnRowUpdating="gvPedidos_RowUpdating"
                 OnRowDataBound="gvPedidos_RowDataBound"
-                DataKeyNames="IdPedido">
+                DataKeyNames="IdPedido"
+                OnRowCommand="gvPedidos_RowCommand">
                 <Columns>
                     <asp:BoundField DataField="IdPedido" HeaderText="Pedido ID" ReadOnly="True" />
                     <asp:BoundField DataField="NombreUsuario" HeaderText="Usuario" ReadOnly="True" />
@@ -93,6 +94,15 @@
                         </EditItemTemplate>
                     </asp:TemplateField>
                     <asp:CommandField ShowEditButton="True" EditText="Editar" CancelText="Cancelar" UpdateText="Actualizar" />
+
+                    <asp:TemplateField HeaderText="Acciones">
+                        <ItemTemplate>
+                            <asp:Button ID="btnCancelar" runat="server" Text="Cancelar"
+                                CommandName="Cancelar" CommandArgument='<%# Eval("IdPedido") %>'
+                                CssClass="btn btn-danger" OnClientClick="return confirm('¿Está seguro de cancelar este pedido?');" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+
                 </Columns>
             </asp:GridView>
 
