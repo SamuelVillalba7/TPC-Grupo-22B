@@ -83,7 +83,10 @@ INSERT INTO ESTADOS (NOMBRE) VALUES
 ('Devuelto'),          -- El cliente ha devuelto el pedido, en proceso de devolución o reembolso.
 ('Reembolsado'),       -- El reembolso ha sido procesado y el dinero devuelto al cliente.
 ('En espera'),         -- El pedido está pausado temporalmente por algún motivo.
-('Fallido');           -- El pago no fue procesado correctamente, el pedido no se completó.
+('Fallido'),           -- El pago no fue procesado correctamente, el pedido no se completó.
+('Listo para retirar'),          
+('Finalizado'),           
+('Retirado') ;          
 
 GO
 CREATE TABLE PROVINCIAS(
