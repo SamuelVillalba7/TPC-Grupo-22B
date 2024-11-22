@@ -183,7 +183,7 @@ namespace TPC_Equipo_22B
                     negocio.CambiarOrden(categoriaId, "Bajar");
                 }
 
-                // Recargar el GridView después de actualizar el orden
+                
                 CargarCategorias();
             }
         }
@@ -194,9 +194,6 @@ namespace TPC_Equipo_22B
         protected void btnEditar_Click(object sender, EventArgs e)
         {
 
-
-
-            // Habilitar los CheckBox en la columna "Visible"
             foreach (GridViewRow row in gvCategoriasVisible.Rows)
             {
                 CheckBox chkVisible = (CheckBox)row.FindControl("chkVisible");
@@ -206,7 +203,7 @@ namespace TPC_Equipo_22B
                 }
             }
 
-            // Cambiar el estado de los botones
+            
             btnEditar.Enabled = false;
             btnActualizar.Enabled = true;
             btnCancelar.Enabled = true;
@@ -286,12 +283,12 @@ namespace TPC_Equipo_22B
                     }
                 }
 
-                // Cambiar el estado de los botones
+                
                 btnEditar.Enabled = true;
                 btnActualizar.Enabled = false;
                 btnCancelar.Enabled = false;
 
-                // Recargar los datos para reflejar cambios
+                
                 CargarCategorias();
             }
             catch (Exception ex)
@@ -305,7 +302,7 @@ namespace TPC_Equipo_22B
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            // Deshabilitar los CheckBox
+            
             foreach (GridViewRow row in gvCategoriasVisible.Rows)
             {
                 CheckBox chkVisible = (CheckBox)row.FindControl("chkVisible");
@@ -315,12 +312,12 @@ namespace TPC_Equipo_22B
                 }
             }
 
-            // Cambiar el estado de los botones
+            
             btnEditar.Enabled = true;
             btnActualizar.Enabled = false;
             btnCancelar.Enabled = false;
             lblMensaje.Text = "";
-            // Recargar los datos originales
+            
             CargarCategorias();
         }
 

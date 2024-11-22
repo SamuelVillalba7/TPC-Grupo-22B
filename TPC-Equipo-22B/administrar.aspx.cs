@@ -55,6 +55,8 @@ namespace TPC_Equipo_22B
 
         private void CargarProductos()
         {
+
+            // Es mejor usar DataTable para pasar los datos y manejarlos
             AccesoDatos datos = new AccesoDatos();
             DataTable dtProductos = new DataTable();
 
@@ -202,42 +204,38 @@ namespace TPC_Equipo_22B
 
         protected void gvProductos_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            // Establece el índice de la fila en modo de edición
+           
             gvProductos.EditIndex = e.NewEditIndex;
 
-            // Recarga los productos para que la fila seleccionada entre en modo de edición
+            
             CargarProductos();
   
         }
 
         protected void gvProductos_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
-            gvProductos.EditIndex = -1; // Cancelar la edición y volver al modo de solo lectura
-            CargarProductos(); // Recargar productos para quitar el modo de edición
+            gvProductos.EditIndex = -1; 
+            CargarProductos(); 
         }
 
         protected void gvProductos_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            // Obtener el ID del producto
+            
             string idProducto = gvProductos.DataKeys[e.RowIndex].Values["IDPRODUCTO"].ToString();
 
-            // Obtener el estado actual de forma segura
-            int estadoActual = 0; // Valor predeterminado en caso de error
+            int estadoActual = 0; 
             if (gvProductos.DataKeys[e.RowIndex].Values["ESTADO"] != null &&
                 int.TryParse(gvProductos.DataKeys[e.RowIndex].Values["ESTADO"].ToString(), out estadoActual))
             {
-                // Cambiar el estado: si es 1 (activo), lo desactiva a 0; si es 0, lo activa a 1
+             
                 int nuevoEstado = estadoActual == 1 ? 0 : 1;
-
-                // Llamar al método que cambia el estado del producto
                 CambiarEstadoProducto(idProducto, nuevoEstado);
 
-                // Recargar la lista de productos
                 CargarProductos();
             }
             else
             {
-                // Manejar el caso en que el valor de ESTADO no sea válido
+               
                 Console.WriteLine("Error: El estado actual no es un número válido.");
             }
         }
@@ -251,8 +249,6 @@ namespace TPC_Equipo_22B
                 datos.setearConsulta("UPDATE Productos SET ESTADO = @nuevoEstado WHERE IDPRODUCTO = @idProducto");
                 datos.setearParametro("@nuevoEstado", nuevoEstado);
                 datos.setearParametro("@idProducto", idProducto);
-
-                // Ejecutar la acción
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -335,11 +331,10 @@ namespace TPC_Equipo_22B
                     datos.cerrarConexion();
                 }
 
-                // Verificar y convertir el estado de forma segura
                 int estado = 0;
                 if (int.TryParse(DataBinder.Eval(e.Row.DataItem, "ESTADO").ToString(), out estado))
                 {
-                    // Recorrer los controles en la celda y buscar el LinkButton
+                
                     foreach (Control control in e.Row.Cells[5].Controls)
                     {
 
@@ -365,7 +360,7 @@ namespace TPC_Equipo_22B
 
                 try
                 {
-                    // Obtiene el estado actual del producto y lo invierte (1 a 0, o 0 a 1)
+                   
                     datos.setearConsulta("SELECT ESTADO FROM PRODUCTOS WHERE IDPRODUCTO = @idProducto");
                     datos.setearParametro("@idProducto", idProducto);
                     datos.ejecutarLectura();
@@ -376,19 +371,19 @@ namespace TPC_Equipo_22B
 
                     int nuevoEstado = estadoActual == 1 ? 0 : 1;
 
-                    // Cambia el estado en la base de datos
+                    
                     datos.cerrarConexion();
                     datos.setearConsulta("UPDATE PRODUCTOS SET ESTADO = @nuevoEstado WHERE IDPRODUCTO = @idProducto");
                     datos.setearParametro("@nuevoEstado", nuevoEstado);
                     datos.setearParametro("@idProducto", idProducto);
                     datos.ejecutarAccion();
 
-                    // Recargar los productos después de cambiar el estado
+                    
                     CargarProductos();
                 }
                 catch (Exception ex)
                 {
-                    // Manejar el error
+                    
                     Console.WriteLine(ex.Message);
                 }
                 finally

@@ -28,7 +28,7 @@ namespace TPC_Equipo_22B
 
                 if (usuario == null)
                 {
-                    Response.Redirect("Default.aspx"); // Redirige al inicio si no hay usuario en la sesión
+                    Response.Redirect("Default.aspx"); 
                     return;
                 }
 
@@ -41,12 +41,12 @@ namespace TPC_Equipo_22B
         {
             if (e.CommandName == "Cancelar")
             {
-                // Obtener el ID del pedido a partir del CommandArgument
+                
                 int idPedido = Convert.ToInt32(e.CommandArgument);
 
                 CancelarPedido(idPedido);
 
-                // Recargar los pedidos para reflejar los cambios
+                
                 CargarPedidos();
                 Response.Redirect("MisPedidos.aspx");
             }

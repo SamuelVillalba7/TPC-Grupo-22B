@@ -107,7 +107,7 @@ namespace TPC_Equipo_22B
                 DatosEnvioNegocio datosEnvioNegocio = new DatosEnvioNegocio();
                 List<ItemCarrito> prodcarrito = Session["carrito"] as List<ItemCarrito>;
 
-                // Validación del carrito
+               
                 if (prodcarrito == null || prodcarrito.Count == 0)
                 {
                     lblError.Text = "El carrito está vacío.";
@@ -115,19 +115,19 @@ namespace TPC_Equipo_22B
                     return;
                 }
 
-                // Calcular monto total y registrar el pedido
+                
                 montoTotal = CalcularMontoTotal();
                 int IdPedido = negocio.RegistrarPedido(
                     usuario.Id,
                     int.Parse(ddlMetodoPago.SelectedValue),
-                    1, // Estado inicial del pedido
+                    1, 
                     DateTime.Now,
                     int.Parse(rblEntrega.SelectedValue),
                     montoTotal
                 );
 
                 // Registrar datos de envío si es necesario
-                if (int.Parse(rblEntrega.SelectedValue) == 1) // 1 significa que eligió envío
+                if (int.Parse(rblEntrega.SelectedValue) == 1) 
                 {
                     datosEnvioNegocio.agregar(
                         IdPedido,
@@ -138,20 +138,20 @@ namespace TPC_Equipo_22B
                     );
                 }
 
-                // Guardar detalle del pedido y actualizar stock
+                
                 negocio.GuardarDetallePedido(IdPedido, prodcarrito);
                 negocio.ActualizarStock(prodcarrito);
 
-                // Crear cuerpo del correo
+                
                 string detallePedido = GenerarDetallePedido(prodcarrito, IdPedido, montoTotal);
                 string asunto = "Confirmación de Pedido - Pedido #" + IdPedido;
 
-                // Enviar correo con Mailtrap
+                
                 EnvioMail envioMail = new EnvioMail();
                 envioMail.Enviar(txtEmail.Text, asunto, detallePedido);
 
-                // Limpiar el carrito y redirigir al usuario
-                Session["carrito"] = null; // Limpiar el carrito
+                
+                Session["carrito"] = null; 
                 Response.Redirect("Default.aspx", false);
             }
             catch (Exception ex)
@@ -206,7 +206,7 @@ namespace TPC_Equipo_22B
 
                 datos.ejecutarAccion();
 
-                // Obtener el ID del pedido recién creado
+                
                 datos.setearConsulta("SELECT SCOPE_IDENTITY()");
                 return Convert.ToInt32(datos.ejecutarEscalar());
             }
@@ -235,7 +235,7 @@ namespace TPC_Equipo_22B
 
             if (carrito == null || carrito.Rows.Count == 0)
             {
-                return total; // Si no hay productos, el total es 0
+                return total; 
             }
 
             foreach (DataRow row in carrito.Rows)

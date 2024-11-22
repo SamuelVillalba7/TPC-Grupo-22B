@@ -43,11 +43,11 @@ namespace TPC_Equipo_22B
                 ddlMarca.Items.Insert(0, new ListItem("Todas", ""));
                 ddlMarca.SelectedIndex = 0;
 
-                // Manejar el parámetro de categoría desde el QueryString
+                
                 string categoriaIdParam = Request.QueryString["categoriaId"];
                 if (!string.IsNullOrEmpty(categoriaIdParam) && int.TryParse(categoriaIdParam, out int categoriaId))
                 {
-                    // Filtrar productos por categoría
+                    
                     FiltrarPorCategoria(categoriaId);
                 }
             }
@@ -55,8 +55,8 @@ namespace TPC_Equipo_22B
 
         private void FiltrarPorCategoria(int categoriaId)
         {
-            ddlCategoria.SelectedValue = categoriaId.ToString(); // Seleccionar categoría en el dropdown
-            ListaArticulo = negocio.listarConSP(-1, categoriaId); // Filtrar solo por categoría                                                               
+            ddlCategoria.SelectedValue = categoriaId.ToString(); 
+            ListaArticulo = negocio.listarConSP(-1, categoriaId);                                                             
         }
 
 

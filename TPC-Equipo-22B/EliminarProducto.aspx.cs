@@ -30,15 +30,14 @@ namespace TPC_Equipo_22B
 
             try
             {
-                // Obtener los productos para llenar la grilla
+               
                 datos.setearConsulta("SELECT IDPRODUCTO, NOMBRE FROM PRODUCTOS");
                 datos.ejecutarLectura();
 
-                // Convertir los datos a DataTable
                 DataTable dtProductos = new DataTable();
                 dtProductos.Load(datos.Lector);
 
-                // Asignar el DataSource y enlazar los datos
+               
                 gvProductos.DataSource = dtProductos;
                 gvProductos.DataBind();
             }
@@ -56,13 +55,9 @@ namespace TPC_Equipo_22B
         {
             if (e.CommandName == "Eliminar")
             {
-                // Obtener el ID del producto seleccionado
+                
                 int idProducto = Convert.ToInt32(e.CommandArgument);
-
-                // Eliminar el producto
                 EliminarProductoFisicamente(idProducto);
-
-                // Recargar la lista de productos después de eliminar
                 CargarProductos();
             }
         }
@@ -72,12 +67,10 @@ namespace TPC_Equipo_22B
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                // Eliminar el producto de la base de datos
+               
                 datos.setearConsulta("DELETE FROM PRODUCTOS WHERE IDPRODUCTO = @idProducto");
                 datos.setearParametro("@idProducto", idProducto);
                 datos.ejecutarAccion();
-
-                // Opcional: Eliminar imágenes asociadas al producto
                 datos.setearConsulta("DELETE FROM IMAGENES WHERE IDPRODUCTO = @idProducto");
                 datos.setearParametro("@idProducto", idProducto);
                 datos.ejecutarAccion();

@@ -34,13 +34,13 @@ namespace TPC_Equipo_22B
         {
             int cantidadIngresada;
             ArticuloNegocio negocio = new ArticuloNegocio();
-            int stockDisponible = negocio.ConsultarStock(int.Parse(id)); // Consulta el stock actual del producto
+            int stockDisponible = negocio.ConsultarStock(int.Parse(id)); 
 
             if (int.TryParse(txtCantidad.Text, out cantidadIngresada))
             {
                 if (cantidadIngresada > stockDisponible)
                 {
-                    // Mostrar mensaje de error
+                    
                     lblError.Text = "La cantidad ingresada excede el stock disponible.";
                 }
                 else if (cantidadIngresada <= 0)
@@ -49,7 +49,7 @@ namespace TPC_Equipo_22B
                 }
                 else
                 {
-                    // Si la cantidad es válida, agregar a la sesión y redirigir al carrito
+                    
                     Session.Add("idp", id);
                     Session.Add("Cantidad", cantidadIngresada.ToString());
                     Response.Redirect("carrito.aspx", false);

@@ -21,7 +21,7 @@ namespace TPC_Equipo_22B
                 lblMensaje.Visible = false; // Ocultar el mensaje al cargar la página
                 prodcarrito = Session["carrito"] as List<ItemCarrito> ?? new List<ItemCarrito>();
 
-                // Validar que exista un producto y una cantidad en la sesión
+                
                 if (Session["idp"] != null && Session["Cantidad"] != null)
                 {
                     string id = Session["idp"].ToString();
@@ -34,7 +34,7 @@ namespace TPC_Equipo_22B
 
                         if (articuloNegocio.ConsultarStock(int.Parse(id)) >= cantidadSolicitada)
                         {
-                            // Si el producto ya está en el carrito, sumar la cantidad
+                            
                             int indice = articuloNegocio.encontrarArticulo(prodcarrito, int.Parse(id));
                             if (indice == -1)
                             {
@@ -55,12 +55,12 @@ namespace TPC_Equipo_22B
                             lblMensaje.Visible = true;
                         }
                     }
-                    // Limpiar las variables de sesión
+                    
                     Session["idp"] = null;
                     Session["Cantidad"] = null;
                 }
 
-                // Actualizar la sesión y enlazar al GridView
+                
                 Session["carrito"] = prodcarrito;
                 dgv_carrito.DataSource = prodcarrito;
                 dgv_carrito.DataBind();
@@ -86,26 +86,24 @@ namespace TPC_Equipo_22B
 
         protected void btnEliminar_Command(object sender, CommandEventArgs e)
         {
-            // Convertir el CommandArgument a un ID de producto
+            
             int idProducto = Convert.ToInt32(e.CommandArgument);
 
-            // Recuperar la lista del carrito desde la sesión
+            
             List<ItemCarrito> prodcarrito = Session["carrito"] as List<ItemCarrito>;
 
             if (prodcarrito != null)
             {
-                // Buscar el producto en el carrito
+                
                 ItemCarrito productoAEliminar = prodcarrito.FirstOrDefault(p => p.IdProducto == idProducto);
 
                 if (productoAEliminar != null)
                 {
-                    // Eliminar el producto de la lista del carrito
+                    
                     prodcarrito.Remove(productoAEliminar);
 
-                    // Actualizar la sesión
+                    // Actualizar la sesiion
                     Session["carrito"] = prodcarrito;
-
-                    // Volver a enlazar el GridView con los productos restantes en el carrito
                     dgv_carrito.DataSource = prodcarrito;
                     dgv_carrito.DataBind();
                 }
@@ -126,20 +124,18 @@ namespace TPC_Equipo_22B
 
             if (int.TryParse(txtCantidad.Text, out nuevaCantidad) && nuevaCantidad > 0)
             {
-                // Actualizar la cantidad en el carrito
+                
                 producto.cantidad = nuevaCantidad;
-
-                // Actualizar la sesión con el nuevo carrito
                 Session["carrito"] = prodcarrito;
             }
             else
             {
-                // Si la cantidad no es válida, restaurar la cantidad anterior
+         
                 txtCantidad.Text = producto.cantidad.ToString();
             }
 
             dgv_carrito.DataSource = prodcarrito;
-            dgv_carrito.DataBind();  // Recargar la tabla para reflejar los cambios
+            dgv_carrito.DataBind();  
 
         }
 
@@ -162,14 +158,14 @@ namespace TPC_Equipo_22B
                 return;
             }
 
-            // Depuración: verificar el contenido del carrito
+            
             Console.WriteLine("Contenido del carrito:");
             foreach (var item in carrito)
             {
                 Console.WriteLine($"Producto: {item.art.Nombre}, Cantidad: {item.cantidad}, Subtotal: {item.art.Precio * item.cantidad}");
             }
 
-            // Redirigir a la página FinalizarCompra.aspx
+          
             Response.Redirect("FinalizarCompra.aspx", false);
             Context.ApplicationInstance.CompleteRequest();
         }

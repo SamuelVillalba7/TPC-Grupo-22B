@@ -64,8 +64,8 @@ namespace TPC_Equipo_22B
                 datos.setearParametro("@estado", chkEstadoMarca.Checked);
                 datos.ejecutarAccion();
 
-                CargarMarcas(); // Recargar la tabla de marcas
-                txtNombreMarca.Text = string.Empty; // Limpiar campos
+                CargarMarcas(); 
+                txtNombreMarca.Text = string.Empty;
                 chkEstadoMarca.Checked = true;
             }
             catch (Exception ex)

@@ -81,22 +81,22 @@ namespace TPC_Equipo_22B
 
                 if (ddlEstado != null)
                 {
-                    // Obtener el pedido actual desde el DataItem
+                    
                     Pedido pedido = (Pedido)e.Row.DataItem;
 
                     if (pedido != null)
                     {
-                        // Cargar los estados disponibles según el estado actual y tipo de envío
+                        
                         EstadoNegocio estadoNegocio = new EstadoNegocio();
                         List<Estados> estados = estadoNegocio.ListarEstados(pedido.IdEstado, pedido.Envio);
 
-                        // Enlazar los estados al DropDownList
+                        
                         ddlEstado.DataSource = estados;
                         ddlEstado.DataTextField = "Nombre";
                         ddlEstado.DataValueField = "IdEstado";
                         ddlEstado.DataBind();
 
-                        // Seleccionar el estado actual
+                        
                         if (ddlEstado.Items.FindByValue(pedido.IdEstado.ToString()) != null)
                         {
                             ddlEstado.SelectedValue = pedido.IdEstado.ToString();
