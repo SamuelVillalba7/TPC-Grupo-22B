@@ -14,17 +14,14 @@ namespace TPC_Equipo_22B
         public List<Articulo> ListaArticulo { get; set; }
         public List<Categoria> ListaCategoria { get; set; }
         public List<Marca> ListaMarca { get; set; }
-        public Categoria categoria { get; set; } 
+        public Categoria categoria { get; set; }
 
         ArticuloNegocio negocio = new ArticuloNegocio();
         CategoriaNegocio cnegocio = new CategoriaNegocio();
         MarcaNegocio mnegocio = new MarcaNegocio();
         protected void Page_Load(object sender, EventArgs e)
         {
-      
-           
             ListaArticulo = negocio.listarConSP();
-            
             Session.Add("listaArticulos", ListaArticulo);
             ListaCategoria = cnegocio.listarConSP();
             ListaMarca = mnegocio.listar();
@@ -39,7 +36,6 @@ namespace TPC_Equipo_22B
                 ddlCategoria.Items.Insert(0, new ListItem("Todas", ""));
                 ddlCategoria.SelectedIndex = 0;
 
-
                 ddlMarca.DataSource = ListaMarca;
                 ddlMarca.DataTextField = "Nombre";
                 ddlMarca.DataValueField = "Codigo";
@@ -47,15 +43,27 @@ namespace TPC_Equipo_22B
                 ddlMarca.Items.Insert(0, new ListItem("Todas", ""));
                 ddlMarca.SelectedIndex = 0;
 
-
-
+                // Manejar el parámetro de categoría desde el QueryString
+                string categoriaIdParam = Request.QueryString["categoriaId"];
+                if (!string.IsNullOrEmpty(categoriaIdParam) && int.TryParse(categoriaIdParam, out int categoriaId))
+                {
+                    // Filtrar productos por categoría
+                    FiltrarPorCategoria(categoriaId);
+                }
             }
-
         }
+
+        private void FiltrarPorCategoria(int categoriaId)
+        {
+            ddlCategoria.SelectedValue = categoriaId.ToString(); // Seleccionar categoría en el dropdown
+            ListaArticulo = negocio.listarConSP(-1, categoriaId); // Filtrar solo por categoría                                                               
+        }
+
+
 
         protected void filtroRapido_TextChanged(object sender, EventArgs e)
         {
-            List<Articulo> lista = (List <Articulo>) Session["listaArticulos"];
+            List<Articulo> lista = (List<Articulo>)Session["listaArticulos"];
             List<Articulo> listaFiltrada = lista.FindAll(x => x.Nombre.ToUpper().Contains(filtroRapido.Text.ToUpper()));
             ListaArticulo = listaFiltrada;
         }
@@ -94,9 +102,4 @@ namespace TPC_Equipo_22B
         }
 
     }
-
-        
-
-        
-    
 }

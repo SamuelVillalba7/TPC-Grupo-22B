@@ -110,64 +110,98 @@ namespace negocio
             }
         }
 
-        public List<Articulo> listarConSP(int idMarca, int idCategoria)
+        public List<Articulo> listarConSP(int idMarca = -1, int idCategoria = -1)
         {
             List<Articulo> lista = new List<Articulo>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                if(idMarca == -1)
+                // Caso: solo categoría
+                if (idMarca == -1 && idCategoria != -1)
                 {
-                    datos.setearConsulta("SELECT P.IDPRODUCTO as ID, P.NOMBRE, P.DESCRIPCION, P.PRECIO, C.NOMBRE AS CATEGORIA, M.NOMBRE AS MARCA, (SELECT TOP 1 URLIMG FROM IMAGENES I WHERE I.IDPRODUCTO = P.IDPRODUCTO) AS URLIMG, P.IDCATEGORIA, P.IDMARCA FROM PRODUCTOS P INNER JOIN CATEGORIAS C ON C.IDCATEGORIA = P.IDCATEGORIA INNER JOIN MARCAS M ON M.IDMARCA = P.IDMARCA where C.IDCATEGORIA = @Categoria");
-                    datos.setearParametro("Categoria", idCategoria);
-                    datos.ejecutarLectura();
+                    datos.setearConsulta(@"
+                SELECT 
+                    P.IDPRODUCTO as ID, P.NOMBRE, P.DESCRIPCION, P.PRECIO, 
+                    C.NOMBRE AS CATEGORIA, M.NOMBRE AS MARCA, 
+                    (SELECT TOP 1 URLIMG FROM IMAGENES I WHERE I.IDPRODUCTO = P.IDPRODUCTO) AS URLIMG, 
+                    P.IDCATEGORIA, P.IDMARCA 
+                FROM PRODUCTOS P
+                INNER JOIN CATEGORIAS C ON C.IDCATEGORIA = P.IDCATEGORIA
+                INNER JOIN MARCAS M ON M.IDMARCA = P.IDMARCA
+                WHERE C.IDCATEGORIA = @Categoria");
+                    datos.setearParametro("@Categoria", idCategoria);
                 }
+                // Caso: solo marca
+                else if (idMarca != -1 && idCategoria == -1)
+                {
+                    datos.setearConsulta(@"
+                SELECT 
+                    P.IDPRODUCTO as ID, P.NOMBRE, P.DESCRIPCION, P.PRECIO, 
+                    C.NOMBRE AS CATEGORIA, M.NOMBRE AS MARCA, 
+                    (SELECT TOP 1 URLIMG FROM IMAGENES I WHERE I.IDPRODUCTO = P.IDPRODUCTO) AS URLIMG, 
+                    P.IDCATEGORIA, P.IDMARCA 
+                FROM PRODUCTOS P
+                INNER JOIN CATEGORIAS C ON C.IDCATEGORIA = P.IDCATEGORIA
+                INNER JOIN MARCAS M ON M.IDMARCA = P.IDMARCA
+                WHERE M.IDMARCA = @Marca");
+                    datos.setearParametro("@Marca", idMarca);
+                }
+                // Caso: marca y categoría
+                else if (idMarca != -1 && idCategoria != -1)
+                {
+                    datos.setearConsulta(@"
+                SELECT 
+                    P.IDPRODUCTO as ID, P.NOMBRE, P.DESCRIPCION, P.PRECIO, 
+                    C.NOMBRE AS CATEGORIA, M.NOMBRE AS MARCA, 
+                    (SELECT TOP 1 URLIMG FROM IMAGENES I WHERE I.IDPRODUCTO = P.IDPRODUCTO) AS URLIMG, 
+                    P.IDCATEGORIA, P.IDMARCA 
+                FROM PRODUCTOS P
+                INNER JOIN CATEGORIAS C ON C.IDCATEGORIA = P.IDCATEGORIA
+                INNER JOIN MARCAS M ON M.IDMARCA = P.IDMARCA
+                WHERE C.IDCATEGORIA = @Categoria AND M.IDMARCA = @Marca");
+                    datos.setearParametro("@Categoria", idCategoria);
+                    datos.setearParametro("@Marca", idMarca);
+                }
+                // Caso: sin filtros (todos los productos)
                 else
                 {
-                    if (idCategoria == -1)
-                    {
-                        datos.setearConsulta("SELECT P.IDPRODUCTO as ID, P.NOMBRE, P.DESCRIPCION, P.PRECIO, C.NOMBRE AS CATEGORIA, M.NOMBRE AS MARCA, (SELECT TOP 1 URLIMG FROM IMAGENES I WHERE I.IDPRODUCTO = P.IDPRODUCTO) AS URLIMG, P.IDCATEGORIA, P.IDMARCA FROM PRODUCTOS P INNER JOIN CATEGORIAS C ON C.IDCATEGORIA = P.IDCATEGORIA INNER JOIN MARCAS M ON M.IDMARCA = P.IDMARCA where M.IDMARCA = @Marca");
-                        datos.setearParametro("Marca", idMarca);
-                        datos.ejecutarLectura();
-                    }
-                    else
-                    {
-                        datos.setearConsulta("SELECT P.IDPRODUCTO as ID, P.NOMBRE, P.DESCRIPCION, P.PRECIO, C.NOMBRE AS CATEGORIA, M.NOMBRE AS MARCA, (SELECT TOP 1 URLIMG FROM IMAGENES I WHERE I.IDPRODUCTO = P.IDPRODUCTO) AS URLIMG, P.IDCATEGORIA, P.IDMARCA FROM PRODUCTOS P INNER JOIN CATEGORIAS C ON C.IDCATEGORIA = P.IDCATEGORIA INNER JOIN MARCAS M ON M.IDMARCA = P.IDMARCA where C.IDCATEGORIA = @Categoria and M.IDMARCA = @Marca");
-                        datos.setearParametro("Marca", idMarca);
-                        datos.setearParametro("Categoria", idCategoria);
-                        datos.ejecutarLectura();
-                    }
+                    datos.setearConsulta(@"
+                SELECT 
+                    P.IDPRODUCTO as ID, P.NOMBRE, P.DESCRIPCION, P.PRECIO, 
+                    C.NOMBRE AS CATEGORIA, M.NOMBRE AS MARCA, 
+                    (SELECT TOP 1 URLIMG FROM IMAGENES I WHERE I.IDPRODUCTO = P.IDPRODUCTO) AS URLIMG, 
+                    P.IDCATEGORIA, P.IDMARCA 
+                FROM PRODUCTOS P
+                INNER JOIN CATEGORIAS C ON C.IDCATEGORIA = P.IDCATEGORIA
+                INNER JOIN MARCAS M ON M.IDMARCA = P.IDMARCA");
                 }
 
+                datos.ejecutarLectura();
+
+                // Procesar los datos
                 while (datos.Lector.Read())
                 {
-                    Articulo aux = new Articulo();
-
-                    aux.Id = (int)datos.Lector["ID"];
-
-                    if (!(datos.Lector["NOMBRE"] is DBNull))
-                        aux.Nombre = (string)datos.Lector["NOMBRE"];
-                    if (!(datos.Lector["DESCRIPCION"] is DBNull))
-                        aux.Descripcion = (string)datos.Lector["DESCRIPCION"];
-                    if (!(datos.Lector["PRECIO"] is DBNull))
-                        aux.Precio = (decimal)datos.Lector["PRECIO"];
-
-                    if (!(datos.Lector["URLIMG"] is DBNull))
-                        aux.Imagen = (string)datos.Lector["URLIMG"];
-                    aux.Categoria = new Categoria();
-                    aux.Marca = new Marca();
-                    if (!(datos.Lector["IDCATEGORIA"] is DBNull))
-                        aux.Categoria.Id = (int)datos.Lector["IDCATEGORIA"];
-                    if (!(datos.Lector["CATEGORIA"] is DBNull))
-                        aux.Categoria.Nombre = (string)datos.Lector["CATEGORIA"];
-                    if (!(datos.Lector["IDMARCA"] is DBNull))
-                        aux.Marca.Codigo = (int)datos.Lector["IDMARCA"];
-                    if (!(datos.Lector["MARCA"] is DBNull))
-                        aux.Marca.Nombre = (string)datos.Lector["MARCA"];
+                    Articulo aux = new Articulo
+                    {
+                        Id = (int)datos.Lector["ID"],
+                        Nombre = datos.Lector["NOMBRE"] is DBNull ? null : (string)datos.Lector["NOMBRE"],
+                        Descripcion = datos.Lector["DESCRIPCION"] is DBNull ? null : (string)datos.Lector["DESCRIPCION"],
+                        Precio = datos.Lector["PRECIO"] is DBNull ? 0 : (decimal)datos.Lector["PRECIO"],
+                        Imagen = datos.Lector["URLIMG"] is DBNull ? null : (string)datos.Lector["URLIMG"],
+                        Categoria = new Categoria
+                        {
+                            Id = datos.Lector["IDCATEGORIA"] is DBNull ? 0 : (int)datos.Lector["IDCATEGORIA"],
+                            Nombre = datos.Lector["CATEGORIA"] is DBNull ? null : (string)datos.Lector["CATEGORIA"]
+                        },
+                        Marca = new Marca
+                        {
+                            Codigo = datos.Lector["IDMARCA"] is DBNull ? 0 : (int)datos.Lector["IDMARCA"],
+                            Nombre = datos.Lector["MARCA"] is DBNull ? null : (string)datos.Lector["MARCA"]
+                        }
+                    };
 
                     aux.Imagenes = cargarVecImagenes(aux.Id);
                     lista.Add(aux);
-
                 }
 
                 return lista;
@@ -181,6 +215,79 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+
+        //public List<Articulo> listarConSP(int idMarca, int idCategoria)
+        //{
+        //    List<Articulo> lista = new List<Articulo>();
+        //    AccesoDatos datos = new AccesoDatos();
+        //    try
+        //    {
+        //        if(idMarca == -1)
+        //        {
+        //            datos.setearConsulta("SELECT P.IDPRODUCTO as ID, P.NOMBRE, P.DESCRIPCION, P.PRECIO, C.NOMBRE AS CATEGORIA, M.NOMBRE AS MARCA, (SELECT TOP 1 URLIMG FROM IMAGENES I WHERE I.IDPRODUCTO = P.IDPRODUCTO) AS URLIMG, P.IDCATEGORIA, P.IDMARCA FROM PRODUCTOS P INNER JOIN CATEGORIAS C ON C.IDCATEGORIA = P.IDCATEGORIA INNER JOIN MARCAS M ON M.IDMARCA = P.IDMARCA where C.IDCATEGORIA = @Categoria");
+        //            datos.setearParametro("Categoria", idCategoria);
+        //            datos.ejecutarLectura();
+        //        }
+        //        else
+        //        {
+        //            if (idCategoria == -1)
+        //            {
+        //                datos.setearConsulta("SELECT P.IDPRODUCTO as ID, P.NOMBRE, P.DESCRIPCION, P.PRECIO, C.NOMBRE AS CATEGORIA, M.NOMBRE AS MARCA, (SELECT TOP 1 URLIMG FROM IMAGENES I WHERE I.IDPRODUCTO = P.IDPRODUCTO) AS URLIMG, P.IDCATEGORIA, P.IDMARCA FROM PRODUCTOS P INNER JOIN CATEGORIAS C ON C.IDCATEGORIA = P.IDCATEGORIA INNER JOIN MARCAS M ON M.IDMARCA = P.IDMARCA where M.IDMARCA = @Marca");
+        //                datos.setearParametro("Marca", idMarca);
+        //                datos.ejecutarLectura();
+        //            }
+        //            else
+        //            {
+        //                datos.setearConsulta("SELECT P.IDPRODUCTO as ID, P.NOMBRE, P.DESCRIPCION, P.PRECIO, C.NOMBRE AS CATEGORIA, M.NOMBRE AS MARCA, (SELECT TOP 1 URLIMG FROM IMAGENES I WHERE I.IDPRODUCTO = P.IDPRODUCTO) AS URLIMG, P.IDCATEGORIA, P.IDMARCA FROM PRODUCTOS P INNER JOIN CATEGORIAS C ON C.IDCATEGORIA = P.IDCATEGORIA INNER JOIN MARCAS M ON M.IDMARCA = P.IDMARCA where C.IDCATEGORIA = @Categoria and M.IDMARCA = @Marca");
+        //                datos.setearParametro("Marca", idMarca);
+        //                datos.setearParametro("Categoria", idCategoria);
+        //                datos.ejecutarLectura();
+        //            }
+        //        }
+
+        //        while (datos.Lector.Read())
+        //        {
+        //            Articulo aux = new Articulo();
+
+        //            aux.Id = (int)datos.Lector["ID"];
+
+        //            if (!(datos.Lector["NOMBRE"] is DBNull))
+        //                aux.Nombre = (string)datos.Lector["NOMBRE"];
+        //            if (!(datos.Lector["DESCRIPCION"] is DBNull))
+        //                aux.Descripcion = (string)datos.Lector["DESCRIPCION"];
+        //            if (!(datos.Lector["PRECIO"] is DBNull))
+        //                aux.Precio = (decimal)datos.Lector["PRECIO"];
+
+        //            if (!(datos.Lector["URLIMG"] is DBNull))
+        //                aux.Imagen = (string)datos.Lector["URLIMG"];
+        //            aux.Categoria = new Categoria();
+        //            aux.Marca = new Marca();
+        //            if (!(datos.Lector["IDCATEGORIA"] is DBNull))
+        //                aux.Categoria.Id = (int)datos.Lector["IDCATEGORIA"];
+        //            if (!(datos.Lector["CATEGORIA"] is DBNull))
+        //                aux.Categoria.Nombre = (string)datos.Lector["CATEGORIA"];
+        //            if (!(datos.Lector["IDMARCA"] is DBNull))
+        //                aux.Marca.Codigo = (int)datos.Lector["IDMARCA"];
+        //            if (!(datos.Lector["MARCA"] is DBNull))
+        //                aux.Marca.Nombre = (string)datos.Lector["MARCA"];
+
+        //            aux.Imagenes = cargarVecImagenes(aux.Id);
+        //            lista.Add(aux);
+
+        //        }
+
+        //        return lista;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //    finally
+        //    {
+        //        datos.cerrarConexion();
+        //    }
+        //}
 
 
 
