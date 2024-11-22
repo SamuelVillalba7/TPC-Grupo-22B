@@ -21,10 +21,22 @@ namespace TPC_Equipo_22B
         private void CargarPedidos()
         {
             PedidoNegocio pedidoNegocio = new PedidoNegocio();
-            List<Pedido> pedidos = pedidoNegocio.ListarPedidos();
-            gvPedidos.DataSource = pedidos;
-            gvPedidos.DataBind();
+            List<Pedido> pedidos = pedidoNegocio.ListarPedidosConEstados();
+
+            if (pedidos.Count > 0)
+            {
+                gvPedidos.Visible = true;
+                lblNoPedidos.Visible = false;
+                gvPedidos.DataSource = pedidos;
+                gvPedidos.DataBind();
+            }
+            else
+            {
+                gvPedidos.Visible = false;
+                lblNoPedidos.Visible = true;
+            }
         }
+
 
         protected void gvPedidos_RowEditing(object sender, GridViewEditEventArgs e)
         {
