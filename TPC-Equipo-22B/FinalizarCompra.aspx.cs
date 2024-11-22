@@ -82,8 +82,24 @@ namespace TPC_Equipo_22B
                 string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrEmpty(txtTelefono.Text))
             {
                 lblError.Text = "Por favor, complete todos los campos requeridos.";
+                lblError.Visible = true;
                 return;
             }
+
+
+            if(int.Parse(rblEntrega.SelectedValue) == 1)
+            {
+
+                if (string.IsNullOrEmpty(txtCiudad.Text) || string.IsNullOrEmpty(txtCodigoPostal.Text) ||
+                    string.IsNullOrEmpty(txtDireccion.Text) )
+                {
+                    lblError.Text = "Por favor, complete todos los campos requeridos.";
+                    lblError.Visible = true;
+                    return;
+                }
+            }
+
+
 
             try
             {
@@ -95,6 +111,7 @@ namespace TPC_Equipo_22B
                 if (prodcarrito == null || prodcarrito.Count == 0)
                 {
                     lblError.Text = "El carrito está vacío.";
+                    lblError.Visible = true;
                     return;
                 }
 
@@ -140,6 +157,7 @@ namespace TPC_Equipo_22B
             catch (Exception ex)
             {
                 lblError.Text = "Ocurrió un error al procesar su compra. Por favor, intente nuevamente.";
+                lblError.Visible = true;
                 Console.WriteLine($"Error: {ex.Message}");
             }
         }
