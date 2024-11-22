@@ -47,5 +47,40 @@ namespace negocio
                 throw new Exception("Error al enviar el correo: " + ex.Message);
             }
         }
+
+        public void EnviarArticulosDisponibles(string destinatario, List<dominio.Articulo> articulos)
+        {
+            try
+            {
+                // Construir el cuerpo del correo con los artículos disponibles
+                StringBuilder cuerpo = new StringBuilder();
+                cuerpo.Append("<h1>Artículos Disponibles en Phlox Store</h1>");
+                cuerpo.Append("<p>Estos son los artículos actualmente disponibles en nuestra tienda:</p>");
+                cuerpo.Append("<table style='width:100%; border-collapse:collapse;' border='1'>");
+                cuerpo.Append("<thead><tr><th>Producto</th><th>Precio</th><th>Imagen</th></tr></thead>");
+                cuerpo.Append("<tbody>");
+
+                foreach (var articulo in articulos)
+                {
+                    cuerpo.Append($"<tr>");
+                    cuerpo.Append($"<td>{articulo.Nombre}</td>");
+                    cuerpo.Append($"<td>${articulo.Precio:N2}</td>");
+                    cuerpo.Append($"<td><img src='{articulo.Imagen}' alt='{articulo.Nombre}' style='max-height:50px; max-width:50px;'/></td>");
+                    cuerpo.Append($"</tr>");
+                }
+
+                cuerpo.Append("</tbody></table>");
+                cuerpo.Append("<p>Gracias por suscribirte a nuestras novedades.</p>");
+
+                // Enviar el correo
+                Enviar(destinatario, "Artículos Disponibles en Phlox Store", cuerpo.ToString());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al enviar los artículos disponibles: " + ex.Message);
+            }
+        }
     }
+
+
 }

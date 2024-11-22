@@ -115,9 +115,10 @@
                         <h3 class="footer__title">Suscríbete</h3>
                         <span class="footer__span">Recibe más novedades</span>
                         <div class="footer__container-input">
-                            <input type="text" class="footer__input" placeholder="Ingresa tu correo electrónico">
-                            <button class="footer__button">Suscribirse</button>
+                            <asp:TextBox ID="txtEmailSuscripcion" runat="server" CssClass="footer__input" placeholder="Ingresa tu correo electrónico"></asp:TextBox>
+                            <asp:Button ID="btnSuscribirse" runat="server" CssClass="footer__button" Text="Suscribirse" OnClick="btnSuscribirse_Click" />
                         </div>
+                        <asp:Label ID="lblSuscripcion" runat="server" CssClass="footer__span text-success" Visible="false"></asp:Label>
                     </div>
                 </div>
             </div>
