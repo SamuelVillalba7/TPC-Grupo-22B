@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 CREATE DATABASE TPC1;
 go 
 use TPC1;
@@ -10,7 +9,8 @@ CREATE TABLE CATEGORIAS(
     URLIMAGEN VARCHAR(100),
     VISIBLE bit DEFAULT 0,
 	FILTRO bit DEFAULT 0,
-    ESTADO BIT DEFAULT 1
+    ESTADO BIT DEFAULT 1,
+	Orden int not null DEFAULT 0
 )
 GO
 
@@ -471,5 +471,3 @@ insert into IMAGENES (IDPRODUCTO, URLIMG) values (7, 'https://ar.oneclickstore.c
 insert into PRODUCTOS (IDMARCA, IDCATEGORIA, NOMBRE, PRECIO, STOCK, DESCRIPCION) values (1,1, 'Audio-technica Ath-m40x', 350000, 80, 'Auriculares de estudio')
 insert into IMAGENES (IDPRODUCTO, URLIMG) values (8, 'https://www.avisistemas.com.ar/795-thickbox_default/audio-technica-ath-m40x-auricular-profesional-estudio.jpg')
 
-
->>>>>>> f629064 (Se crea el logout)
