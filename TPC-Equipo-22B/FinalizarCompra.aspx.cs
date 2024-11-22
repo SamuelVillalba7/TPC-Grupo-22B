@@ -39,11 +39,6 @@ namespace TPC_Equipo_22B
                 ddlProvincias.DataTextField = "NombreProv";
                 ddlProvincias.DataValueField = "IdProvincia";
                 ddlProvincias.DataBind();
-
-
-                
-
-
             }
         }
 
@@ -94,23 +89,53 @@ namespace TPC_Equipo_22B
             {
                 PedidoNegocio negocio = new PedidoNegocio();
                 DatosEnvioNegocio datosEnvioNegocio = new DatosEnvioNegocio();
-                List<ItemCarrito> prodcarrito = new List<ItemCarrito>();
-                prodcarrito = Session["carrito"] as List<ItemCarrito>;
-                //Falta pasar el ID del usuario que está logueado, que pida la ciudad y el CP en caso de querar entrega a domicilio, hacer un condiconal para ver que estado toma de acuerdo al metodo de pago seleccionado, pasar el monto
-                montoTotal = CalcularMontoTotal();
-                int IdPedido = negocio.RegistrarPedido(usuario.Id, int.Parse(ddlMetodoPago.SelectedValue), 1, DateTime.Now, int.Parse(rblEntrega.SelectedValue), montoTotal);
+                List<ItemCarrito> prodcarrito = Session["carrito"] as List<ItemCarrito>;
 
-                if (int.Parse(rblEntrega.SelectedValue) == 1)
+                // Validación del carrito
+                if (prodcarrito == null || prodcarrito.Count == 0)
                 {
-                    datosEnvioNegocio.agregar(IdPedido, int.Parse(ddlProvincias.SelectedValue), txtCiudad.Text, txtCodigoPostal.Text, txtDireccion.Text);
+                    lblError.Text = "El carrito está vacío.";
+                    return;
                 }
+
+                // Calcular monto total y registrar el pedido
+                montoTotal = CalcularMontoTotal();
+                int IdPedido = negocio.RegistrarPedido(
+                    usuario.Id,
+                    int.Parse(ddlMetodoPago.SelectedValue),
+                    1, // Estado inicial del pedido
+                    DateTime.Now,
+                    int.Parse(rblEntrega.SelectedValue),
+                    montoTotal
+                );
+
+                // Registrar datos de envío si es necesario
+                if (int.Parse(rblEntrega.SelectedValue) == 1) // 1 significa que eligió envío
+                {
+                    datosEnvioNegocio.agregar(
+                        IdPedido,
+                        int.Parse(ddlProvincias.SelectedValue),
+                        txtCiudad.Text,
+                        txtCodigoPostal.Text,
+                        txtDireccion.Text
+                    );
+                }
+
+                // Guardar detalle del pedido y actualizar stock
                 negocio.GuardarDetallePedido(IdPedido, prodcarrito);
                 negocio.ActualizarStock(prodcarrito);
 
+                // Crear cuerpo del correo
+                string detallePedido = GenerarDetallePedido(prodcarrito, IdPedido, montoTotal);
+                string asunto = "Confirmación de Pedido - Pedido #" + IdPedido;
 
-                Session["carrito"] = null; // Limpiar el carrito después de confirmar la compra
+                // Enviar correo con Mailtrap
+                EnvioMail envioMail = new EnvioMail();
+                envioMail.Enviar(txtEmail.Text, asunto, detallePedido);
 
-                  Response.Redirect("Default.aspx",false);
+                // Limpiar el carrito y redirigir al usuario
+                Session["carrito"] = null; // Limpiar el carrito
+                Response.Redirect("Default.aspx", false);
             }
             catch (Exception ex)
             {
@@ -118,6 +143,33 @@ namespace TPC_Equipo_22B
                 Console.WriteLine($"Error: {ex.Message}");
             }
         }
+
+        private string GenerarDetallePedido(List<ItemCarrito> carrito, int idPedido, decimal montoTotal)
+        {
+            string detalle = $"<h2>Confirmación de Pedido - Pedido #{idPedido}</h2>";
+            detalle += "<p>Gracias por tu compra. Aquí tienes el detalle de tu pedido:</p>";
+            detalle += "<table style='width:100%; border-collapse:collapse; border: 1px solid black;'>";
+            detalle += "<thead><tr><th style='border: 1px solid black;'>Producto</th><th style='border: 1px solid black;'>Cantidad</th><th style='border: 1px solid black;'>Precio Unitario</th><th style='border: 1px solid black;'>Subtotal</th></tr></thead>";
+            detalle += "<tbody>";
+
+            foreach (var item in carrito)
+            {
+                detalle += $"<tr>" +
+                           $"<td style='border: 1px solid black;'>{item.art.Nombre}</td>" +
+                           $"<td style='border: 1px solid black;'>{item.cantidad}</td>" +
+                           $"<td style='border: 1px solid black;'>${item.art.Precio:N2}</td>" +
+                           $"<td style='border: 1px solid black;'>${item.Subtotal:N2}</td>" +
+                           $"</tr>";
+            }
+
+            detalle += "</tbody></table>";
+            detalle += $"<h3>Total: ${montoTotal:N2}</h3>";
+            detalle += "<p>Esperamos que disfrutes tu compra. ¡Gracias por elegirnos!</p>";
+
+            return detalle;
+        }
+
+
 
 
         private int CrearPedido()
