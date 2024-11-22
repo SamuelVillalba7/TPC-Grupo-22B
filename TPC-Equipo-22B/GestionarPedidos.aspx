@@ -19,7 +19,7 @@
 
         /* Filas al pasar el mouse */
         .grid-row:hover {
-            background-color: #f8f9fa; /* Un color claro que no impacta la lectura */
+            background-color: #f8f9fa; /* Color claro */
         }
 
         /* Botones de acción */
@@ -28,7 +28,7 @@
             padding: 5px 15px;
         }
 
-        /* Texto de los títulos */
+        /* Título de la página */
         .titulo-pagina {
             color: #343a40;
             margin-bottom: 20px;
@@ -41,11 +41,17 @@
             margin-top: 20px;
         }
 
-        /* Desactivar cambio de color al seleccionar encabezado */
+        /* Encabezados estáticos sin cambiar color */
         .table thead th {
             background-color: #343a40 !important;
             color: white !important;
-            cursor: default; /* Evitar el cursor de puntero */
+            cursor: default;
+        }
+
+        /* Etiquetas de estado */
+        .badge-info {
+            background-color: #17a2b8;
+            color: white;
         }
     </style>
 </asp:Content>

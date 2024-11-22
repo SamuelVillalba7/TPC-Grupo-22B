@@ -17,6 +17,7 @@ namespace dominio
         public int IdEstado { get; set; }
         public DateTime FechaPedido { get; set; }
         public decimal MontoTotal { get; set; }
+        public int Envio { get; set; } // 0: Retiro en tienda, 1: Envío a domicilio
 
     }
 }

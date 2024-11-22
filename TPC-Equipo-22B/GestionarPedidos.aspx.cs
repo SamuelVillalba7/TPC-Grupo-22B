@@ -76,21 +76,27 @@ namespace TPC_Equipo_22B
         {
             if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowState.HasFlag(DataControlRowState.Edit))
             {
+                // Obtener el DropDownList en la fila en edición
                 DropDownList ddlEstado = (DropDownList)e.Row.FindControl("ddlEstado");
 
                 if (ddlEstado != null)
                 {
-                    EstadoNegocio estadoNegocio = new EstadoNegocio();
-                    List<Estados> estados = estadoNegocio.ListarEstados();
-
-                    ddlEstado.DataSource = estados;
-                    ddlEstado.DataTextField = "Nombre";
-                    ddlEstado.DataValueField = "IdEstado";
-                    ddlEstado.DataBind();
-
+                    // Obtener el pedido actual desde el DataItem
                     Pedido pedido = (Pedido)e.Row.DataItem;
+
                     if (pedido != null)
                     {
+                        // Cargar los estados disponibles según el estado actual y tipo de envío
+                        EstadoNegocio estadoNegocio = new EstadoNegocio();
+                        List<Estados> estados = estadoNegocio.ListarEstados(pedido.IdEstado, pedido.Envio);
+
+                        // Enlazar los estados al DropDownList
+                        ddlEstado.DataSource = estados;
+                        ddlEstado.DataTextField = "Nombre";
+                        ddlEstado.DataValueField = "IdEstado";
+                        ddlEstado.DataBind();
+
+                        // Seleccionar el estado actual
                         if (ddlEstado.Items.FindByValue(pedido.IdEstado.ToString()) != null)
                         {
                             ddlEstado.SelectedValue = pedido.IdEstado.ToString();
@@ -99,5 +105,34 @@ namespace TPC_Equipo_22B
                 }
             }
         }
+
+
+        //protected void gvPedidos_RowDataBound(object sender, GridViewRowEventArgs e)
+        //{
+        //    if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowState.HasFlag(DataControlRowState.Edit))
+        //    {
+        //        DropDownList ddlEstado = (DropDownList)e.Row.FindControl("ddlEstado");
+
+        //        if (ddlEstado != null)
+        //        {
+        //            EstadoNegocio estadoNegocio = new EstadoNegocio();
+        //            List<Estados> estados = estadoNegocio.ListarEstados();
+
+        //            ddlEstado.DataSource = estados;
+        //            ddlEstado.DataTextField = "Nombre";
+        //            ddlEstado.DataValueField = "IdEstado";
+        //            ddlEstado.DataBind();
+
+        //            Pedido pedido = (Pedido)e.Row.DataItem;
+        //            if (pedido != null)
+        //            {
+        //                if (ddlEstado.Items.FindByValue(pedido.IdEstado.ToString()) != null)
+        //                {
+        //                    ddlEstado.SelectedValue = pedido.IdEstado.ToString();
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
     }
 }
