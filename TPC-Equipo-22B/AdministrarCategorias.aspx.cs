@@ -27,12 +27,21 @@ namespace TPC_Equipo_22B
 
             try
             {
-                datos.setearConsulta("SELECT IDCATEGORIA, NOMBRE, ESTADO, URLIMAGEN, ORDEN FROM Categorias");
+                datos.setearConsulta("SELECT IDCATEGORIA, NOMBRE, ESTADO, URLIMAGEN,VISIBLE, ORDEN FROM Categorias");
                 datos.ejecutarLectura();
 
                 dtCategorias.Load(datos.Lector);
                 gvCategorias.DataSource = dtCategorias;
                 gvCategorias.DataBind();
+
+
+                DataView dvCategoriasVisible = new DataView(dtCategorias);
+                gvCategoriasVisible.DataSource = dvCategoriasVisible;
+                gvCategoriasVisible.DataBind();
+
+
+
+
             }
             catch (Exception ex)
             {
@@ -178,6 +187,144 @@ namespace TPC_Equipo_22B
                 CargarCategorias();
             }
         }
+
+
+        ///////datagrifview visible
+        ///
+        protected void btnEditar_Click(object sender, EventArgs e)
+        {
+
+
+
+            // Habilitar los CheckBox en la columna "Visible"
+            foreach (GridViewRow row in gvCategoriasVisible.Rows)
+            {
+                CheckBox chkVisible = (CheckBox)row.FindControl("chkVisible");
+                if (chkVisible != null)
+                {
+                    chkVisible.Enabled = true;
+                }
+            }
+
+            // Cambiar el estado de los botones
+            btnEditar.Enabled = false;
+            btnActualizar.Enabled = true;
+            btnCancelar.Enabled = true;
+        }
+
+        protected void actualizarVisible(int idCategoria, bool nuevoValorVisible)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                // Actualizar cada fila en la base de datos
+                datos.setearConsulta("UPDATE CATEGORIAS SET VISIBLE = @visible WHERE IDCATEGORIA = @id");
+                datos.setearParametro("@visible", nuevoValorVisible);
+                datos.setearParametro("@id", idCategoria);
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+
+        protected void btnActualizar_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                int categoriasVisibles = 0;
+
+                // Contar cuántas categorías tienen VISIBLE = true
+                foreach (GridViewRow row in gvCategoriasVisible.Rows)
+                {
+                    CheckBox chkVisible = (CheckBox)row.FindControl("chkVisible");
+                    if (chkVisible != null && chkVisible.Checked)
+                    {
+                        categoriasVisibles++;
+                    }
+                }
+
+                // Validar que haya exactamente 7 categorías visibles
+                if (categoriasVisibles != 7)
+                {
+                    lblMensaje.Text = "Debe haber exactamente 7 categorías visibles.";
+                    lblMensaje.ForeColor = System.Drawing.Color.Red;
+                    return;
+                }
+
+                foreach (GridViewRow row in gvCategoriasVisible.Rows)
+                {
+                    int idCategoria = Convert.ToInt32(gvCategoriasVisible.DataKeys[row.RowIndex].Value);
+                    CheckBox chkVisible = (CheckBox)row.FindControl("chkVisible");
+
+                    if (chkVisible != null)
+                    {
+                        bool nuevoValorVisible = chkVisible.Checked;
+
+                        actualizarVisible(idCategoria, nuevoValorVisible);
+
+                    }
+                }
+
+                // Deshabilitar los CheckBox después de actualizar
+                foreach (GridViewRow row in gvCategoriasVisible.Rows)
+                {
+                    CheckBox chkVisible = (CheckBox)row.FindControl("chkVisible");
+                    if (chkVisible != null)
+                    {
+                        chkVisible.Enabled = false;
+                    }
+                }
+
+                // Cambiar el estado de los botones
+                btnEditar.Enabled = true;
+                btnActualizar.Enabled = false;
+                btnCancelar.Enabled = false;
+
+                // Recargar los datos para reflejar cambios
+                CargarCategorias();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+
+        }
+
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            // Deshabilitar los CheckBox
+            foreach (GridViewRow row in gvCategoriasVisible.Rows)
+            {
+                CheckBox chkVisible = (CheckBox)row.FindControl("chkVisible");
+                if (chkVisible != null)
+                {
+                    chkVisible.Enabled = false;
+                }
+            }
+
+            // Cambiar el estado de los botones
+            btnEditar.Enabled = true;
+            btnActualizar.Enabled = false;
+            btnCancelar.Enabled = false;
+            lblMensaje.Text = "";
+            // Recargar los datos originales
+            CargarCategorias();
+        }
+
+
 
 
     }

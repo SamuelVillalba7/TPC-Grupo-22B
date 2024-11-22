@@ -38,6 +38,34 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
+
+
+
+
+        <h3 class="text-center">Categorías visibles en el home</h3>
+
+        <asp:GridView ID="gvCategoriasVisible" runat="server" CssClass="table table-striped table-bordered"
+            AutoGenerateColumns="False" DataKeyNames="IDCATEGORIA" EnableViewState="True">
+            <Columns>
+                <asp:BoundField DataField="IDCATEGORIA" HeaderText="ID" ReadOnly="True" />
+                <asp:BoundField DataField="NOMBRE" HeaderText="Nombre" ReadOnly="True" />
+                <asp:TemplateField HeaderText="Visible">
+                    <ItemTemplate>
+                        <asp:CheckBox ID="chkVisible" runat="server" Checked='<%# Convert.ToBoolean(Eval("VISIBLE")) %>' Enabled="false" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+        <asp:Label ID="lblMensaje" runat="server" Text="" CssClass="mensaje"></asp:Label><br />
+
+        <!-- Botones globales -->
+        <asp:Button ID="btnEditar" runat="server" Text="Editar" OnClick="btnEditar_Click" CssClass="btn btn-primary" />
+        <asp:Button ID="btnActualizar" runat="server" Text="Actualizar" OnClick="btnActualizar_Click" CssClass="btn btn-success" Enabled="false" />
+        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" CssClass="btn btn-danger" Enabled="false" />
+
+
+
+
         <h3 class="text-center">Administrar Categorías</h3>
 
         <!-- Tabla de categorías existentes -->
@@ -76,6 +104,8 @@
 
             </Columns>
         </asp:GridView>
+
+        
 
         <!-- Formulario para agregar una nueva categoría -->
         <div class="form-section mt-5">

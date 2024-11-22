@@ -79,3 +79,12 @@ C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\negocio\obj\Debu
 C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\negocio\obj\Debug\negocio.csproj.CopyComplete
 C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\negocio\obj\Debug\negocio.dll
 C:\Users\ASUS\OneDrive\Desktop\Repositorio GitHub\TPC-Grupo-22B\negocio\obj\Debug\negocio.pdb
+C:\Users\Usuario\Desktop\Nueva carpeta (2)\TPC-Grupo-22B\negocio\bin\Debug\negocio.dll
+C:\Users\Usuario\Desktop\Nueva carpeta (2)\TPC-Grupo-22B\negocio\bin\Debug\negocio.pdb
+C:\Users\Usuario\Desktop\Nueva carpeta (2)\TPC-Grupo-22B\negocio\bin\Debug\dominio.dll
+C:\Users\Usuario\Desktop\Nueva carpeta (2)\TPC-Grupo-22B\negocio\bin\Debug\dominio.pdb
+C:\Users\Usuario\Desktop\Nueva carpeta (2)\TPC-Grupo-22B\negocio\obj\Debug\negocio.csproj.AssemblyReference.cache
+C:\Users\Usuario\Desktop\Nueva carpeta (2)\TPC-Grupo-22B\negocio\obj\Debug\negocio.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\Nueva carpeta (2)\TPC-Grupo-22B\negocio\obj\Debug\negocio.csproj.Up2Date
+C:\Users\Usuario\Desktop\Nueva carpeta (2)\TPC-Grupo-22B\negocio\obj\Debug\negocio.dll
+C:\Users\Usuario\Desktop\Nueva carpeta (2)\TPC-Grupo-22B\negocio\obj\Debug\negocio.pdb

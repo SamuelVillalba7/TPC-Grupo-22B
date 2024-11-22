@@ -54,7 +54,7 @@ namespace negocio
             try
             {
                 // Limitar la consulta a las primeras 7 categorías ordenadas por el campo Orden
-                datos.setearConsulta("SELECT TOP 7 IDCATEGORIA, NOMBRE, UrlImagen, Orden FROM Categorias ORDER BY Orden ASC");
+                datos.setearConsulta("SELECT IDCATEGORIA, NOMBRE, UrlImagen, Orden FROM Categorias ORDER BY Orden ASC");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -101,6 +101,41 @@ namespace negocio
                 }
                 datos.setearParametro("@CategoriaId", categoriaId);
                 datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+        public List<Categoria> listarConSPHome()
+        {
+            List<Categoria> lista = new List<Categoria>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                // Limitar la consulta a las primeras 7 categorías ordenadas por el campo Orden
+                datos.setearConsulta("SELECT TOP 7 IDCATEGORIA, NOMBRE, UrlImagen, Orden FROM Categorias WHERE VISIBLE=1 AND ESTADO=1 ORDER BY Orden ASC");
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Categoria categoria = new Categoria
+                    {
+                        Id = (int)datos.Lector["IDCATEGORIA"],
+                        Nombre = (string)datos.Lector["Nombre"],
+                        UrlImagen = (string)datos.Lector["UrlImagen"],
+                        Orden = (int)datos.Lector["Orden"]
+                    };
+                    lista.Add(categoria);
+                }
+
+                return lista;
             }
             catch (Exception ex)
             {
