@@ -32,6 +32,12 @@
                             <%if (Session["usuario"] != null && ((dominio.Usuario)Session["usuario"]).Administrador == true){ %>
                             <a class="header__a" href="administrar.aspx">Administrar</a>
                             <%} %>
+                        <%if (Session["usuario"] != null && ((dominio.Usuario)Session["usuario"]).Administrador == true){ %>
+                            <a class="header__a" href="GestionarPedidos.aspx">Gestionar Pedidos</a>
+                            <%} %>
+                        <%if (Session["usuario"] != null && ((dominio.Usuario)Session["usuario"]).Administrador == false){ %>
+                            <a class="header__a" href="MisPedidos.aspx">Mis Pedidos</a>
+                            <%} %>
                         
                     </nav>
                 </div>      
